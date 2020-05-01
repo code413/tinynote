@@ -10,7 +10,6 @@ class CommentsController extends Controller
 {
     public function store(Upload $upload)
     {
-
         if(!auth()->check())
         {
             return redirect()->route('login');

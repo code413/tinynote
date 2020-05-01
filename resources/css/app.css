@@ -1,0 +1,9 @@
+@tailwind base;
+
+@tailwind components;
+
+@import "components/card.css";
+@import "components/btn.css";
+@import "components/form-control.css";
+
+@tailwind utilities;

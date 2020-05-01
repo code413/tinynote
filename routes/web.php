@@ -13,6 +13,6 @@ Route::resource('uploads', 'UploadsController')->names([
     'show' => 'uploads.show',
 ]);
 
-Route::post('/uploads/{upload}/comments', 'CommentsController@store')->name('comments.store');
+Route::post('/uploads/{upload}/comments', 'CommentsController@store')->name('comments.store')->middleware('auth');
 Route::put('/comments/{comment}', 'CommentsController@update')->name('comments.update');
 Route::delete('/comments/{comment}', 'CommentsController@destroy')->name('comments.destroy');

@@ -17,7 +17,7 @@
         <div class="mt-8">
             <div>
                 @forelse($upload->comments as $comment)
-                    @if($comment->isOnTheImage)
+                    @if($comment->isOnTheImage())
                         @continue
                     @endif
 
