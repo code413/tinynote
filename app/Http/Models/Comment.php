@@ -26,7 +26,7 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function wroteByHer()
+    public function author()
     {
         if(auth()->check() && $this->user_id == auth()->user()->id)
         {

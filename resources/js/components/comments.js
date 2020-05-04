@@ -35,7 +35,7 @@ $(function () {
                 '         top: ' + coordinateY * 100 + '%;\n' +
                 '         left: ' + coordinateX * 100 + '%;">\n' +
                 '    <div class="flex -ml-2 -mt-2">\n' +
-                '        <div class="comment-pointer cursor-pointer w-4 h-4 rounded-full bg-red-600 flex justify-center items-center text-white text-xs z-50">X</div>\n' +
+                '        <div style="min-width: 1rem" title="Remove" class="comment-pointer cursor-pointer w-4 h-4 rounded-full bg-red-600 flex justify-center items-center text-white text-xs z-50">X</div>\n' +
                 submitCommentForm +
                 '    </div>\n' +
                 '</div>'
