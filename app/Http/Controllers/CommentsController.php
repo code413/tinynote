@@ -37,6 +37,8 @@ class CommentsController extends Controller
 
     public function update(Comment $comment)
     {
+        // TODO: Only owner can update
+
         $comment->update([
             'body' => request('body')
         ]);
@@ -46,6 +48,8 @@ class CommentsController extends Controller
 
     public function destroy(Comment $comment)
     {
+        // TODO: Only owner can delete
+
         $comment->delete();
 
         return back();

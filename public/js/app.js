@@ -3524,7 +3524,7 @@ cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(function () {
       var $comment = '<div class="comment"\n' + '     style="position: absolute;\n' + '         top: ' + coordinateY * 100 + '%;\n' + '         left: ' + coordinateX * 100 + '%;">\n' + '    <div class="flex -ml-2 -mt-2">\n' + '        <div class="comment-pointer cursor-pointer w-4 h-4 rounded-full bg-red-600 flex justify-center items-center text-white text-xs z-50">X</div>\n' + submitCommentForm + '    </div>\n' + '</div>';
       $image.closest('div').append($comment);
     })["catch"](function (error) {
-      console.log(error);
+      window.location.href = '/login';
     });
   }); //Update comment content
 

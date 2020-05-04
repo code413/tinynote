@@ -28,11 +28,7 @@ class Comment extends Model
 
     public function wroteByHer()
     {
-        if(!auth()->check()){
-            return false;
-        }
-
-        if($this->user_id == auth()->user()->id)
+        if(auth()->check() && $this->user_id == auth()->user()->id)
         {
             return true;
         }

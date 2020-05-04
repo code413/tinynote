@@ -43,7 +43,7 @@ $(function () {
             $image.closest('div').append($comment)
 
         }).catch(function (error) {
-            console.log(error)
+            window.location.href = '/login';
         })
     })
 
