@@ -16,32 +16,38 @@
 
         <div class="mt-8">
             <div>
+                <h2 class="border-b-2 mb-10">General comments</h2>
+
                 @forelse($upload->comments as $comment)
                     @if($comment->isOnTheImage())
                         @continue
                     @endif
 
-                    <div
-                        class="alert mb-1 p-3 {{ ($comment->wroteByHer()) ? 'alert-primary ml-auto text-right' : 'alert-success mr-auto text-left' }}"
-                        role="alert" style="word-break:break-all;">
+                    <div style="max-width: 25rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04);word-break:break-all;"
+                        class="bg-white mb-1 p-3 my-5 rounded-md {{ ($comment->wroteByHer()) ? 'bg-green-100 ml-auto text-right' : 'bg-blue-100 mr-auto text-left' }}"
+                        role="alert" >
 
-                        <div
-                            class="name font-weight-bold mb-1 d-flex align-items-center m-0 {{ $comment->wroteByHer() ? 'justify-content-end' : '' }}">
-                            <img src="{{ url('img/avatar.png') }}" style="max-width: 1rem;height: 1rem;">
+                            <div
+                                class="name font-bold mb-1 m-0 flex items-center {{ $comment->wroteByHer() ? 'justify-start' : '' }}">
+                                <img src="{{ url('img/avatar.png') }}"
+                                     class="mr-2"
+                                     style="max-width: 1rem;height: 1rem; display: inline">
 
-                            {{ $comment->user->name }}
+                                {{ $comment->user->name }}
+                            </div>
+
+                            <div class="text-left">{{ $comment->body }}</div>
+
+                        <div class="text-xs text-right" title="{{ \Illuminate\Support\Carbon::parse($comment->created_at) }}">
+                            {{ \Illuminate\Support\Carbon::parse($comment->created_at)->diffForHumans() }}
                         </div>
-
-                        <div>{{ $comment->body }}</div>
                     </div>
-
-                    <p>{{ $comment->body }}</p>
                 @empty
                     <p>There is no comment here!</p>
                 @endforelse
             </div>
 
-            <form method="POST" action="{{ route('comments.store', [$upload]) }}" class="flex flex-col">
+            <form method="POST" action="{{ route('comments.store', [$upload]) }}" class="flex flex-col mt-10">
                 @csrf
 
                 <textarea name="body" placeholder="Type your comment to display out of the image"

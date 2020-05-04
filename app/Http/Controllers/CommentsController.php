@@ -17,17 +17,22 @@ class CommentsController extends Controller
 
         if (request()->has('coordinateX') || request()->has('coordinateY')) {
             $comment = $upload->comments()->create([
-                'coordinates' => json_encode([request()->get('coordinateX'), request()->get('coordinateY')])
+                'coordinates' => json_encode([request()->get('coordinateX'), request()->get('coordinateY')]),
+                'user_id' => auth()->user()->id
             ]);
+
+            return response($comment->id, 200)
+                ->header('Content-Type', 'text/plain');
+
         }else{
             $comment = $upload->comments()->create([
                 'body' => request('body'),
                 'coordinates' => json_encode([-1, -1]),
+                'user_id' => auth()->user()->id
             ]);
-        }
 
-        return response($comment->id, 200)
-            ->header('Content-Type', 'text/plain');
+            return redirect()->back();
+        }
     }
 
     public function update(Comment $comment)

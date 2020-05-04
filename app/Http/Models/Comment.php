@@ -21,8 +21,17 @@ class Comment extends Model
         return $this->belongsTo(Upload::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function wroteByHer()
     {
+        if(!auth()->check()){
+            return false;
+        }
+
         if($this->user_id == auth()->user()->id)
         {
             return true;
