@@ -2,6 +2,7 @@ window.app ={
     init(){
         require('./bootstrap');
         require('./components/comments')
+        require('./components/dropzone')
     }
 }
 

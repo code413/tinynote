@@ -12,6 +12,8 @@
     "devDependencies": {
         "@tailwindcss/custom-forms": "^0.2",
         "axios": "^0.19",
+        "browser-sync": "^2.26.7",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "cash-dom": "^7.0.1",
         "cross-env": "^7.0",
         "laravel-mix": "^5.0.1",
@@ -23,5 +25,9 @@
         "tailwindcss": "^1.4",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "dropzone": "^5.7.0",
+        "normalize.css": "^8.0.1"
     }
 }

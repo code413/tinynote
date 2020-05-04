@@ -9,6 +9,10 @@ class UploadsController extends Controller
 {
     public function store(Upload $upload)
     {
+        request()->validate([
+            'image' => 'required|mimes:jpeg,jpg,png,gif|max:5000'
+        ]);
+
         $file = request()->file('image');
 
         $extension = $file->extension();
@@ -31,7 +35,8 @@ class UploadsController extends Controller
         $uploaded->save();
 
 
-        return redirect()->route('uploads.show',['upload'=>$uploaded]);
+        return response($uploaded->uuid, 200)
+            ->header('Content-Type', 'text/plain');
     }
 
     public function show(Upload $upload)
