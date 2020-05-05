@@ -35,4 +35,19 @@ class Upload extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function invitees()
+    {
+        return $this->hasMany(Invitee::class);
+    }
+
+    public function owned()
+    {
+        if($this->owner_id != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

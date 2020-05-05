@@ -5,8 +5,29 @@
 @section('main')
     <div class="container mx-auto p-10">
         @guest
-            <p class="mb-2 text-center">This visual will be available through this link.</p>
+            <a href="{{ route('login') }}">Login to own this visual.</a>
         @endguest
+
+        @auth
+            @if(!$upload->owned())
+                <form method="POST" action="{{ route('uploads.update', [$upload]) }}">
+                    @csrf
+                    @method('PUT')
+
+                    <input type="submit" class="mb-2 text-center" value="Save the visual and Invite people">
+                </form>
+            @endif
+
+            @if($upload->owned())
+                <form method="POST" action="{{ route('invitees.store', [$upload]) }}">
+                    @csrf
+
+                    <input type="email" name="email" placeholder="Email...">
+
+                    <button>Invite</button>
+                </form>
+            @endif
+        @endauth
 
         <p class="mb-2 text-center">Click on the image where you have any comments on that spot.</p>
 

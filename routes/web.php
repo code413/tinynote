@@ -22,5 +22,8 @@ Route::middleware(['auth'])->group(function (){
 
     Route::get('/uploads', 'UploadsController@index')->name('uploads.index');
 
+    Route::put('/uploads/{upload}', 'UploadsController@update')->name('uploads.update');
+
+    Route::post('/invitees/{upload}', 'InviteesController@store')->name('invitees.store');
 });
 

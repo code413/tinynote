@@ -51,4 +51,13 @@ class UploadsController extends Controller
 
         return view('uploads.index', ['uploads' =>$uploads]);
     }
+
+    public function update(Upload $upload)
+    {
+        $upload->update([
+            'owner_id' => auth()->user()->id
+        ]);
+
+        return redirect()->back();
+    }
 }
