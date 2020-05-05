@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function uploads()
     {
-        return $this->hasMany(Upload::class);
+        return $this->hasMany(Upload::class, 'owner_id');
     }
 
     public function comments()

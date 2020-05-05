@@ -25,6 +25,7 @@ class UploadsController extends Controller
         $uploaded = $upload->create([
             'name'=>$name,
             'size'=>$size,
+            'owner_id'=>auth()->check() ? auth()->user()->id : null,
         ]);
 
         $path = $file->storeAs("public/uploads", $uploaded->uuid . '.' . $extension);
@@ -42,5 +43,12 @@ class UploadsController extends Controller
     public function show(Upload $upload)
     {
         return view('uploads.show', ['upload'=>$upload]);
+    }
+
+    public function index()
+    {
+        $uploads = auth()->user()->uploads;
+
+        return view('uploads.index', ['uploads' =>$uploads]);
     }
 }

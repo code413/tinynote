@@ -32,5 +32,7 @@ $(function () {
         },
     }
 
-    new Dropzone('.dropzone', options)
+    if ($('.dropzone').length > 0) {
+        new Dropzone('.dropzone', options)
+    }
 })

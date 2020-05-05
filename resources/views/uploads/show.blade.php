@@ -4,9 +4,13 @@
 
 @section('main')
     <div class="container mx-auto p-10">
+        @guest
+            <p class="mb-2 text-center">This visual will be available through this link.</p>
+        @endguest
+
         <p class="mb-2 text-center">Click on the image where you have any comments on that spot.</p>
 
-        <div class="p-0 m-0" style="position: relative; width: max-content; max-width: 100%">
+        <div class="p-0 m-0 mx-auto" style="position: relative; width: max-content; max-width: 100%">
             <img id="imageCanvas" src='{{ url("$upload->url") }}'
                  data-target="{{ route('comments.store', [$upload]) }}"
                  class="w-full">

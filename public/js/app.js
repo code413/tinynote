@@ -7462,7 +7462,10 @@ cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(function () {
       });
     }
   };
-  new Dropzone('.dropzone', options);
+
+  if (cash_dom__WEBPACK_IMPORTED_MODULE_0___default()('.dropzone').length > 0) {
+    new Dropzone('.dropzone', options);
+  }
 });
 
 /***/ }),
