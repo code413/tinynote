@@ -4,6 +4,9 @@
 
 @section('main')
     <div class="container mx-auto p-10">
+        @include('partials.messages')
+        @include('partials.errors')
+
         @guest
             <a href="{{ route('login') }}">Login to own this visual.</a>
         @endguest
@@ -19,13 +22,21 @@
             @endif
 
             @if($upload->owned())
-                <form method="POST" action="{{ route('invitees.store', [$upload]) }}">
+                <form method="POST" action="{{ route('invitees.store', [$upload]) }}" class="mb-4">
                     @csrf
 
-                    <input type="email" name="email" placeholder="Email...">
+                    <input class="border p-2" type="email" name="email" placeholder="Email...">
 
-                    <button>Invite</button>
+                    <button class="btn btn-blue">Invite</button>
                 </form>
+
+                @forelse($upload->invitees as $invitee)
+                    <ul>
+                        <li><span>{{ $invitee->email }}</span><span class="mx-2 bg-green-200 text-sm p-1">invited</span></li>
+                    </ul>
+                @empty
+                    <p>No invitation was sent.</p>
+                @endforelse
             @endif
         @endauth
 
