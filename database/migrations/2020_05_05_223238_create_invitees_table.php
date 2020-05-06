@@ -17,7 +17,8 @@ class CreateInviteesTable extends Migration
             $table->id();
             $table->text('email');
             $table->unsignedBigInteger('upload_id');
-            $table->unsignedBigInteger('user_id')->nullable()->default(null);
+            $table->unsignedBigInteger('user_id');
+            $table->string('token', 50);
 
             $table->timestamps();
 

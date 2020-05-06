@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invitee;
 use App\Models\Upload;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UploadsController extends Controller
@@ -42,6 +45,15 @@ class UploadsController extends Controller
 
     public function show(Upload $upload)
     {
+        if(request()->has('token'))
+        {
+            $inviteeEmail = Invitee::where('token', request('token'))->first()->email;
+
+            $user = User::where('email', $inviteeEmail)->first();
+
+            Auth::login($user);
+        }
+
         return view('uploads.show', ['upload'=>$upload]);
     }
 

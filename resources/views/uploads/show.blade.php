@@ -25,6 +25,8 @@
                 <form method="POST" action="{{ route('invitees.store', [$upload]) }}" class="mb-4">
                     @csrf
 
+                    <input class="border p-2" type="text" name="name" placeholder="Name...">
+
                     <input class="border p-2" type="email" name="email" placeholder="Email...">
 
                     <button class="btn btn-blue">Invite</button>

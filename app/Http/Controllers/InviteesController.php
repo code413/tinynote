@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InvitationSent;
 use App\Models\Invitee;
 use App\Models\Upload;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class InviteesController extends Controller
 {
@@ -13,13 +16,21 @@ class InviteesController extends Controller
     {
         $email = request('email');
 
-        $user = User::where('email', $email)->first();
+        $invitedUser = User::firstOrCreate(
+            ['email' => $email],
+            ['name' => request('name'), 'password' => bcrypt(Str::random(10))]
+        );
 
-        $invitee->create([
+        $invitee = $invitee->create([
             'email' => $email,
             'upload_id' => $upload->id,
-            'user_id' => $user != null ? $user->id : $user,
+            'user_id' => $invitedUser->id,
+            'token' => Str::random(50),
         ]);
+
+        $inviter = auth()->user();
+
+        Mail::to($invitee->email)->send(new InvitationSent($upload, $invitee));
 
         return back()->with('message', 'Invitation has been sent.');
     }
