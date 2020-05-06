@@ -17,4 +17,9 @@ class Invitee extends Model
     {
         return $this->belongsTo(Upload::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

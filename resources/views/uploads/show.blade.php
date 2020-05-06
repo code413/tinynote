@@ -7,55 +7,69 @@
         @include('partials.messages')
         @include('partials.errors')
 
-        @guest
-            <a href="{{ route('login') }}">Login to own this visual.</a>
-        @endguest
+        <div class="bg-blue-100 p-2 mb-4 shadow">
+            @guest
+                <a class="w-full text-center block my-4" href="{{ route('login') }}">Login to own this visual.</a>
+            @endguest
 
-        @auth
-            @if(!$upload->owned())
-                <form method="POST" action="{{ route('uploads.update', [$upload]) }}">
-                    @csrf
-                    @method('PUT')
+            @auth
+                <p>Hi, {{ auth()->user()->name }}</p>
 
-                    <input type="submit" class="mb-2 text-center" value="Save the visual and Invite people">
-                </form>
-            @endif
+                @if(!$upload->owned())
+                    <form method="POST" action="{{ route('uploads.update', [$upload]) }}" class="text-center">
+                        @csrf
+                        @method('PUT')
 
-            @if($upload->owned() && auth()->user()->isOwner($upload))
-                <form method="POST" action="{{ route('invitees.store', [$upload]) }}" class="mb-4">
-                    @csrf
+                        <input type="submit" class="p-2 mb-2 text-center cursor-pointer"
+                               value="Start Inviting Reviewers">
+                    </form>
+                @endif
 
-                    <input class="border p-2" type="text" name="name" placeholder="Name...">
+                @if($upload->owned() && auth()->user()->isOwner($upload))
+                    <form method="POST" action="{{ route('invitees.store', [$upload]) }}" class="mb-4">
+                        @csrf
 
-                    <input class="border p-2" type="email" name="email" placeholder="Email...">
+                        <input class="border p-2" type="email" name="email" placeholder="Email...">
 
-                    <button class="btn btn-blue">Invite</button>
-                </form>
+                        <button class="btn btn-blue">Invite</button>
+                    </form>
 
-                @forelse($upload->invitees as $invitee)
-                    <ul>
-                        <li><span>{{ $invitee->email }}</span><span class="mx-2 bg-green-200 text-sm p-1">invited</span></li>
-                    </ul>
-                @empty
-                    <p>No invitation was sent.</p>
-                @endforelse
-            @endif
-        @endauth
+                    @forelse($upload->invitees as $invitee)
+                        <ul>
+                            <li>{{ $invitee->user->name }} <span>({{ $invitee->user->email }})</span><span
+                                    class="mx-2 bg-green-200 text-sm p-1">invited</span></li>
+                        </ul>
+                    @empty
+                        <p>No invitation was sent.</p>
+                    @endforelse
 
-        <p class="mb-2 text-center">Click on the image where you have any comments on that spot.</p>
+                    <p class="mb-2 text-center">This visual was uploaded by <strong>{{ $upload->owner->name }}</strong>
+                    </p>
+                @endif
+
+                @if(auth()->user()->name == 'Guest')
+                    <a href="{{ route('password.request') }}" class="text-center">Update your name and Reset your
+                        password</a>
+                @endif
+            @endauth
+
+
+            <p class="mb-2 text-center">Click on the image where you have any comments on that spot.</p>
+        </div>
 
         <form class="mt-5">
             <div class="text-center">
-                <p class="mb-0">Share the link</p>
+                <div class="flex my-3 justify-center items-center">
+                    <p class="mx-2">Share the link</p>
 
-                <div class="flex mb-3 justify-center">
                     <input type="text" value="{{ url()->current() }}"
                            id="share-url"
+                           class="border mx-2"
                            aria-label="Recipient's username"
                            aria-describedby="basic-addon2">
 
                     <button id="share-url-button"
-                            class="btn btn-outline-secondary btn-sm"
+                            class="btn btn-blue mx-2"
                             data-clipboard-target="#share-url"
                             type="button">
                         Copy

@@ -14,18 +14,21 @@ class InviteesController extends Controller
 {
     public function store(Invitee $invitee, Upload $upload)
     {
+        request()->validate([
+            'email' => 'required|string|email|max:255',
+        ]);
+
         $email = request('email');
 
         $invitedUser = User::firstOrCreate(
             ['email' => $email],
-            ['name' => request('name'), 'password' => bcrypt(Str::random(10))]
+            ['name' => 'Guest', 'password' => bcrypt(Str::random(10))]
         );
 
-        $invitee = $invitee->create([
-            'upload_id' => $upload->id,
-            'user_id' => $invitedUser->id,
-            'token' => Str::random(50),
-        ]);
+        $invitee = $invitee->firstOrCreate(
+            ['upload_id' => $upload->id, 'user_id' => $invitedUser->id],
+            ['token' => Str::random(50),]
+        );
 
         Mail::to($email)->send(new InvitationSent($upload, $invitee));
 
