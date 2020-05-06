@@ -47,11 +47,11 @@ class UploadsController extends Controller
     {
         if(request()->has('token'))
         {
-            $inviteeEmail = Invitee::where('token', request('token'))->first()->email;
+            $userId = Invitee::where('token', request('token'))->first()->user_id;
 
-            $user = User::where('email', $inviteeEmail)->first();
+            $user = User::findorFail($userId);
 
-            Auth::login($user);
+            Auth::login($user, true);
         }
 
         return view('uploads.show', ['upload'=>$upload]);

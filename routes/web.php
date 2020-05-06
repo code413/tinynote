@@ -27,10 +27,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-/*Route::get('mailable', function () {
+Route::get('mailable', function () {
     $upload = \App\Models\Upload::findOrFail(1)->first();
     $invitee = \App\Models\Invitee::findOrFail(1)->first();
 
     return new App\Mail\InvitationSent($upload, $invitee);
-});*/
+});
 

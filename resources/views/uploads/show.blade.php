@@ -21,7 +21,7 @@
                 </form>
             @endif
 
-            @if($upload->owned())
+            @if($upload->owned() && auth()->user()->isOwner($upload))
                 <form method="POST" action="{{ route('invitees.store', [$upload]) }}" class="mb-4">
                     @csrf
 

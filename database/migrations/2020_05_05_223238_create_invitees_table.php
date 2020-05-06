@@ -15,7 +15,6 @@ class CreateInviteesTable extends Migration
     {
         Schema::create('invitees', function (Blueprint $table) {
             $table->id();
-            $table->text('email');
             $table->unsignedBigInteger('upload_id');
             $table->unsignedBigInteger('user_id');
             $table->string('token', 50);

@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function isOwner($upload)
+    {
+        if(auth()->check() && $upload->owner_id == auth()->user()->id)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

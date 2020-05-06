@@ -22,15 +22,12 @@ class InviteesController extends Controller
         );
 
         $invitee = $invitee->create([
-            'email' => $email,
             'upload_id' => $upload->id,
             'user_id' => $invitedUser->id,
             'token' => Str::random(50),
         ]);
 
-        $inviter = auth()->user();
-
-        Mail::to($invitee->email)->send(new InvitationSent($upload, $invitee));
+        Mail::to($email)->send(new InvitationSent($upload, $invitee));
 
         return back()->with('message', 'Invitation has been sent.');
     }
