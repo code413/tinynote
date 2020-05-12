@@ -7450,8 +7450,9 @@ cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(function () {
     var url = cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(this).data('comment-url');
     cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(this).on('focusout', function () {
       var body = cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(this).val();
-      axios.put(url, {
-        body: body
+      axios.post(url, {
+        body: body,
+        _method: 'put'
       }).then(function (response) {})["catch"](function (error) {});
     });
   }); //Destroy comment

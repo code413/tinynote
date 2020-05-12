@@ -54,7 +54,8 @@ $(function () {
         $(this).on('focusout', function () {
             let body = $(this).val()
 
-            axios.put(url, {body: body})
+            axios.post(url, {body: body, _method: 'put'
+            })
                 .then(function (response) {
 
                 }).catch(function (error) {
