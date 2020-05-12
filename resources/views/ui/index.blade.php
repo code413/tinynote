@@ -6,11 +6,28 @@
 
 @section('main')
     <!-- Content -->
-    <div class="p-8 flex-grow flex items-center justify-center">
-        <div class="relative">
-            <img src="{{ url('img/sample.png') }}" alt="Sample">
-            <div class="dot p-2 bg-red-700 absolute rounded-full z-10" style="top: 17rem;left: 5rem;"></div>
+    <div class="px-8 py-4 flex-grow flex  flex flex-col">
+        <!-- Header -->
+        <div class="flex">
+            <div class="text-blue-900 flex">
+                <div data-feather="file" class="mr-3"></div>
+                Zoo Inc - Poster Design
+            </div>
+            <div class="ml-auto">
+                <a href="" class="mr-4">People <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">7</span></a>
+
+                <a href="" class="">Comments <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">3</span></a>
+            </div>
         </div>
+
+        <div class="flex flex-1 items-center justify-center">
+            <div class="relative">
+                <img src="{{ url('img/sample.png') }}" alt="Sample">
+                <div class="dot p-2 bg-red-700 absolute rounded-full z-10" style="top: 17rem;left: 5rem;"></div>
+                <div class="dot p-2 bg-red-700 absolute rounded-full z-10" style="top: 6rem;left: 40rem;"></div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Comments -->

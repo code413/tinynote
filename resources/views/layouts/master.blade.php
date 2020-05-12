@@ -6,7 +6,6 @@
         @include('layouts.partials.meta')
         @include('layouts.partials.favicon')
         @include('layouts.partials.styles')
-        @include('layouts.partials.scripts')
     @show
 </head>
 <body class="@yield('superclass')">
@@ -27,5 +26,6 @@
         @include('partials.footer')
     @show
 </footer>
+@include('layouts.partials.scripts')
 </body>
 </html>
