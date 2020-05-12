@@ -8,14 +8,6 @@ class Comment extends Model
 {
     protected $guarded = [];
 
-    protected $cast = [
-        'coordinates' => 'array'
-    ];
-
-    protected $attributes = [
-      'coordinates' => []
-    ];
-
     public function upload()
     {
         return $this->belongsTo(Upload::class);
@@ -38,7 +30,7 @@ class Comment extends Model
 
     public function isOnTheImage()
     {
-        if(json_decode($this->coordinates)[0] >= 0 && json_decode($this->coordinates)[1] >= 0)
+        if($this->coordinates_x == null && $this->coordinate_y == null)
         {
             return true;
         }

@@ -1,4 +1,4 @@
-<nav class="container flex items-center justify-between flex-wrap bg-indigo-400 p-6 text-white">
+<nav class="flex items-center justify-between flex-wrap bg-indigo-400 p-6 text-white">
     <div class="flex items-center flex-shrink-0 mr-6">
         <a href="{{  route('home') }}">
             <img src="" alt="Annotation Logo">
