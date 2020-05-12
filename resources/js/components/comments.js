@@ -2,6 +2,7 @@ import $ from 'cash-dom'
 
 $(function () {
     let $image = $('#imageCanvas')
+    let $uploadId = $image.data('upload-id');
 
     //Create point and comment
     $image.on('click', function (event) {
@@ -79,7 +80,7 @@ $(function () {
     });
 
     // Broadcast comments
-    window.Echo.channel('comments')
+    window.Echo.private("comments." + $uploadId)
         .listen('CommentUpdated', e => {
 
             let $comment = '<div class="comment" id="comment-1" style="position: absolute;\n' +
@@ -107,9 +108,6 @@ $(function () {
                 '        </div>\n' +
                 '    </div>';
 
-            if(e.commentAuthor.id !== e.authUser.id)
-            {
                 $image.closest('div').append($comment)
-            }
         })
 })

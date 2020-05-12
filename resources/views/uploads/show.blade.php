@@ -81,6 +81,7 @@
         <div class="p-0 m-0 mx-auto" style="position: relative; width: max-content; max-width: 100%">
             <img id="imageCanvas" src='{{ url("$upload->url") }}'
                  data-target="{{ route('comments.store', [$upload]) }}"
+                 data-upload-id="{{ $upload->id }}"
                  class="w-full">
 
             @include('uploads.partials.on-image-comments')

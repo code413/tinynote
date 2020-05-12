@@ -12840,7 +12840,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var cash_dom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cash_dom__WEBPACK_IMPORTED_MODULE_0__);
 
 cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-  var $image = cash_dom__WEBPACK_IMPORTED_MODULE_0___default()('#imageCanvas'); //Create point and comment
+  var $image = cash_dom__WEBPACK_IMPORTED_MODULE_0___default()('#imageCanvas');
+  var $uploadId = $image.data('upload-id'); //Create point and comment
 
   $image.on('click', function (event) {
     var height = cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(this).height();
@@ -12885,12 +12886,9 @@ cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(function () {
     }).then(function (response) {})["catch"](function (error) {});
   }); // Broadcast comments
 
-  window.Echo.channel('comments').listen('CommentUpdated', function (e) {
+  window.Echo["private"]("comments." + $uploadId).listen('CommentUpdated', function (e) {
     var $comment = '<div class="comment" id="comment-1" style="position: absolute;\n' + '             top:' + e.comment.coordinate_y * 100 + '%;\n' + '             left:' + e.comment.coordinate_x * 100 + '%;">\n' + '        <div class="flex -ml-2 -mt-2">\n' + '            <div style="min-width: 1rem"\n' + '                 class="w-4 h-4 rounded-full bg-red-600 flex justify-center items-center text-white text-xs z-50">\n' + '                !\n' + '            </div>\n' + '\n' + '            <div class=" rounded-md mt-2 ">\n' + '                <div class="bg-white text-sm rounded-t-md p-1 opacity-75 text-xs font-bold flex items-center"\n' + '                     title="1 minute ago on 2020-05-12 19:31:38">\n' + '                    <img src="//localhost:3000/img/avatar.png" class="mr-1"\n' + '                         style="max-width: 1rem;height: 1rem; display: inline">\n' + '\n' + '                    <p class="text-xs leading-none">' + e.commentAuthor.name + '</p>\n' + '                </div>\n' + '\n' + '                <div class="bg-white p-1 text-sm rounded-b-md opacity-75 border-t-2">\n' + '                    ' + e.comment.body + '\n' + '                </div>\n' + '            </div>\n' + '        </div>\n' + '    </div>';
-
-    if (e.commentAuthor.id !== e.authUser.id) {
-      $image.closest('div').append($comment);
-    }
+    $image.closest('div').append($comment);
   });
 });
 

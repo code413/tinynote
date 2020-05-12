@@ -3,7 +3,6 @@
 namespace App\Events;
 
 use App\Models\Comment;
-use App\Models\Upload;
 use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -13,20 +12,22 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CommentReceived implements ShouldBroadcast
+class CommentUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $upload;
+    public $comment;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Upload $upload)
+    public function __construct(Comment $comment)
     {
-        $this->upload = $upload;
+        $this->comment = $comment;
+
+        $this->dontBroadcastToCurrentUser();
     }
 
     /**
@@ -36,7 +37,7 @@ class CommentReceived implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('upload');
+        return new PrivateChannel('comments.' . $this->comment->upload_id);
 
     }
 
