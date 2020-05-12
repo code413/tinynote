@@ -2,6 +2,14 @@
 
 @tailwind components;
 
+html{
+  height:100%;
+}
+
+body{
+  min-height: 100%;
+}
+
 @import "components/card.css";
 @import "components/btn.css";
 @import "components/form-control.css";

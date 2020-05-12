@@ -34,3 +34,4 @@ Route::get('mailable', function () {
     return new App\Mail\InvitationSent($upload, $invitee);
 });
 
+Route::view('ui', 'ui.index');

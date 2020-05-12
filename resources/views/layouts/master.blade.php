@@ -15,10 +15,9 @@
 @endif
 <header>
     @section('header')
-        @include('partials.header')
     @show
 </header>
-<main>
+<main class="@yield('main.class')">
     @section('main')
 
     @show
