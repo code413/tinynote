@@ -40,13 +40,13 @@
                 ></dot>
             </div>
         </portal>
+
+        <portal to="comments-count">{{ data.length }}</portal>
     </div>
 </template>
 
 <script>
   export default {
-    props: {
-    },
     data () {
       return {
         data: [

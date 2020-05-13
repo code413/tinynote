@@ -9,13 +9,17 @@
                     Zoo Inc - Poster Design
                 </div>
                 <div class="ml-auto">
-                    <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">People <span
-                            class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full"
-                            v-text="people.length"></span></a>
+                    <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">People
+                        <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
+                            <portal-target name="people-count" slim></portal-target>
+                        </span>
+                    </a>
 
-                    <a href="" class="" @click.prevent="toggleSidebar('comments')">Comments <span
-                            class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full"
-                    ></span></a>
+                    <a href="" class="" @click.prevent="toggleSidebar('comments')">Comments
+                        <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
+                            <portal-target name="comments-count" slim></portal-target>
+                        </span>
+                    </a>
                 </div>
             </div>
 
@@ -32,7 +36,7 @@
         <sidebar :open="sidebar">
             <comments v-show="sidebar === 'comments'" @show="showSidebar('comments')"></comments>
 
-            <people v-show="sidebar === 'people'" :data="people" @add="addPerson"></people>
+            <people v-show="sidebar === 'people'"></people>
         </sidebar>
     </div>
 </template>
@@ -42,26 +46,9 @@
     data () {
       return {
         sidebar: null,
-
-        people: [
-          {
-            'email': 'john@example.com',
-          },
-          {
-            'email': 'jane@example.com',
-          }
-        ]
       }
     },
     methods: {
-      addPerson (email) {
-        if (email.trim() === '') {
-          return
-        }
-
-        this.people.push({email})
-      },
-
       toggleSidebar (name) {
         if (this.sidebar === name) {
           return this.sidebar = null

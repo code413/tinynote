@@ -4,7 +4,6 @@
             <person v-for="(person, index) in data"
                     :email="person.email"
                     :key="index"
-                    @click="remove(person)"
             ></person>
         </div>
 
@@ -15,35 +14,36 @@
                  @click="add">Add
             </div>
         </div>
+
+        <portal to="people-count">{{ data.length }}</portal>
     </div>
 </template>
 
 <script>
   export default {
-    props: {
-      data: {default: []},
-    },
     data () {
       return {
+        data: [
+          {
+            'email': 'john@example.com',
+          },
+          {
+            'email': 'jane@example.com',
+          }
+        ],
         newEmail: '',
         focused: false,
       }
     },
     methods: {
-      add(){
-        this.$emit('add', this.newEmail);
+      add () {
+        if (this.newEmail.trim() === '') {
+          return
+        }
 
-        this.newEmail = '';
-      },
-      remove(person){
-        this.$emit('remove', person)
-      },
-      focus(){
-        this.focused = true
-        this.$refs['input'].focus();
-      },
-      blur(){
-        this.focused = false
+        this.data.push({email: this.newEmail})
+
+        this.newEmail = ''
       }
     }
   }

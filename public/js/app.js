@@ -1988,8 +1988,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {},
   data: function data() {
     return {
       data: [{
@@ -2130,27 +2131,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      sidebar: null,
-      people: [{
-        'email': 'john@example.com'
-      }, {
-        'email': 'jane@example.com'
-      }]
+      sidebar: null
     };
   },
   methods: {
-    addPerson: function addPerson(email) {
-      if (email.trim() === '') {
-        return;
-      }
-
-      this.people.push({
-        email: email
-      });
-    },
     toggleSidebar: function toggleSidebar(name) {
       if (this.sidebar === name) {
         return this.sidebar = null;
@@ -2195,32 +2186,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    data: {
-      "default": []
-    }
-  },
   data: function data() {
     return {
+      data: [{
+        'email': 'john@example.com'
+      }, {
+        'email': 'jane@example.com'
+      }],
       newEmail: '',
       focused: false
     };
   },
   methods: {
     add: function add() {
-      this.$emit('add', this.newEmail);
+      if (this.newEmail.trim() === '') {
+        return;
+      }
+
+      this.data.push({
+        email: this.newEmail
+      });
       this.newEmail = '';
-    },
-    remove: function remove(person) {
-      this.$emit('remove', person);
-    },
-    focus: function focus() {
-      this.focused = true;
-      this.$refs['input'].focus();
-    },
-    blur: function blur() {
-      this.focused = false;
     }
   }
 });
@@ -11849,6 +11837,10 @@ var render = function() {
           ],
           2
         )
+      ]),
+      _vm._v(" "),
+      _c("portal", { attrs: { to: "comments-count" } }, [
+        _vm._v(_vm._s(_vm.data.length))
       ])
     ],
     1
@@ -11925,12 +11917,20 @@ var render = function() {
                 }
               },
               [
-                _vm._v("People "),
-                _c("span", {
-                  staticClass:
-                    "inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full",
-                  domProps: { textContent: _vm._s(_vm.people.length) }
-                })
+                _vm._v("People\n                    "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full"
+                  },
+                  [
+                    _c("portal-target", {
+                      attrs: { name: "people-count", slim: "" }
+                    })
+                  ],
+                  1
+                )
               ]
             ),
             _vm._v(" "),
@@ -11946,11 +11946,20 @@ var render = function() {
                 }
               },
               [
-                _vm._v("Comments "),
-                _c("span", {
-                  staticClass:
-                    "inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full"
-                })
+                _vm._v("Comments\n                    "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full"
+                  },
+                  [
+                    _c("portal-target", {
+                      attrs: { name: "comments-count", slim: "" }
+                    })
+                  ],
+                  1
+                )
               ]
             )
           ])
@@ -11998,9 +12007,7 @@ var render = function() {
                 value: _vm.sidebar === "people",
                 expression: "sidebar === 'people'"
               }
-            ],
-            attrs: { data: _vm.people },
-            on: { add: _vm.addPerson }
+            ]
           })
         ],
         1
@@ -12041,66 +12048,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex-1 flex flex-col" }, [
-    _c(
-      "div",
-      { staticClass: "flex-1 p-4" },
-      _vm._l(_vm.data, function(person, index) {
-        return _c("person", {
-          key: index,
-          attrs: { email: person.email },
-          on: {
-            click: function($event) {
-              return _vm.remove(person)
-            }
-          }
-        })
-      }),
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "border-t flex flex-col",
-        class: { "border-blue-500": _vm.focused }
-      },
-      [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.newEmail,
-              expression: "newEmail"
-            }
-          ],
-          ref: "input",
-          staticClass: "p-4 w-full outline-none",
-          attrs: { type: "text", placeholder: "Enter an email..." },
-          domProps: { value: _vm.newEmail },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.newEmail = $event.target.value
-            }
-          }
+  return _c(
+    "div",
+    { staticClass: "flex-1 flex flex-col" },
+    [
+      _c(
+        "div",
+        { staticClass: "flex-1 p-4" },
+        _vm._l(_vm.data, function(person, index) {
+          return _c("person", { key: index, attrs: { email: person.email } })
         }),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
-            on: { click: _vm.add }
-          },
-          [_vm._v("Add\n        ")]
-        )
-      ]
-    )
-  ])
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "border-t flex flex-col",
+          class: { "border-blue-500": _vm.focused }
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newEmail,
+                expression: "newEmail"
+              }
+            ],
+            ref: "input",
+            staticClass: "p-4 w-full outline-none",
+            attrs: { type: "text", placeholder: "Enter an email..." },
+            domProps: { value: _vm.newEmail },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.newEmail = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
+              on: { click: _vm.add }
+            },
+            [_vm._v("Add\n        ")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("portal", { attrs: { to: "people-count" } }, [
+        _vm._v(_vm._s(_vm.data.length))
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
