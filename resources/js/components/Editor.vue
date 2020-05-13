@@ -6,7 +6,10 @@
             <div class="flex">
                 <div class="text-blue-900 flex">
                     <div data-feather="file" class="mr-3"></div>
-                    Zoo Inc - Poster Design
+                    <input type="text"
+                           class="bg-transparent outline-none border-b border-dashed"
+                           v-model="title"
+                           v-autowidth="{maxWidth: '400px', minWidth: '10px'}" placeholder="Document Title">
                 </div>
                 <div class="ml-auto">
                     <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">People
@@ -45,6 +48,7 @@
   export default {
     data () {
       return {
+        title: 'Zoo Inc - Poster Design',
         sidebar: null,
       }
     },

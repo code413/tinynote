@@ -2135,9 +2135,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      title: 'Zoo Inc - Poster Design',
       sidebar: null
     };
   },
@@ -7586,6 +7590,79 @@ function __guardMethod__(obj, methodName, transform) {
 
 /***/ }),
 
+/***/ "./node_modules/es6-object-assign/auto.js":
+/*!************************************************!*\
+  !*** ./node_modules/es6-object-assign/auto.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(/*! ./index */ "./node_modules/es6-object-assign/index.js").polyfill();
+
+
+/***/ }),
+
+/***/ "./node_modules/es6-object-assign/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/es6-object-assign/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Code refactored from Mozilla Developer Network:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+ */
+
+
+
+function assign(target, firstSource) {
+  if (target === undefined || target === null) {
+    throw new TypeError('Cannot convert first argument to object');
+  }
+
+  var to = Object(target);
+  for (var i = 1; i < arguments.length; i++) {
+    var nextSource = arguments[i];
+    if (nextSource === undefined || nextSource === null) {
+      continue;
+    }
+
+    var keysArray = Object.keys(Object(nextSource));
+    for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
+      var nextKey = keysArray[nextIndex];
+      var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+      if (desc !== undefined && desc.enumerable) {
+        to[nextKey] = nextSource[nextKey];
+      }
+    }
+  }
+  return to;
+}
+
+function polyfill() {
+  if (!Object.assign) {
+    Object.defineProperty(Object, 'assign', {
+      enumerable: false,
+      configurable: true,
+      writable: true,
+      value: assign
+    });
+  }
+}
+
+module.exports = {
+  assign: assign,
+  polyfill: polyfill
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/feather-icons/dist/feather.js":
 /*!****************************************************!*\
   !*** ./node_modules/feather-icons/dist/feather.js ***!
@@ -11669,6 +11746,101 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-input-autowidth/dist/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vue-input-autowidth/dist/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(/*! es6-object-assign/auto */ "./node_modules/es6-object-assign/auto.js");
+
+function checkWidth (el, binding) {
+  var mirror = document.querySelector(".vue-input-autowidth-mirror-".concat(el.dataset.uuid));
+  var defaults = {
+    maxWidth: "none",
+    minWidth: "none",
+    comfortZone: 0
+  };
+  var options = Object.assign({}, defaults, binding.value);
+  el.style.maxWidth = options.maxWidth;
+  el.style.minWidth = options.minWidth;
+  var val = el.value;
+
+  if (!val) {
+    val = el.placeholder || "";
+  }
+
+  while (mirror.childNodes.length) {
+    mirror.removeChild(mirror.childNodes[0]);
+  }
+
+  mirror.appendChild(document.createTextNode(val));
+  var newWidth = mirror.scrollWidth + options.comfortZone + 2;
+
+  if (newWidth != el.scrollWidth) {
+    el.style.width = "".concat(newWidth, "px");
+  }
+}
+
+var directive = {
+  bind: function bind(el) {
+    if (el.tagName.toLocaleUpperCase() !== "INPUT") {
+      throw new Error("v-input-autowidth can only be used on input elements.");
+    }
+
+    el.dataset.uuid = Math.random().toString(36).slice(-5);
+    el.style.boxSizing = "content-box";
+  },
+  inserted: function inserted(el, binding) {
+    var styles = window.getComputedStyle(el);
+    el.mirror = document.createElement("span");
+    Object.assign(el.mirror.style, {
+      position: "absolute",
+      top: "0",
+      left: "0",
+      visibility: "hidden",
+      height: "0",
+      overflow: "hidden",
+      whiteSpace: "pre",
+      fontSize: styles.fontSize,
+      fontFamily: styles.fontFamily,
+      fontWeight: styles.fontWeight,
+      fontStyle: styles.fontStyle,
+      letterSpacing: styles.letterSpacing,
+      textTransform: styles.textTransform
+    });
+    el.mirror.classList.add("vue-input-autowidth-mirror-".concat(el.dataset.uuid));
+    el.mirror.setAttribute("aria-hidden", "true");
+    document.body.appendChild(el.mirror);
+    checkWidth(el, binding);
+  },
+  componentUpdated: function componentUpdated(el, binding) {
+    checkWidth(el, binding);
+  },
+  unbind: function unbind(el) {
+    document.body.removeChild(el.mirror);
+  }
+};
+
+var install = function install(Vue) {
+  Vue.directive("autowidth", directive);
+};
+
+if (typeof window !== "undefined" && window.Vue) {
+  window.Vue.use(install);
+}
+
+directive.install = install;
+
+module.exports = directive;
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Comment.vue?vue&type=template&id=54ded044&":
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Comment.vue?vue&type=template&id=54ded044& ***!
@@ -11901,7 +12073,40 @@ var render = function() {
     [
       _c("div", { staticClass: "px-8 py-4 flex-grow flex  flex flex-col" }, [
         _c("div", { staticClass: "flex" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "text-blue-900 flex" }, [
+            _c("div", {
+              staticClass: "mr-3",
+              attrs: { "data-feather": "file" }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.title,
+                  expression: "title"
+                },
+                {
+                  name: "autowidth",
+                  rawName: "v-autowidth",
+                  value: { maxWidth: "400px", minWidth: "10px" },
+                  expression: "{maxWidth: '400px', minWidth: '10px'}"
+                }
+              ],
+              staticClass: "bg-transparent outline-none border-b border-dashed",
+              attrs: { type: "text", placeholder: "Document Title" },
+              domProps: { value: _vm.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.title = $event.target.value
+                }
+              }
+            })
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "ml-auto" }, [
             _c(
@@ -12016,17 +12221,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-blue-900 flex" }, [
-      _c("div", { staticClass: "mr-3", attrs: { "data-feather": "file" } }),
-      _vm._v("\n                Zoo Inc - Poster Design\n            ")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -24415,14 +24610,18 @@ window.app.init();
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var portal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! portal-vue */ "./node_modules/portal-vue/dist/portal-vue.common.js");
 /* harmony import */ var portal_vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(portal_vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_input_autowidth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-input-autowidth */ "./node_modules/vue-input-autowidth/dist/index.js");
+/* harmony import */ var vue_input_autowidth__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_input_autowidth__WEBPACK_IMPORTED_MODULE_1__);
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.feather = __webpack_require__(/*! feather-icons */ "./node_modules/feather-icons/dist/feather.js");
+
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Dropzone = __webpack_require__(/*! dropzone/dist/dropzone */ "./node_modules/dropzone/dist/dropzone.js");
 Dropzone.autoDiscover = false;
 Vue.use(portal_vue__WEBPACK_IMPORTED_MODULE_0___default.a);
+Vue.use(vue_input_autowidth__WEBPACK_IMPORTED_MODULE_1___default.a);
 
 var files = __webpack_require__("./resources/js sync recursive \\.vue$/");
 
