@@ -19,33 +19,106 @@
                  @click="add">Send
             </div>
         </div>
+
+        <portal to="dots">
+            <div @click="addDot" class="absolute w-full h-full top-0 left-0 z-10">
+                <dot @click.native.stop="$emit('show')" v-for="(comment, index) in data"
+                     v-if="comment.x && comment.y"
+                     :class="{'bg-teal-400': comment.active}"
+                     :y="comment.y"
+                     :x="comment.x"
+                     :key="index"
+                     @mouseenter.native="comment.active = true"
+                     @mouseleave.native="comment.active = false"
+                ></dot>
+
+                <dot @click.native.stop="removeDot"
+                     v-if="newDot"
+                     :y="newDot.y"
+                     :x="newDot.x"
+                     :class="['bg-blue-700']"
+                ></dot>
+            </div>
+        </portal>
     </div>
 </template>
 
 <script>
   export default {
     props: {
-      data: {default: []},
     },
     data () {
       return {
+        data: [
+          {
+            id: 1,
+            author: 'john@example.com',
+            content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dolore molestiae quae quia quo, repellat.',
+            x: 100,
+            y: 300,
+            active: false
+          },
+          {
+            id: 2,
+            author: 'jane@xyz.co',
+            content: 'Lorem ipsum dolor sit amet.',
+            active: false
+          },
+          {
+            id: 3,
+            author: 'john@example.com',
+            content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br/> <br/>Lorem ipsum dolor sit.',
+            x: 400,
+            y: 200,
+            active: false
+          }
+        ],
         newComment: '',
+        newDot: null,
         focused: false,
       }
     },
     methods: {
       add(){
-        this.$emit('add', this.newComment);
+        if (this.newComment.trim() === '') {
+          return
+        }
+
+        let comment = {
+          id: Date.now(),
+          content: this.newComment,
+          author: 'john@example.com',
+          active: false
+        }
+
+        if (this.newDot) {
+          comment.x = this.newDot.x
+          comment.y = this.newDot.y
+        }
+
+        this.data.push(comment)
+
+        this.newDot = null
 
         this.newComment = '';
       },
-      focus(){
-        this.focused = true
-        this.$refs['input'].focus();
+
+      addDot (event) {
+        this.newDot = {x: event.offsetX, y: event.offsetY}
+
+        this.$emit('show')
+
+        this.focused = true;
+
+        this.$nextTick(() => {
+          this.$refs['input'].focus()
+        })
       },
-      blur(){
-        this.focused = false
-      }
+
+      removeDot () {
+        this.newDot = null
+        this.focused = false;
+      },
     }
   }
 </script>

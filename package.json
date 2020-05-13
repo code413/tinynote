@@ -30,6 +30,7 @@
         "clipboard": "^2.0.6",
         "dropzone": "^5.7.0",
         "feather-icons": "^4.28.0",
-        "normalize.css": "^8.0.1"
+        "normalize.css": "^8.0.1",
+        "portal-vue": "^2.1.7"
     }
 }

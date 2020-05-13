@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
     @section('head')
-        <title>@yield('title', 'Hello World!')</title>
+        <title>@yield('title', 'Tiny Notes')</title>
         @include('layouts.partials.meta')
         @include('layouts.partials.favicon')
         @include('layouts.partials.styles')
