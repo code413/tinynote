@@ -1,4 +1,8 @@
 @foreach($upload->comments as $key =>$comment)
+    @if(!$comment->isOnTheImage())
+        @continue
+    @endif
+
     <div class="comment"
          id="comment-{{$key + 1}}"
          style="position: absolute;

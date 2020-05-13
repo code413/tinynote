@@ -30,10 +30,11 @@ class Comment extends Model
 
     public function isOnTheImage()
     {
-        if($this->coordinates_x == null && $this->coordinate_y == null)
+        if($this->coordinates_x != null || $this->coordinate_y != null)
         {
             return true;
         }
+
 
         return false;
     }
