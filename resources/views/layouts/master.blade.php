@@ -16,7 +16,7 @@
     @section('header')
     @show
 </header>
-<main class="@yield('main.class')">
+<main class="@yield('main.class')" id="app">
     @section('main')
 
     @show
