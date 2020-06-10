@@ -1,5 +1,5 @@
 <template>
-    <div class="dot p-2 bg-red-700 absolute rounded-full cursor-pointer"
+    <div class="dot p-2 bg-red-700 absolute rounded-full cursor-pointer" style="margin-left: -0.5rem; margin-top: -0.5rem"
          :style="{top: y + '%', left: x + '%'}"
     ></div>
 </template>
