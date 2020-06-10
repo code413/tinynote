@@ -54,8 +54,8 @@
             id: 1,
             author: 'john@example.com',
             content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dolore molestiae quae quia quo, repellat.',
-            x: 100,
-            y: 300,
+            x: 10,
+            y: 30,
             active: false
           },
           {
@@ -68,14 +68,18 @@
             id: 3,
             author: 'john@example.com',
             content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br/> <br/>Lorem ipsum dolor sit.',
-            x: 400,
-            y: 200,
+            x: 40,
+            y: 20,
             active: false
           }
         ],
         newComment: '',
         newDot: null,
         focused: false,
+          image: {
+              width: 800,
+              height: 600
+          }
       }
     },
     methods: {
@@ -104,7 +108,8 @@
       },
 
       addDot (event) {
-        this.newDot = {x: event.offsetX, y: event.offsetY}
+
+        this.newDot = {x: (event.offsetX / this.image.width) * 100, y: (event.offsetY / this.image.height) * 100}
 
         this.$emit('show')
 
