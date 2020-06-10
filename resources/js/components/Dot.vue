@@ -1,6 +1,6 @@
 <template>
     <div class="dot p-2 bg-red-700 absolute rounded-full cursor-pointer"
-         :style="{top: y + 'px', left: x + 'px'}"
+         :style="{top: y + '%', left: x + '%'}"
     ></div>
 </template>
 
