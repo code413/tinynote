@@ -1,9 +1,9 @@
 <template>
     <div>
         <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions"
-                      v-on:vdropzone-max-files-exceeded="maxfilesexceeded"
-                      v-on:vdropzone-success="success"
-                      v-on:vdropzone-error="error"
+                      @vdropzone-max-files-exceeded="maxfilesexceeded"
+                      @vdropzone-success="success"
+                      @vdropzone-error="error"
                       ></vue-dropzone>
     </div>
 </template>
@@ -33,15 +33,15 @@
             }
         },
         methods: {
-            maxfilesexceeded: function (file) {
+            maxfilesexceeded (file) {
                 this.$refs.myVueDropzone.removeAllFiles()
 
                 this.$refs.myVueDropzone.addFile(file)
             },
-            success: function (file, response) {
+            success (file, response) {
                 window.location.href = 'uploads/' + response
             },
-            error: function (file, response) {
+            error (file, response) {
                 if(response.errors !== undefined)
                 {
                     document.querySelector('.dz-error-message').style.opacity = 1;
