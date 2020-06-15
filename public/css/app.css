@@ -945,8 +945,12 @@ video {
   border-color: #63b3ed;
 }
 
-html{
+html, body, main{
   height:100%;
+}
+
+main >div {
+  height: 100%;
 }
 
 body{

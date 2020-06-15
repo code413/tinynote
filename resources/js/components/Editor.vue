@@ -36,24 +36,41 @@
             </div>
         </div>
 
-        <sidebar :open="sidebar">
-            <comments v-show="sidebar === 'comments'" @show="showSidebar('comments')"></comments>
 
-            <people v-show="sidebar === 'people'"></people>
+        <sidebar :open="sidebar">
+            <transition name="slide-fade">
+                <comments v-show="sidebar === 'comments'" @show="showSidebar('comments')"></comments>
+            </transition>
+
+            <transition name="slide-fade">
+                <people v-show="sidebar === 'people'"></people>
+            </transition>
         </sidebar>
     </div>
 </template>
 
+<style>
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+
+    .slide-fade-enter, .slide-fade-leave-active {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+</style>
+
 <script>
     export default {
         props: {
-            data:{}
+            data: {}
         },
         data () {
             return {
                 title: 'Zoo Inc - Poster Design',
                 sidebar: null,
-                upload:'',
+                upload: '',
+                show: true
             }
         },
         methods: {
@@ -70,7 +87,7 @@
             }
         },
         mounted () {
-            this.upload = this.data;
+            this.upload = this.data
         }
     }
 </script>

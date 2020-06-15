@@ -14,7 +14,7 @@
 
         <div class="border-t flex flex-col" :class="{'border-blue-500': focused}">
             <input type="text" class="p-4 w-full outline-none" placeholder="Leave a comment..."
-                   v-model="newComment" ref="input">
+                   v-model="newComment" ref="input" autofocus>
             <div class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer"
                  @click="add">Send
             </div>
@@ -115,7 +115,7 @@
         this.focused = true;
 
         this.$nextTick(() => {
-          this.$refs['input'].focus()
+            setTimeout(() => this.$refs['input'].focus(), 500);
         })
       },
 
