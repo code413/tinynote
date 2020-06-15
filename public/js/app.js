@@ -2207,10 +2207,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    data: {}
+  },
   data: function data() {
     return {
       title: 'Zoo Inc - Poster Design',
-      sidebar: null
+      sidebar: null,
+      upload: ''
     };
   },
   methods: {
@@ -2224,6 +2228,9 @@ __webpack_require__.r(__webpack_exports__);
     showSidebar: function showSidebar(name) {
       this.sidebar = name;
     }
+  },
+  mounted: function mounted() {
+    this.upload = this.data;
   }
 });
 
@@ -12210,8 +12217,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.title,
-                  expression: "title"
+                  value: _vm.upload.name,
+                  expression: "upload.name"
                 },
                 {
                   name: "autowidth",
@@ -12222,13 +12229,13 @@ var render = function() {
               ],
               staticClass: "bg-transparent outline-none border-b border-dashed",
               attrs: { type: "text", placeholder: "Document Title" },
-              domProps: { value: _vm.title },
+              domProps: { value: _vm.upload.name },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.title = $event.target.value
+                  _vm.$set(_vm.upload, "name", $event.target.value)
                 }
               }
             })
@@ -12301,7 +12308,9 @@ var render = function() {
             "div",
             { staticClass: "relative" },
             [
-              _c("img", { attrs: { src: "/img/sample.png", alt: "Sample" } }),
+              _c("img", {
+                attrs: { src: _vm.upload.url, alt: _vm.upload.name }
+              }),
               _vm._v(" "),
               _c("portal-target", { attrs: { name: "dots", slim: "" } })
             ],

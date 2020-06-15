@@ -8,7 +8,7 @@
                     <div data-feather="file" class="mr-3"></div>
                     <input type="text"
                            class="bg-transparent outline-none border-b border-dashed"
-                           v-model="title"
+                           v-model="upload.name"
                            v-autowidth="{maxWidth: '400px', minWidth: '10px'}" placeholder="Document Title">
                 </div>
                 <div class="ml-auto">
@@ -29,7 +29,7 @@
             <!-- Image -->
             <div class="flex flex-1 items-center justify-center">
                 <div class="relative">
-                    <img src="/img/sample.png" alt="Sample">
+                    <img :src="upload.url" :alt="upload.name">
 
                     <portal-target name="dots" slim></portal-target>
                 </div>
@@ -45,25 +45,32 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        title: 'Zoo Inc - Poster Design',
-        sidebar: null,
-      }
-    },
-    methods: {
-      toggleSidebar (name) {
-        if (this.sidebar === name) {
-          return this.sidebar = null
+    export default {
+        props: {
+            data:{}
+        },
+        data () {
+            return {
+                title: 'Zoo Inc - Poster Design',
+                sidebar: null,
+                upload:'',
+            }
+        },
+        methods: {
+            toggleSidebar (name) {
+                if (this.sidebar === name) {
+                    return this.sidebar = null
+                }
+
+                this.sidebar = name
+            },
+
+            showSidebar (name) {
+                this.sidebar = name
+            }
+        },
+        mounted () {
+            this.upload = this.data;
         }
-
-        this.sidebar = name
-      },
-
-      showSidebar (name) {
-        this.sidebar = name
-      }
     }
-  }
 </script>

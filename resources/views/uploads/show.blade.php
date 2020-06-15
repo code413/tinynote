@@ -3,7 +3,7 @@
 @section('superclass', 'bg-gray-100')
 
 @section('main')
-    <div class="container mx-auto p-10">
+    {{--<div class="container mx-auto p-10">
         @include('partials.messages')
         @include('partials.errors')
 
@@ -95,5 +95,7 @@
 
             @include('uploads.partials.off-image-comment-form')
         </div>
-    </div>
+    </div>--}}
+
+    <editor :data="{{$upload}}"></editor>
 @stop
