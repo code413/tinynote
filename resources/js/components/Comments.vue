@@ -108,8 +108,7 @@
       },
 
       addDot (event) {
-
-        this.newDot = {x: (event.offsetX / this.image.width) * 100, y: (event.offsetY / this.image.height) * 100}
+        this.newDot = {x: (event.offsetX / document.querySelector('img').width) * 100, y: (event.offsetY / document.querySelector('img').height) * 100}
 
         this.$emit('show')
 

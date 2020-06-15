@@ -2048,8 +2048,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.newDot = {
-        x: event.offsetX / this.image.width * 100,
-        y: event.offsetY / this.image.height * 100
+        x: event.offsetX / document.querySelector('img').width * 100,
+        y: event.offsetY / document.querySelector('img').height * 100
       };
       this.$emit('show');
       this.focused = true;
