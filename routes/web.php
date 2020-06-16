@@ -17,9 +17,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/uploads/{upload}/comments', 'CommentsController@store')->name('comments.store');
 
-    Route::put('/comments/{comment}', 'CommentsController@update')->name('comments.update');
+/*    Route::put('/comments/{comment}', 'CommentsController@update')->name('comments.update');
 
-    Route::delete('/comments/{comment}', 'CommentsController@destroy')->name('comments.destroy');
+    Route::delete('/comments/{comment}', 'CommentsController@destroy')->name('comments.destroy');*/
 
     Route::get('/uploads', 'UploadsController@index')->name('uploads.index');
 
@@ -27,11 +27,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::get('mailable', function () {
+/*Route::get('mailable', function () {
     $upload = \App\Models\Upload::findOrFail(1)->first();
     $invitee = \App\Models\Invitee::findOrFail(1)->first();
 
     return new App\Mail\InvitationSent($upload, $invitee);
-});
+});*/
 
 Route::view('ui', 'ui.index');

@@ -46,6 +46,8 @@
 </template>
 
 <script>
+    import $ from 'cash-dom'
+
     export default {
         data () {
             return {
@@ -92,9 +94,13 @@
                     active: false
                 }
 
+                let requestData = {coordinateX: null, coordinateY: null, body: this.newComment}
+
                 if (this.newDot) {
                     comment.x = this.newDot.x
                     comment.y = this.newDot.y
+
+                    requestData = {coordinateX: this.newDot.x, coordinateY: this.newDot.y, body: this.newComment}
                 }
 
                 this.comments.push(comment)
@@ -102,6 +108,11 @@
                 this.newDot = null
 
                 this.newComment = ''
+
+                axios.post("/uploads/" + this.$attrs.upload.uuid + "/comments", requestData).then(function (response) {
+                }).catch(function (error) {
+                    window.location.href = '/login';
+                })
 
             },
 

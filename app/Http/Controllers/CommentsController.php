@@ -11,37 +11,25 @@ class CommentsController extends Controller
 {
     public function store(Upload $upload)
     {
-        if(!auth()->check())
-        {
+        if (!auth()->check()) {
             return redirect()->route('login');
         }
 
-        if (request()->has('coordinateX') || request()->has('coordinateY')) {
-            $comment = $upload->comments()->create([
-                'coordinate_x' => request('coordinateX'),
-                'coordinate_y' => request('coordinateY'),
-                'user_id' => auth()->user()->id
-            ]);
+        $comment = $upload->comments()->create([
+            'body' => request('body'),
+            'coordinate_x' => request('coordinateX'),
+            'coordinate_y' => request('coordinateY'),
+            'user_id' => auth()->user()->id
+        ]);
 
-            return response($comment->id, 200)
-                ->header('Content-Type', 'text/plain');
+        return response($comment->id, 200)
+            ->header('Content-Type', 'text/plain');
 
-        }else{
-            $upload->comments()->create([
-                'body' => request('body'),
-                'coordinate_x' => null,
-                'coordinate_y' => null,
-                'user_id' => auth()->user()->id
-            ]);
-
-            return redirect()->back();
-        }
     }
 
-    public function update(Comment $comment)
+/*    public function update(Comment $comment)
     {
-        if(!$comment->author())
-        {
+        if (!$comment->author()) {
             return abort(403);
         }
 
@@ -56,13 +44,12 @@ class CommentsController extends Controller
 
     public function destroy(Comment $comment)
     {
-        if(!$comment->author())
-        {
+        if (!$comment->author()) {
             return abort(403);
         }
 
         $comment->delete();
 
         return back();
-    }
+    }*/
 }
