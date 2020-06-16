@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-1 overflow-hidden">
+    <div class="flex flex-1 overflow-hidden editor">
         <!-- Content -->
         <div class="px-8 py-4 flex-grow flex  flex flex-col">
             <!-- Header -->
@@ -39,7 +39,7 @@
 
         <sidebar :open="sidebar">
             <transition name="slide-fade">
-                <comments v-show="sidebar === 'comments'" @show="showSidebar('comments')"></comments>
+                <comments :upload="upload" v-show="sidebar === 'comments'" @show="showSidebar('comments')"></comments>
             </transition>
 
             <transition name="slide-fade">
