@@ -20,9 +20,11 @@ class InviteesController extends Controller
 
         $email = request('email');
 
+        $name = Str::beforeLast($email, '@');
+
         $invitedUser = User::firstOrCreate(
             ['email' => $email],
-            ['name' => 'Guest', 'password' => bcrypt(Str::random(10))]
+            ['name' => $name, 'password' => bcrypt(Str::random(10))]
         );
 
         $invitee = $invitee->firstOrCreate(

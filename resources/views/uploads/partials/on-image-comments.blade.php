@@ -1,9 +1,13 @@
 @foreach($upload->comments as $key =>$comment)
+    @if(!$comment->isOnTheImage())
+        @continue
+    @endif
+
     <div class="comment"
          id="comment-{{$key + 1}}"
          style="position: absolute;
-             top: {{json_decode($comment->coordinates)[1] * 100 }}%;
-             left: {{ json_decode($comment->coordinates)[0] * 100 }}%;"
+             top: {{$comment->coordinate_y * 100 }}%;
+             left: {{ $comment->coordinate_x * 100 }}%;"
     >
         <div class="flex -ml-2 -mt-2">
             @if($comment->author())

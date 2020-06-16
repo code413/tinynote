@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CommentUpdated;
 use App\Models\Comment;
 use App\Models\Upload;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class CommentsController extends Controller
 
         if (request()->has('coordinateX') || request()->has('coordinateY')) {
             $comment = $upload->comments()->create([
-                'coordinates' => json_encode([request()->get('coordinateX'), request()->get('coordinateY')]),
+                'coordinate_x' => request('coordinateX'),
+                'coordinate_y' => request('coordinateY'),
                 'user_id' => auth()->user()->id
             ]);
 
@@ -25,9 +27,10 @@ class CommentsController extends Controller
                 ->header('Content-Type', 'text/plain');
 
         }else{
-            $comment = $upload->comments()->create([
+            $upload->comments()->create([
                 'body' => request('body'),
-                'coordinates' => json_encode([-1, -1]),
+                'coordinate_x' => null,
+                'coordinate_y' => null,
                 'user_id' => auth()->user()->id
             ]);
 
@@ -45,6 +48,8 @@ class CommentsController extends Controller
         $comment->update([
             'body' => request('body')
         ]);
+
+        event(new CommentUpdated($comment));
 
         return back();
     }
