@@ -98,5 +98,5 @@
         </div>
     </div>--}}
 
-    <editor :data="{{$upload}}"></editor>
+    <editor :data="{{$upload}}" :auth_user='@json(auth()->user())'></editor>
 @stop

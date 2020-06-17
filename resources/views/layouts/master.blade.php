@@ -14,6 +14,7 @@
 @endif
 <header>
     @section('header')
+        @include('partials.header')
     @show
 </header>
 <main class="@yield('main.class')" id="app">

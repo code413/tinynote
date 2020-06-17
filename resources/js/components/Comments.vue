@@ -12,12 +12,17 @@
             ></comment>
         </div>
 
-        <div class="border-t flex flex-col" :class="{'border-blue-500': focused}">
+        <div v-if="$attrs.authUser" class="border-t flex flex-col" :class="{'border-blue-500': focused}">
             <input type="text" class="p-4 w-full outline-none" placeholder="Leave a comment..."
                    v-model="newComment" ref="input" autofocus>
             <div class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer"
                  @click="add">Send
             </div>
+        </div>
+
+        <div v-else class="border-t flex flex-col">
+            <input disabled type="text" class="p-4 w-full outline-none" placeholder="Login to write a comment...">
+            <a href="/login" class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer">Login</a>
         </div>
 
         <portal to="dots">
@@ -78,7 +83,6 @@
                 newComment: '',
                 newDot: null,
                 focused: false,
-                upload: ''
             }
         },
         methods: {
@@ -109,10 +113,9 @@
 
                 this.newComment = ''
 
-                axios.post("/uploads/" + this.$attrs.upload.uuid + "/comments", requestData).then(function (response) {
-                }).catch(function (error) {
-                    window.location.href = '/login';
-                })
+                axios.post('/uploads/' + this.$attrs.upload.uuid + '/comments', requestData)
+                    .then(function (response) {})
+                    .catch(function (error) {window.location.href = '/login'})
 
             },
 
@@ -135,6 +138,6 @@
                 this.newDot = null
                 this.focused = false
             },
-        }
+        },
     }
 </script>
