@@ -2323,6 +2323,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    upload: {}
+  },
   data: function data() {
     return {
       invitees: [
@@ -2335,7 +2338,7 @@ __webpack_require__.r(__webpack_exports__);
       ],
       newEmail: '',
       focused: false,
-      invitationInitiated: false
+      invitationInitiated: ''
     };
   },
   methods: {
@@ -2350,13 +2353,18 @@ __webpack_require__.r(__webpack_exports__);
       this.newEmail = '';
     },
     initiateInvitation: function initiateInvitation() {
-      axios.post('/uploads/' + this.$attrs.upload.uuid, {
+      axios.post('/uploads/' + this.upload.uuid, {
         _method: 'put'
       }).then(function (response) {})["catch"](function (error) {
         window.location.href = '/login';
       });
       this.invitationInitiated = true;
     }
+  },
+  mounted: function mounted() {
+    this.$nextTick(function () {
+      this.invitationInitiated = this.upload.owner_id;
+    });
   }
 });
 

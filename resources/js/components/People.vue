@@ -34,6 +34,9 @@
 
 <script>
     export default {
+        props:{
+            upload:{}
+        },
         data () {
             return {
                 invitees: [
@@ -46,7 +49,7 @@
                 ],
                 newEmail: '',
                 focused: false,
-                invitationInitiated: false
+                invitationInitiated: ''
             }
         },
         methods: {
@@ -60,12 +63,18 @@
                 this.newEmail = ''
             },
             initiateInvitation () {
-                axios.post('/uploads/' + this.$attrs.upload.uuid, {_method: 'put'})
+                axios.post('/uploads/' + this.upload.uuid, {_method: 'put'})
                     .then(function (response) {})
                     .catch(function (error) {window.location.href = '/login'})
 
                 this.invitationInitiated = true;
             }
+        },
+        mounted () {
+            this.$nextTick(function () {
+                this.invitationInitiated = this.upload.owner_id
+            })
+
         }
     }
 </script>
