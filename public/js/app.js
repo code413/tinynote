@@ -2316,18 +2316,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
+    data: {
+      "default": function _default() {
+        return [];
+      }
+    },
     upload: {}
   },
   data: function data() {
     return {
-      invitees: [
-        /*{
-          'email': 'john@example.com',
-        },
-        {
-          'email': 'jane@example.com',
-        }*/
-      ],
+      invitees: [],
       newEmail: '',
       focused: false,
       invitationInitiated: ''
@@ -2357,6 +2355,9 @@ __webpack_require__.r(__webpack_exports__);
     this.$nextTick(function () {
       this.invitationInitiated = this.upload.owner_id;
     });
+  },
+  created: function created() {
+    this.invitees = this.data;
   }
 });
 
@@ -17940,7 +17941,11 @@ var render = function() {
                     expression: "sidebar === 'people'"
                   }
                 ],
-                attrs: { upload: _vm.upload, authUser: _vm.authUser }
+                attrs: {
+                  data: _vm.upload.invitees,
+                  upload: _vm.upload,
+                  authUser: _vm.authUser
+                }
               })
             ],
             1
@@ -17981,8 +17986,11 @@ var render = function() {
       _c(
         "div",
         { staticClass: "flex-1 p-4" },
-        _vm._l(_vm.invitees, function(person, index) {
-          return _c("person", { key: index, attrs: { email: person.email } })
+        _vm._l(_vm.invitees, function(invitee, index) {
+          return _c("person", {
+            key: index,
+            attrs: { email: invitee.user.email }
+          })
         }),
         1
       ),
@@ -31134,8 +31142,8 @@ cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Projects\annotation\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Projects\annotation\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Projects\annotation-image\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Projects\annotation-image\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

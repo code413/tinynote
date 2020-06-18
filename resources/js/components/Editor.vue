@@ -43,7 +43,7 @@
             </transition>
 
             <transition name="slide-fade">
-                <people :upload="upload" :authUser="authUser" v-show="sidebar === 'people'"></people>
+                <people :data="upload.invitees" :upload="upload" :authUser="authUser" v-show="sidebar === 'people'"></people>
             </transition>
         </sidebar>
     </div>

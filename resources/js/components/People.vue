@@ -1,8 +1,8 @@
 <template xmlns="http://www.w3.org/1999/html">
     <div class="flex-1 flex flex-col">
         <div class="flex-1 p-4">
-            <person v-for="(person, index) in invitees"
-                    :email="person.email"
+            <person v-for="(invitee, index) in invitees"
+                    :email="invitee.user.email"
                     :key="index"
             ></person>
         </div>
@@ -35,18 +35,12 @@
 <script>
     export default {
         props:{
+            data: {default: () => { return [] }},
             upload:{}
         },
         data () {
             return {
-                invitees: [
-                    /*{
-                      'email': 'john@example.com',
-                    },
-                    {
-                      'email': 'jane@example.com',
-                    }*/
-                ],
+                invitees: [],
                 newEmail: '',
                 focused: false,
                 invitationInitiated: ''
@@ -74,7 +68,9 @@
             this.$nextTick(function () {
                 this.invitationInitiated = this.upload.owner_id
             })
-
+        },
+        created () {
+            this.invitees = this.data
         }
     }
 </script>
