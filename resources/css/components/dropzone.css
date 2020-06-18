@@ -1,12 +1,12 @@
 .dropzone {
-  border: #5a67d8 dashed 2px !important;
+  border: #3343c3 dashed 2px !important;
   min-height: 12rem;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   border-radius: 1rem;
-  background: #eff2fc !important;
+  background: #f4f8ff !important;
 }
 
 .vue-dropzone:hover{

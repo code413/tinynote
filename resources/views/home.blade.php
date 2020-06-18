@@ -3,7 +3,7 @@
 @section('superclass', 'bg-gray-100')
 
 @section('main')
-    <div class="relative" style="background: rgb(235, 235, 244);">
+    <div class="relative" style="background: #fcf0e3;">
         <div style="" class="px-8 py-4">
             <header class="flex items-center">
                 <div class="mb-4 font-bold">Tiny Note</div>
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <div class="py-16 bg-purple-800 text-white">
+    <div class="py-16 text-white" style="background: #3040c4;">
         <div class="container flex flex-col items-center text-center">
             <h3 class="text-3xl font-bold">Not sure yet? Try it out for free!</h3>
             <p>Tiny Note is available for free. No registrations required.</p>
