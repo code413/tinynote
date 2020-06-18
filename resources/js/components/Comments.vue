@@ -3,7 +3,7 @@
         <div class="flex-1 p-4">
             <comment
                 v-for="(comment, index) in comments"
-                :content="comment.content"
+                :content="comment.body"
                 :author="comment.author"
                 :key="comment.id"
                 :class="{'bg-teal-100': comment.active}"
@@ -51,35 +51,13 @@
 </template>
 
 <script>
-    import $ from 'cash-dom'
-
     export default {
+        props: {
+          data: {default: () => { return [] }}
+        },
         data () {
             return {
-                comments: [
-                    /*{
-                        id: 1,
-                        author: 'john@example.com',
-                        content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dolore molestiae quae quia quo, repellat.',
-                        x: 10,
-                        y: 30,
-                        active: false
-                    },
-                    {
-                        id: 2,
-                        author: 'jane@xyz.co',
-                        content: 'Lorem ipsum dolor sit amet.',
-                        active: false
-                    },
-                    {
-                        id: 3,
-                        author: 'john@example.com',
-                        content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br/> <br/>Lorem ipsum dolor sit.',
-                        x: 40,
-                        y: 20,
-                        active: false
-                    }*/
-                ],
+                comments: [],
                 newComment: '',
                 newDot: null,
                 focused: false,
@@ -93,7 +71,7 @@
 
                 let comment = {
                     id: Date.now(),
-                    content: this.newComment,
+                    body: this.newComment,
                     author: 'john@example.com',
                     active: false
                 }
@@ -139,5 +117,8 @@
                 this.focused = false
             },
         },
+        created () {
+          this.comments = this.data
+        }
     }
 </script>

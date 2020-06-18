@@ -39,7 +39,7 @@
 
         <sidebar :open="sidebar">
             <transition name="slide-fade">
-                <comments :upload="upload" :authUser="authUser" v-show="sidebar === 'comments'" @show="showSidebar('comments')"></comments>
+                <comments :data="upload.comments" :upload="upload" :authUser="authUser" v-show="sidebar === 'comments'" @show="showSidebar('comments')"></comments>
             </transition>
 
             <transition name="slide-fade">
@@ -70,7 +70,7 @@
             return {
                 title: 'Zoo Inc - Poster Design',
                 sidebar: null,
-                upload: '',
+                upload: {},
                 show: true,
                 authUser:'',
             }
@@ -88,7 +88,7 @@
                 this.sidebar = name
             }
         },
-        mounted () {
+        created () {
             this.upload = this.data
 
             this.authUser = this.auth_user

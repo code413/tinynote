@@ -54,6 +54,8 @@ class UploadsController extends Controller
             Auth::login($user, true);
         }
 
+        $upload->load(['comments']);
+
         return view('uploads.show', ['upload'=>$upload]);
     }
 
