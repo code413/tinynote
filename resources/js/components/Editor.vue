@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-1 overflow-hidden">
+    <div class="flex flex-1 overflow-hidden editor">
         <!-- Content -->
         <div class="px-8 py-4 flex-grow flex  flex flex-col">
             <!-- Header -->
@@ -39,11 +39,11 @@
 
         <sidebar :open="sidebar">
             <transition name="slide-fade">
-                <comments v-show="sidebar === 'comments'" @show="showSidebar('comments')"></comments>
+                <comments :upload="upload" :authUser="authUser" v-show="sidebar === 'comments'" @show="showSidebar('comments')"></comments>
             </transition>
 
             <transition name="slide-fade">
-                <people v-show="sidebar === 'people'"></people>
+                <people :upload="upload" :authUser="authUser" v-show="sidebar === 'people'"></people>
             </transition>
         </sidebar>
     </div>
@@ -63,14 +63,16 @@
 <script>
     export default {
         props: {
-            data: {}
+            data: {},
+            auth_user:{},
         },
         data () {
             return {
                 title: 'Zoo Inc - Poster Design',
                 sidebar: null,
                 upload: '',
-                show: true
+                show: true,
+                authUser:'',
             }
         },
         methods: {
@@ -88,6 +90,8 @@
         },
         mounted () {
             this.upload = this.data
+
+            this.authUser = this.auth_user
         }
     }
 </script>

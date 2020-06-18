@@ -3,5 +3,5 @@
 @section('superclass', 'bg-gray-100')
 
 @section('main')
-    <editor :data="{{$upload}}" class="h-full"></editor>
+    <editor class="h-full" :data="{{$upload}}" :auth_user='@json(auth()->user())'></editor>
 @stop

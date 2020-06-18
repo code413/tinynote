@@ -81441,6 +81441,10 @@ html, body, main{
   height:100%;
 }
 
+main > .editor {
+  height: 100%;
+}
+
 body{
   min-height: 100%;
 }

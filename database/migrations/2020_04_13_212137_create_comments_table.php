@@ -16,7 +16,8 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('body')->nullable();
-            $table->json('coordinates');
+            $table->string('coordinate_x')->nullable();
+            $table->string('coordinate_y')->nullable();
             $table->unsignedBigInteger('upload_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

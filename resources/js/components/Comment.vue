@@ -14,8 +14,8 @@
 <script>
     export default {
       props: {
-        content: { default: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dolore molestiae quae quia quo, repellat.' },
-        author: {default: 'john@example.com'}
+        content: { default: '' },
+        author: {default: ''}
       }
     }
 </script>
