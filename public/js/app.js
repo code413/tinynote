@@ -2112,6 +2112,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2368,7 +2376,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* MIT https://github.com/kenwheeler/cash */
+/* MIT https://github.com/fabiospampinato/cash */
 (function(){
 "use strict";
 
@@ -12235,19 +12243,38 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "vue-dropzone",
+    {
+      ref: "myVueDropzone",
+      staticClass: "w-full h-full shadow-inner",
+      attrs: {
+        id: "dropzone",
+        options: _vm.dropzoneOptions,
+        "use-custom-slot": true
+      },
+      on: {
+        "vdropzone-max-files-exceeded": _vm.maxfilesexceeded,
+        "vdropzone-success": _vm.success,
+        "vdropzone-error": _vm.error
+      }
+    },
     [
-      _c("vue-dropzone", {
-        ref: "myVueDropzone",
-        attrs: { id: "dropzone", options: _vm.dropzoneOptions },
-        on: {
-          "vdropzone-max-files-exceeded": _vm.maxfilesexceeded,
-          "vdropzone-success": _vm.success,
-          "vdropzone-error": _vm.error
-        }
-      })
-    ],
-    1
+      _c("div", { staticClass: "text-center" }, [
+        _c("i", {
+          staticClass: "text-indigo-600 mx-auto",
+          staticStyle: { width: "48px", height: "48px" },
+          attrs: { "data-feather": "image", "stroke-width": "1" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-indigo-600 text-2xl" }, [
+          _vm._v("Drop or upload your visual here.")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-indigo-400 text-sm" }, [
+          _vm._v("Any .png / .jpg / .gif files. Up to 20 MB")
+        ])
+      ])
+    ]
   )
 }
 var staticRenderFns = []
@@ -25571,8 +25598,8 @@ cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Projects\annotation-image\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Projects\annotation-image\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! D:\Projects\annotation\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Projects\annotation\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

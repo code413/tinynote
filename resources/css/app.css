@@ -1,13 +1,13 @@
-@tailwind base;
+@import "~tailwindcss/base.css";
 
-@tailwind components;
+@import '~sailui/base.css';
+
+@import "~tailwindcss/components.css";
+
+@import '~sailui/components.css';
 
 html, body, main{
   height:100%;
-}
-
-main >div {
-    height: 100%;
 }
 
 body{
@@ -19,4 +19,5 @@ body{
 @import "components/form-control.css";
 @import "components/dropzone.css";
 
-@tailwind utilities;
+
+@import "~tailwindcss/utilities.css";
