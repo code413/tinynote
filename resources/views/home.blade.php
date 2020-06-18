@@ -17,10 +17,10 @@
             <div class="container items-center text-center" style="min-height:20rem;">
                 <h1 class="text-6xl font-bold max-w-2xl mx-auto pt-16" style="line-height:1">Get Instant Feedback On Your Designs.</h1>
                 <div class="mb-5">No registrations required.</div>
-                <dropzone style="min-height:20rem; top:3rem; margin-top:-2rem" class="max-w-2xl mx-auto items-stretch relative"></dropzone>
+                <dropzone style="min-height:20rem; top:3rem; margin-top:-2rem" class="max-w-2xl mx-auto items-stretch relative z-10"></dropzone>
             </div>
-
         </div>
+        <div class="w-full absolute bottom-0" style="height:12rem; background: url(/img/wave.png) no-repeat"></div>
     </div>
 
     <div class="bg-white py-16">
