@@ -1953,6 +1953,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2006,6 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -2031,7 +2034,8 @@ __webpack_require__.r(__webpack_exports__);
       var comment = {
         id: Date.now(),
         body: this.newComment,
-        author: 'john@example.com',
+        user: this.$attrs.authUser,
+        created_at: this.now(),
         active: false
       };
       var requestData = {
@@ -2041,11 +2045,11 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       if (this.newDot) {
-        comment.x = this.newDot.x;
-        comment.y = this.newDot.y;
+        comment.coordinate_x = this.newDot.coordinate_x;
+        comment.coordinate_y = this.newDot.coordinate_y;
         requestData = {
-          coordinateX: this.newDot.x,
-          coordinateY: this.newDot.y,
+          coordinateX: this.newDot.coordinate_x,
+          coordinateY: this.newDot.coordinate_y,
           body: this.newComment
         };
       }
@@ -2061,8 +2065,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.newDot = {
-        x: event.offsetX / document.querySelector('img').width * 100,
-        y: event.offsetY / document.querySelector('img').height * 100
+        coordinate_x: event.offsetX / document.querySelector('img').width * 100,
+        coordinate_y: event.offsetY / document.querySelector('img').height * 100
       };
       this.$emit('show');
       this.focused = true;
@@ -2075,6 +2079,9 @@ __webpack_require__.r(__webpack_exports__);
     removeDot: function removeDot() {
       this.newDot = null;
       this.focused = false;
+    },
+    now: function now() {
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()().format();
     }
   },
   created: function created() {
@@ -38688,11 +38695,11 @@ var render = function() {
           },
           [
             _vm._l(_vm.comments, function(comment, index) {
-              return comment.x && comment.y
+              return comment.coordinate_x && comment.coordinate_y
                 ? _c("dot", {
                     key: index,
                     class: { "bg-teal-400": comment.active },
-                    attrs: { y: comment.y, x: comment.x },
+                    attrs: { y: comment.coordinate_y, x: comment.coordinate_x },
                     nativeOn: {
                       click: function($event) {
                         $event.stopPropagation()
@@ -38712,7 +38719,10 @@ var render = function() {
             _vm.newDot
               ? _c("dot", {
                   class: ["bg-blue-700"],
-                  attrs: { y: _vm.newDot.y, x: _vm.newDot.x },
+                  attrs: {
+                    y: _vm.newDot.coordinate_y,
+                    x: _vm.newDot.coordinate_x
+                  },
                   nativeOn: {
                     click: function($event) {
                       $event.stopPropagation()

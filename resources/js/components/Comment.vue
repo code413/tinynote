@@ -20,7 +20,7 @@
             time: {default: ''}
         },
         methods: {
-            moment: function (time) {
+            moment (time) {
                 return moment(time).fromNow()
             }
         },

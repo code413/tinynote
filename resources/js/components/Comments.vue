@@ -29,10 +29,10 @@
         <portal to="dots">
             <div @click="addDot" class="absolute w-full h-full top-0 left-0 z-10">
                 <dot @click.native.stop="$emit('show')" v-for="(comment, index) in comments"
-                     v-if="comment.x && comment.y"
+                     v-if="comment.coordinate_x && comment.coordinate_y"
                      :class="{'bg-teal-400': comment.active}"
-                     :y="comment.y"
-                     :x="comment.x"
+                     :y="comment.coordinate_y"
+                     :x="comment.coordinate_x"
                      :key="index"
                      @mouseenter.native="comment.active = true"
                      @mouseleave.native="comment.active = false"
@@ -40,8 +40,8 @@
 
                 <dot @click.native.stop="removeDot"
                      v-if="newDot"
-                     :y="newDot.y"
-                     :x="newDot.x"
+                     :y="newDot.coordinate_y"
+                     :x="newDot.coordinate_x"
                      :class="['bg-blue-700']"
                 ></dot>
             </div>
@@ -52,9 +52,11 @@
 </template>
 
 <script>
+    import moment from 'moment'
+
     export default {
         props: {
-          data: {default: () => { return [] }}
+            data: {default: () => { return [] }}
         },
         data () {
             return {
@@ -73,17 +75,18 @@
                 let comment = {
                     id: Date.now(),
                     body: this.newComment,
-                    author: 'john@example.com',
+                    user: this.$attrs.authUser,
+                    created_at: this.now(),
                     active: false
                 }
 
                 let requestData = {coordinateX: null, coordinateY: null, body: this.newComment}
 
                 if (this.newDot) {
-                    comment.x = this.newDot.x
-                    comment.y = this.newDot.y
+                    comment.coordinate_x = this.newDot.coordinate_x
+                    comment.coordinate_y = this.newDot.coordinate_y
 
-                    requestData = {coordinateX: this.newDot.x, coordinateY: this.newDot.y, body: this.newComment}
+                    requestData = {coordinateX: this.newDot.coordinate_x, coordinateY: this.newDot.coordinate_y, body: this.newComment}
                 }
 
                 this.comments.push(comment)
@@ -100,8 +103,8 @@
 
             addDot (event) {
                 this.newDot = {
-                    x: (event.offsetX / document.querySelector('img').width) * 100,
-                    y: (event.offsetY / document.querySelector('img').height) * 100
+                    coordinate_x: (event.offsetX / document.querySelector('img').width) * 100,
+                    coordinate_y: (event.offsetY / document.querySelector('img').height) * 100
                 }
 
                 this.$emit('show')
@@ -117,9 +120,12 @@
                 this.newDot = null
                 this.focused = false
             },
+            now () {
+                return moment().format();
+            }
         },
         created () {
-          this.comments = this.data
+            this.comments = this.data
         }
     }
 </script>
