@@ -8,7 +8,8 @@
                     <div data-feather="file" class="mr-3"></div>
                     <input type="text"
                            class="bg-transparent outline-none border-b border-dashed"
-                           v-model="upload.name"
+                           v-model="title"
+                           @blur="titleUpdate()"
                            v-autowidth="{maxWidth: '400px', minWidth: '10px'}" placeholder="Document Title">
                 </div>
                 <div class="ml-auto">
@@ -49,17 +50,6 @@
     </div>
 </template>
 
-<style>
-    .slide-fade-enter-active {
-        transition: all .3s ease;
-    }
-
-    .slide-fade-enter, .slide-fade-leave-active {
-        transform: translateX(10px);
-        opacity: 0;
-    }
-</style>
-
 <script>
     export default {
         props: {
@@ -68,7 +58,7 @@
         },
         data () {
             return {
-                title: 'Zoo Inc - Poster Design',
+                title: '',
                 sidebar: null,
                 upload: {},
                 show: true,
@@ -83,15 +73,33 @@
 
                 this.sidebar = name
             },
-
             showSidebar (name) {
                 this.sidebar = name
+            },
+            titleUpdate() {
+                console.log(this.title);
+                axios.post('/uploads/' + this.upload.uuid, {name:this.title, _method: 'put'})
+                    .then(function (response) {})
+                    .catch(function (error) {})
             }
         },
         created () {
             this.upload = this.data
 
             this.authUser = this.auth_user
+
+            this.title = this.upload.name
         }
     }
 </script>
+
+<style>
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+
+    .slide-fade-enter, .slide-fade-leave-active {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+</style>

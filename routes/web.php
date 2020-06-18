@@ -12,8 +12,9 @@ Route::post('uploads', 'UploadsController@store')->name('uploads.store');
 
 Route::get('uploads/{upload}', 'UploadsController@show')->name('uploads.show');
 
+Route::put('/uploads/{upload}', 'UploadsController@update')->name('uploads.update');
+
 Route::middleware(['auth'])->group(function () {
-    Route::put('/uploads/{upload}', 'UploadsController@update')->name('uploads.update');
 
     Route::post('/uploads/{upload}/comments', 'CommentsController@store')->name('comments.store');
 

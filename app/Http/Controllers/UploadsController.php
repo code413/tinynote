@@ -68,9 +68,20 @@ class UploadsController extends Controller
 
     public function update(Upload $upload)
     {
-        $upload->update([
-            'owner_id' => auth()->user()->id
+        $attr = [];
+
+        request()->validate([
+            'name' => 'string|max:100',
         ]);
+
+        $attr['name'] = request('name') ?? $upload->name;
+
+
+        if(auth()->check()){
+            $attr['owner_id'] = auth()->user()->id;
+        }
+
+        $upload->update($attr);
 
         return redirect()->back();
     }

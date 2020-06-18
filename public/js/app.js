@@ -2245,16 +2245,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {},
@@ -2262,7 +2252,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: 'Zoo Inc - Poster Design',
+      title: '',
       sidebar: null,
       upload: {},
       show: true,
@@ -2279,11 +2269,19 @@ __webpack_require__.r(__webpack_exports__);
     },
     showSidebar: function showSidebar(name) {
       this.sidebar = name;
+    },
+    titleUpdate: function titleUpdate() {
+      console.log(this.title);
+      axios.post('/uploads/' + this.upload.uuid, {
+        name: this.title,
+        _method: 'put'
+      }).then(function (response) {})["catch"](function (error) {});
     }
   },
   created: function created() {
     this.upload = this.data;
     this.authUser = this.auth_user;
+    this.title = this.upload.name;
   }
 });
 
@@ -38867,8 +38865,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.upload.name,
-                  expression: "upload.name"
+                  value: _vm.title,
+                  expression: "title"
                 },
                 {
                   name: "autowidth",
@@ -38879,13 +38877,16 @@ var render = function() {
               ],
               staticClass: "bg-transparent outline-none border-b border-dashed",
               attrs: { type: "text", placeholder: "Document Title" },
-              domProps: { value: _vm.upload.name },
+              domProps: { value: _vm.title },
               on: {
+                blur: function($event) {
+                  return _vm.titleUpdate()
+                },
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.upload, "name", $event.target.value)
+                  _vm.title = $event.target.value
                 }
               }
             })
