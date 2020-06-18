@@ -4,7 +4,8 @@
             <comment
                 v-for="(comment, index) in comments"
                 :content="comment.body"
-                :author="comment.author"
+                :author="comment.user.name"
+                :time="comment.created_at"
                 :key="comment.id"
                 :class="{'bg-teal-100': comment.active}"
                 @mouseenter.native="comment.active = true"
