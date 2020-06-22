@@ -23,7 +23,6 @@
 </main>
 <footer>
     @section('footer')
-        @include('partials.footer')
     @show
 </footer>
 @include('layouts.partials.scripts')

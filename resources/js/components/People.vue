@@ -7,26 +7,19 @@
             ></person>
         </div>
 
-        <div v-if="$attrs.authUser">
-            <div v-if="invitationInitiated" class="border-t flex flex-col" :class="{'border-blue-500': focused}">
-                <input type="text" class="p-4 w-full outline-none" placeholder="Enter an email..."
-                       v-model="newEmail" ref="input">
-                <div class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer"
-                     @click="add">Add
-                </div>
-            </div>
-
-            <div v-else class="border-t flex flex-col">
-                <div class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer"
-                     @click="initiateInvitation">Start inviting people
-                </div>
+        <div class="border-t flex flex-col" :class="{'border-blue-500': focused}">
+            <input type="text" class="p-4 w-full outline-none" placeholder="Enter an email..."
+                   v-model="newEmail" ref="input">
+            <div class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer"
+                 @click="add">Add
             </div>
         </div>
 
-        <div v-else class="border-t flex flex-col">
-            <input disabled type="text" class="p-4 w-full outline-none" placeholder="Login to invite people for review...">
-            <a href="/login" class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer">Login</a>
-        </div>
+<!--        <div v-else class="border-t flex flex-col">
+            <div class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer"
+                 @click="initiateInvitation">Start inviting people
+            </div>
+        </div>-->
 
         <portal to="people-count">{{ invitees.length }}</portal>
     </div>
@@ -34,16 +27,16 @@
 
 <script>
     export default {
-        props:{
+        props: {
             data: {default: () => { return [] }},
-            upload:{}
+            upload: {}
         },
         data () {
             return {
                 invitees: [],
                 newEmail: '',
                 focused: false,
-                invitationInitiated: ''
+                // invitationInitiated: ''
             }
         },
         methods: {
@@ -56,19 +49,19 @@
 
                 this.newEmail = ''
             },
-            initiateInvitation () {
+/*            initiateInvitation () {
                 axios.post('/uploads/' + this.upload.uuid, {_method: 'put'})
                     .then(function (response) {})
                     .catch(function (error) {window.location.href = '/login'})
 
-                this.invitationInitiated = true;
-            }
+                this.invitationInitiated = true
+            }*/
         },
-        mounted () {
+/*        mounted () {
             this.$nextTick(function () {
                 this.invitationInitiated = this.upload.owner_id
             })
-        },
+        },*/
         created () {
             this.invitees = this.data
         }

@@ -2003,11 +2003,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2271,7 +2266,6 @@ __webpack_require__.r(__webpack_exports__);
       this.sidebar = name;
     },
     titleUpdate: function titleUpdate() {
-      console.log(this.title);
       axios.post('/uploads/' + this.upload.uuid, {
         name: this.title,
         _method: 'put'
@@ -2323,13 +2317,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -2343,8 +2330,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       invitees: [],
       newEmail: '',
-      focused: false,
-      invitationInitiated: ''
+      focused: false // invitationInitiated: ''
+
     };
   },
   methods: {
@@ -2357,21 +2344,22 @@ __webpack_require__.r(__webpack_exports__);
         email: this.newEmail
       });
       this.newEmail = '';
-    },
-    initiateInvitation: function initiateInvitation() {
-      axios.post('/uploads/' + this.upload.uuid, {
-        _method: 'put'
-      }).then(function (response) {})["catch"](function (error) {
-        window.location.href = '/login';
-      });
-      this.invitationInitiated = true;
     }
+    /*            initiateInvitation () {
+                    axios.post('/uploads/' + this.upload.uuid, {_method: 'put'})
+                        .then(function (response) {})
+                        .catch(function (error) {window.location.href = '/login'})
+    
+                    this.invitationInitiated = true
+                }*/
+
   },
-  mounted: function mounted() {
-    this.$nextTick(function () {
-      this.invitationInitiated = this.upload.owner_id;
-    });
-  },
+
+  /*        mounted () {
+              this.$nextTick(function () {
+                  this.invitationInitiated = this.upload.owner_id
+              })
+          },*/
   created: function created() {
     this.invitees = this.data;
   }
@@ -38617,72 +38605,51 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.$attrs.authUser
-        ? _c(
+      _c(
+        "div",
+        {
+          staticClass: "border-t flex flex-col",
+          class: { "border-blue-500": _vm.focused }
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newComment,
+                expression: "newComment"
+              }
+            ],
+            ref: "input",
+            staticClass: "p-4 w-full outline-none",
+            attrs: {
+              type: "text",
+              placeholder: "Leave a comment...",
+              autofocus: ""
+            },
+            domProps: { value: _vm.newComment },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.newComment = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
             "div",
             {
-              staticClass: "border-t flex flex-col",
-              class: { "border-blue-500": _vm.focused }
+              staticClass:
+                "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
+              on: { click: _vm.add }
             },
-            [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.newComment,
-                    expression: "newComment"
-                  }
-                ],
-                ref: "input",
-                staticClass: "p-4 w-full outline-none",
-                attrs: {
-                  type: "text",
-                  placeholder: "Leave a comment...",
-                  autofocus: ""
-                },
-                domProps: { value: _vm.newComment },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.newComment = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
-                  on: { click: _vm.add }
-                },
-                [_vm._v("Send\n        ")]
-              )
-            ]
+            [_vm._v("Send\n        ")]
           )
-        : _c("div", { staticClass: "border-t flex flex-col" }, [
-            _c("input", {
-              staticClass: "p-4 w-full outline-none",
-              attrs: {
-                disabled: "",
-                type: "text",
-                placeholder: "Login to write a comment..."
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
-                attrs: { href: "/login" }
-              },
-              [_vm._v("Login")]
-            )
-          ]),
+        ]
+      ),
       _vm._v(" "),
       _c("portal", { attrs: { to: "dots" } }, [
         _c(
@@ -39069,82 +39036,47 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.$attrs.authUser
-        ? _c("div", [
-            _vm.invitationInitiated
-              ? _c(
-                  "div",
-                  {
-                    staticClass: "border-t flex flex-col",
-                    class: { "border-blue-500": _vm.focused }
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.newEmail,
-                          expression: "newEmail"
-                        }
-                      ],
-                      ref: "input",
-                      staticClass: "p-4 w-full outline-none",
-                      attrs: { type: "text", placeholder: "Enter an email..." },
-                      domProps: { value: _vm.newEmail },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.newEmail = $event.target.value
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
-                        on: { click: _vm.add }
-                      },
-                      [_vm._v("Add\n            ")]
-                    )
-                  ]
-                )
-              : _c("div", { staticClass: "border-t flex flex-col" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
-                      on: { click: _vm.initiateInvitation }
-                    },
-                    [_vm._v("Start inviting people\n            ")]
-                  )
-                ])
-          ])
-        : _c("div", { staticClass: "border-t flex flex-col" }, [
-            _c("input", {
-              staticClass: "p-4 w-full outline-none",
-              attrs: {
-                disabled: "",
-                type: "text",
-                placeholder: "Login to invite people for review..."
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "a",
+      _c(
+        "div",
+        {
+          staticClass: "border-t flex flex-col",
+          class: { "border-blue-500": _vm.focused }
+        },
+        [
+          _c("input", {
+            directives: [
               {
-                staticClass:
-                  "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
-                attrs: { href: "/login" }
-              },
-              [_vm._v("Login")]
-            )
-          ]),
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newEmail,
+                expression: "newEmail"
+              }
+            ],
+            ref: "input",
+            staticClass: "p-4 w-full outline-none",
+            attrs: { type: "text", placeholder: "Enter an email..." },
+            domProps: { value: _vm.newEmail },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.newEmail = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
+              on: { click: _vm.add }
+            },
+            [_vm._v("Add\n            ")]
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("portal", { attrs: { to: "people-count" } }, [
         _vm._v(_vm._s(_vm.invitees.length))

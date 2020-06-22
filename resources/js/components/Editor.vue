@@ -77,7 +77,6 @@
                 this.sidebar = name
             },
             titleUpdate() {
-                console.log(this.title);
                 axios.post('/uploads/' + this.upload.uuid, {name:this.title, _method: 'put'})
                     .then(function (response) {})
                     .catch(function (error) {})
