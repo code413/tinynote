@@ -18,6 +18,10 @@ Route::get('/uploads', 'UploadsController@index')->name('uploads.index');
 
 Route::post('/invitees/{upload}', 'InviteesController@store')->name('invitees.store');
 
+Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
+
+Route::put('/users/{user}', 'UsersController@update')->name('users.update');
+
 Auth::routes();
 
 /*Route::get('mailable', function () {

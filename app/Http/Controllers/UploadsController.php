@@ -80,7 +80,7 @@ class UploadsController extends Controller
             Auth::login($user, true);
         }
 
-        $upload->load(['comments.user', 'invitees.user']);
+        $upload->load(['comments.user', 'invitees.user', 'owner']);
 
         return view('uploads.show', ['upload' => $upload]);
     }

@@ -1,6 +1,18 @@
 <template xmlns="http://www.w3.org/1999/html">
     <div class="flex-1 flex flex-col">
         <div class="flex-1 p-4">
+            <div v-if="upload.owner.email == null" class="p-4 border-b">
+                <div>The owner of the image<br>
+                    <a v-if="upload.owner_id === $attrs.authUser.id"
+                       class="bg-gray-800 text-white rounded cursor-pointer text-sm p-1 my-2" href="/users/edit">
+                        Save</a>
+                </div>
+            </div>
+
+            <div v-else class="p-4 border-b">
+                <div v-text="upload.owner.email"></div>
+            </div>
+
             <person v-for="(invitee, index) in invitees"
                     :email="invitee.user.email"
                     :key="index"
@@ -15,13 +27,7 @@
             </div>
         </div>
 
-<!--        <div v-else class="border-t flex flex-col">
-            <div class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer"
-                 @click="initiateInvitation">Start inviting people
-            </div>
-        </div>-->
-
-        <portal to="people-count">{{ invitees.length }}</portal>
+        <portal to="people-count">{{ invitees.length + 1 }}</portal>
     </div>
 </template>
 
@@ -36,7 +42,6 @@
                 invitees: [],
                 newEmail: '',
                 focused: false,
-                // invitationInitiated: ''
             }
         },
         methods: {
@@ -49,19 +54,7 @@
 
                 this.newEmail = ''
             },
-/*            initiateInvitation () {
-                axios.post('/uploads/' + this.upload.uuid, {_method: 'put'})
-                    .then(function (response) {})
-                    .catch(function (error) {window.location.href = '/login'})
-
-                this.invitationInitiated = true
-            }*/
         },
-/*        mounted () {
-            this.$nextTick(function () {
-                this.invitationInitiated = this.upload.owner_id
-            })
-        },*/
         created () {
             this.invitees = this.data
         }

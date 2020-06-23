@@ -2317,6 +2317,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -2330,8 +2336,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       invitees: [],
       newEmail: '',
-      focused: false // invitationInitiated: ''
-
+      focused: false
     };
   },
   methods: {
@@ -2345,21 +2350,7 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.newEmail = '';
     }
-    /*            initiateInvitation () {
-                    axios.post('/uploads/' + this.upload.uuid, {_method: 'put'})
-                        .then(function (response) {})
-                        .catch(function (error) {window.location.href = '/login'})
-    
-                    this.invitationInitiated = true
-                }*/
-
   },
-
-  /*        mounted () {
-              this.$nextTick(function () {
-                  this.invitationInitiated = this.upload.owner_id
-              })
-          },*/
   created: function created() {
     this.invitees = this.data;
   }
@@ -39027,13 +39018,40 @@ var render = function() {
       _c(
         "div",
         { staticClass: "flex-1 p-4" },
-        _vm._l(_vm.invitees, function(invitee, index) {
-          return _c("person", {
-            key: index,
-            attrs: { email: invitee.user.email }
+        [
+          _vm.upload.owner.email == null
+            ? _c("div", { staticClass: "p-4 border-b" }, [
+                _c("div", [
+                  _vm._v("The owner of the image"),
+                  _c("br"),
+                  _vm._v(" "),
+                  _vm.upload.owner_id === _vm.$attrs.authUser.id
+                    ? _c(
+                        "a",
+                        {
+                          staticClass:
+                            "bg-gray-800 text-white rounded cursor-pointer text-sm p-1 my-2",
+                          attrs: { href: "/users/edit" }
+                        },
+                        [_vm._v("\n                    Save")]
+                      )
+                    : _vm._e()
+                ])
+              ])
+            : _c("div", { staticClass: "p-4 border-b" }, [
+                _c("div", {
+                  domProps: { textContent: _vm._s(_vm.upload.owner.email) }
+                })
+              ]),
+          _vm._v(" "),
+          _vm._l(_vm.invitees, function(invitee, index) {
+            return _c("person", {
+              key: index,
+              attrs: { email: invitee.user.email }
+            })
           })
-        }),
-        1
+        ],
+        2
       ),
       _vm._v(" "),
       _c(
@@ -39073,13 +39091,13 @@ var render = function() {
                 "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
               on: { click: _vm.add }
             },
-            [_vm._v("Add\n            ")]
+            [_vm._v("Add\n        ")]
           )
         ]
       ),
       _vm._v(" "),
       _c("portal", { attrs: { to: "people-count" } }, [
-        _vm._v(_vm._s(_vm.invitees.length))
+        _vm._v(_vm._s(_vm.invitees.length + 1))
       ])
     ],
     1
@@ -52148,8 +52166,8 @@ cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Projects\annotation\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Projects\annotation\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Projects\annotation-image\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Projects\annotation-image\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
