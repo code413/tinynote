@@ -2052,9 +2052,7 @@ __webpack_require__.r(__webpack_exports__);
       this.comments.push(comment);
       this.newDot = null;
       this.newComment = '';
-      axios.post('/uploads/' + this.$attrs.upload.uuid + '/comments', requestData).then(function (response) {})["catch"](function (error) {
-        window.location.href = '/login';
-      });
+      axios.post('/uploads/' + this.$attrs.upload.uuid + '/comments', requestData).then(function (response) {})["catch"](function (error) {});
     },
     addDot: function addDot(event) {
       var _this = this;
@@ -2346,7 +2344,14 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.invitees.push({
+        user: {
+          email: this.newEmail
+        }
+      });
+      axios.post('/invitees/' + this.upload.uuid, {
         email: this.newEmail
+      }).then(function (response) {})["catch"](function (error) {
+        console.log(error);
       });
       this.newEmail = '';
     }

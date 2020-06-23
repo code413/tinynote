@@ -65,17 +65,16 @@ class UploadsController extends Controller
 
     public function show(Upload $upload)
     {
-        // TODO::Remove the cookie when user registered
-        if (request()->cookie('login_token')) {
-            $user = User::where('login_token', request()->cookie('login_token'))->first();
-
-            Auth::login($user, true);
-        }
-
         if (request()->has('token')) {
             $userId = Invitee::where('token', request('token'))->first()->user_id;
 
             $user = User::findorFail($userId);
+
+            Auth::login($user, true);
+        }
+
+        if (!request()->has('token') && request()->cookie('login_token')) {
+            $user = User::where('login_token', request()->cookie('login_token'))->first();
 
             Auth::login($user, true);
         }

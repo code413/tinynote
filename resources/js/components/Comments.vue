@@ -92,7 +92,7 @@
 
                 axios.post('/uploads/' + this.$attrs.upload.uuid + '/comments', requestData)
                     .then(function (response) {})
-                    .catch(function (error) {window.location.href = '/login'})
+                    .catch(function (error) {})
 
             },
 

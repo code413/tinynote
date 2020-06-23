@@ -7,7 +7,7 @@
         @endcomponent
     @endslot
 
-    <p>You are invited by <strong>{{ $upload->owner->name }}</strong> to review an art work on <strong>{{ config('app.name') }}</strong>.
+    <p>You are invited <strong>{{ $upload->owner->email ? 'by' . $upload->owner->name : '' }}</strong> to review an art work on <strong>{{ config('app.name') }}</strong>.
         <br>Please click the link below to contribute.
     </p>
     @component('mail::panel')

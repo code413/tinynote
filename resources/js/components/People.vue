@@ -50,7 +50,15 @@
                     return
                 }
 
-                this.invitees.push({email: this.newEmail})
+                this.invitees.push({
+                    user:{
+                        email: this.newEmail
+                    }
+                })
+
+                axios.post('/invitees/' + this.upload.uuid, {email: this.newEmail})
+                    .then(function (response) {})
+                    .catch(function (error) {console.log(error)})
 
                 this.newEmail = ''
             },
