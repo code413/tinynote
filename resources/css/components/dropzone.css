@@ -27,3 +27,15 @@
   color: white;
   text-align: center;
 }
+
+.vue-dropzone>.dz-preview .dz-remove{
+    bottom: 3rem !important;
+}
+
+.dropzone .dz-preview .dz-image img{
+    margin: auto;
+}
+
+.dropzone .dz-preview.dz-image-preview{
+    background: transparent !important;
+}

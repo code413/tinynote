@@ -1120,6 +1120,18 @@ label{
   color: white;
   text-align: center;
 }
+
+.vue-dropzone>.dz-preview .dz-remove{
+  bottom: 3rem !important;
+}
+
+.dropzone .dz-preview .dz-image img{
+  margin: auto;
+}
+
+.dropzone .dz-preview.dz-image-preview{
+  background: transparent !important;
+}
 .space-y-0 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
