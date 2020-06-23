@@ -1,7 +1,7 @@
 @extends('auth.layout')
 
-@section('main')
-    <div class="container mx-auto">
+@section('content')
+    <div class="container relative z-10 mx-auto">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
 
@@ -11,7 +11,7 @@
                     </div>
                 @endif
 
-                <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
+                <div class="flex flex-col break-words bg-white border border-2 rounded shadow-xl">
                     <div class="font-semibold bg-purple-900 text-white py-3 px-6 mb-0">
                         {{ __('Verify Your Email Address') }}
                     </div>
@@ -22,7 +22,7 @@
                         </p>
 
                         <p class="leading-normal mt-6">
-                            {{ __('If you did not receive the email') }}, <a class="text-blue-500 hover:text-blue-700 no-underline" onclick="event.preventDefault(); document.getElementById('resend-verification-form').submit();">{{ __('click here to request another') }}</a>.
+                            {{ __('If you did not receive the email') }}, <a class="text-purple-600 hover:text-purple-700 no-underline" onclick="event.preventDefault(); document.getElementById('resend-verification-form').submit();">{{ __('click here to request another') }}</a>.
                         </p>
 
                         <form id="resend-verification-form" method="POST" action="{{ route('verification.resend') }}" class="hidden">

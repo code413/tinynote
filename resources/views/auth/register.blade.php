@@ -1,10 +1,10 @@
 @extends('auth.layout')
 
-@section('main')
-    <div class="container mx-auto">
+@section('content')
+    <div class="container relative z-10 mx-auto">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
-                <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
+                <div class="flex flex-col break-words bg-white border border-2 rounded shadow-xl">
 
                     <div class="font-semibold bg-purple-900 text-white py-3 px-6 mb-0">
                         {{ __('Register') }}
@@ -64,20 +64,19 @@
                         </div>
 
                         <div class="flex flex-wrap">
-                            <button type="submit" class="inline-block align-middle text-center select-none border font-bold whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-gray-100 bg-purple-500 hover:bg-purple-700">
+                            <button type="submit" class="inline-block align-middle text-center select-none border font-bold whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-gray-100 bg-purple-600 hover:bg-purple-700">
                                 {{ __('Register') }}
                             </button>
-
-                            <p class="w-full text-xs text-center text-gray-700 mt-8 -mb-4">
-                                {{ __('Already have an account?') }}
-                                <a class="text-blue-500 hover:text-blue-700 no-underline" href="{{ route('login') }}">
-                                    {{ __('Login') }}
-                                </a>
-                            </p>
                         </div>
                     </form>
-
                 </div>
+
+                <p class="w-full text-center text-gray-600 mt-3">
+                    {{ __('Already have an account?') }}
+                    <a class="text-purple-600 hover:text-purple-700 no-underline" href="{{ route('login') }}">
+                        {{ __('Login') }}
+                    </a>
+                </p>
             </div>
         </div>
     </div>

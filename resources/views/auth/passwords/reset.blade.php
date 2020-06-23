@@ -1,10 +1,10 @@
 @extends('auth.layout')
 
-@section('main')
-    <div class="container mx-auto">
+@section('content')
+    <div class="container relative z-10 mx-auto">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
-                <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
+                <div class="flex flex-col break-words bg-white border border-2 rounded shadow-xl">
 
                     <div class="font-semibold bg-purple-900 text-white py-3 px-6 mb-0">
                         {{ __('Reset Password') }}
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="flex flex-wrap">
-                            <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-gray-100 font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-gray-100 font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 {{ __('Reset Password') }}
                             </button>
                         </div>

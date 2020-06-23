@@ -4,29 +4,9 @@
 
 @section('main')
     <div class="relative bg-orange-100">
-        <div style="" class="px-8 py-4">
-            <header class="flex items-center">
-                <div class="mb-4 font-bold">Tiny Note</div>
+        @include('partials.header')
 
-                <div class="ml-auto">
-                    @guest
-                        <a href="{{ route('login') }}">Login</a>
-                    @endguest
-
-                    @auth
-                        <div class="flex">
-                            <form class="mx-5" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button>Logout</button>
-                            </form>
-
-                            <a href="{{ route('uploads.index') }}">Your List</a>
-                        </div>
-                    @endauth
-                </div>
-            </header>
-
-
+        <div class="px-8 py-4">
             <div class="container items-center text-center" style="min-height:20rem;">
                 <h1 class="text-6xl font-bold max-w-2xl mx-auto pt-16" style="line-height:1">Get Instant Feedback On Your Designs.</h1>
                 <div class="mb-5">No registrations required.</div>
