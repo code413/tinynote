@@ -2321,6 +2321,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -2372,6 +2373,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -39027,8 +39032,8 @@ var render = function() {
           _vm.upload.owner.email == null
             ? _c("div", { staticClass: "p-4 border-b" }, [
                 _c("div", [
-                  _vm._v("The owner of the image"),
-                  _c("br"),
+                  _vm._v("Owner "),
+                  _c("small", [_vm._v("(Not registered yet)")]),
                   _vm._v(" "),
                   _vm.upload.owner_id === _vm.$attrs.authUser.id
                     ? _c(
@@ -39052,7 +39057,10 @@ var render = function() {
           _vm._l(_vm.invitees, function(invitee, index) {
             return _c("person", {
               key: index,
-              attrs: { email: invitee.user.email }
+              attrs: {
+                email: invitee.user.email,
+                authUser: _vm.$attrs.authUser
+              }
             })
           })
         ],
@@ -39130,8 +39138,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "p-4 border-b" }, [
-    _c("div", { domProps: { textContent: _vm._s(_vm.email) } })
+  return _c("div", { staticClass: "p-4 border-b flex items-center" }, [
+    _c("div", { domProps: { textContent: _vm._s(_vm.email) } }),
+    _vm._v(" "),
+    _vm.$attrs.authUser.email === _vm.email
+      ? _c(
+          "a",
+          {
+            staticClass:
+              "bg-gray-800 text-white rounded cursor-pointer text-sm p-1 m-2",
+            attrs: { href: "/users/edit" }
+          },
+          [_vm._v("\n        Edit Profile")]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []

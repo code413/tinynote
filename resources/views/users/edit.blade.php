@@ -7,7 +7,7 @@
                 <div class="flex flex-col break-words bg-white border border-2 rounded shadow-xl">
 
                     <div class="font-semibold bg-purple-900 text-white py-3 px-6 mb-0">
-                        Save
+                        Register
                     </div>
 
                     <form class="w-full p-6" method="POST" action="{{ route('users.update', [auth()->user()]) }}">
@@ -19,7 +19,7 @@
                                 {{ __('Name') }}:
                             </label>
 
-                            <input id="name" type="text" class="form-input w-full @error('name')  border-red-500 @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <input id="name" type="text" class="form-input w-full @error('name')  border-red-500 @enderror" name="name" value="{{ auth()->user()->name ? auth()->user()->name : old('email') }}" required autocomplete="name" autofocus>
 
                             @error('name')
                             <p class="text-red-500 text-xs italic mt-4">
@@ -33,7 +33,7 @@
                                 {{ __('E-Mail Address') }}:
                             </label>
 
-                            <input id="email" type="email" class="form-input w-full @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            <input id="email" type="email" class="form-input w-full @error('email') border-red-500 @enderror" name="email" value="{{ auth()->user()->email ?  auth()->user()->email : old('email') }}" required autocomplete="email">
 
                             @error('email')
                             <p class="text-red-500 text-xs italic mt-4">

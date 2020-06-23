@@ -2,7 +2,7 @@
     <div class="flex-1 flex flex-col">
         <div class="flex-1 p-4">
             <div v-if="upload.owner.email == null" class="p-4 border-b">
-                <div>The owner of the image<br>
+                <div>Owner <small>(Not registered yet)</small>
                     <a v-if="upload.owner_id === $attrs.authUser.id"
                        class="bg-gray-800 text-white rounded cursor-pointer text-sm p-1 my-2" href="/users/edit">
                         Save</a>
@@ -16,6 +16,7 @@
             <person v-for="(invitee, index) in invitees"
                     :email="invitee.user.email"
                     :key="index"
+                    :authUser="$attrs.authUser"
             ></person>
         </div>
 
