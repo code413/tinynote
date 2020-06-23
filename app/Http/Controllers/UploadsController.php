@@ -65,6 +65,8 @@ class UploadsController extends Controller
 
     public function show(Upload $upload)
     {
+        $this->authorize('manage', $upload);
+
         if (request()->has('token')) {
             $userId = Invitee::where('token', request('token'))->first()->user_id;
 
