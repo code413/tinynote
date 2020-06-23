@@ -3,7 +3,7 @@
 @section('superclass', 'bg-gray-100')
 
 @section('main')
-    <div class="relative" style="background: #fcf0e3;">
+    <div class="relative bg-orange-100">
         <div style="" class="px-8 py-4">
             <header class="flex items-center">
                 <div class="mb-4 font-bold">Tiny Note</div>
