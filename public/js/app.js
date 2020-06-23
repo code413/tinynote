@@ -2243,6 +2243,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {},
@@ -38828,10 +38829,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "flex flex-1 overflow-hidden editor" },
+    { staticClass: "block md:flex flex-1 overflow-x-hidden editor" },
     [
-      _c("div", { staticClass: "px-8 py-4 flex-grow flex  flex flex-col" }, [
-        _c("div", { staticClass: "flex" }, [
+      _c("div", { staticClass: "px-8 py-4 flex-grow flex flex-col" }, [
+        _c("div", { staticClass: "md:flex mb-10 flex-wrap" }, [
           _c("div", { staticClass: "text-blue-900 flex" }, [
             _c("div", {
               staticClass: "mr-3",
@@ -38870,7 +38871,7 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "ml-auto" }, [
+          _c("div", { staticClass: "md:ml-auto mt-4 md:mt-0" }, [
             _c(
               "a",
               {
@@ -39190,8 +39191,7 @@ var render = function() {
     "div",
     {
       staticClass: "sidebar bg-white shadow-sm flex flex-col overflow-auto",
-      class: { open: _vm.open },
-      staticStyle: { width: "20rem", "min-width": "20rem" }
+      class: { open: _vm.open }
     },
     [_vm._t("default")],
     2

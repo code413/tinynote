@@ -1,9 +1,9 @@
 <template>
-    <div class="flex flex-1 overflow-hidden editor">
+    <div class="block md:flex flex-1 overflow-x-hidden editor">
         <!-- Content -->
-        <div class="px-8 py-4 flex-grow flex  flex flex-col">
+        <div class="px-8 py-4 flex-grow flex flex-col">
             <!-- Header -->
-            <div class="flex">
+            <div class="md:flex mb-10 flex-wrap">
                 <div class="text-blue-900 flex">
                     <div data-feather="file" class="mr-3"></div>
                     <input type="text"
@@ -12,7 +12,8 @@
                            @blur="titleUpdate()"
                            v-autowidth="{maxWidth: '400px', minWidth: '10px'}" placeholder="Document Title">
                 </div>
-                <div class="ml-auto">
+
+                <div class="md:ml-auto mt-4 md:mt-0">
                     <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">People
                         <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
                             <portal-target name="people-count" slim></portal-target>

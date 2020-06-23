@@ -22,6 +22,7 @@ body{
 @import "components/btn.css";
 @import "components/form-control.css";
 @import "components/dropzone.css";
+@import "components/sidebar.css";
 
 
 @import "~tailwindcss/utilities.css";
