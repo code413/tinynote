@@ -1933,7 +1933,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     time: {
       "default": ''
-    }
+    },
+    isAuthor: ''
+  },
+  data: function data() {
+    return {};
   },
   methods: {
     moment: function moment(time) {
@@ -1955,6 +1959,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
@@ -38537,7 +38542,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "bg-gray-200 p-4 rounded-lg flex flex-col mb-2" },
+    {
+      staticClass:
+        "p-4 rounded-large flex flex-col mb-2 bg-gray-200 rounded-bl-none",
+      class: { "bg-green-200 rounded-br-none rounded-bl-large": _vm.isAuthor }
+    },
     [
       _c("div", { domProps: { innerHTML: _vm._s(_vm.content) } }),
       _vm._v(" "),
@@ -38591,6 +38600,7 @@ var render = function() {
             attrs: {
               content: comment.body,
               author: comment.user.name,
+              isAuthor: _vm.$attrs.authUser.id == comment.user.id,
               time: comment.created_at
             },
             nativeOn: {
