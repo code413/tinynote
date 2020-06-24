@@ -13,10 +13,10 @@
             <div class="flex">
                 <form class="mx-5" action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button>Logout</button>
+                    <button class="text-gray-600">Logout</button>
                 </form>
 
-                <a href="{{ route('uploads.index') }}">Your List</a>
+                <a class="text-purple-600 border-b" href="{{ route('uploads.index') }}">Uploads</a>
             </div>
         @endauth
     </div>
