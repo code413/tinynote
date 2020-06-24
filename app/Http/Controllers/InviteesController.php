@@ -34,6 +34,6 @@ class InviteesController extends Controller
 
         Mail::to($email)->send(new InvitationSent($upload, $invitee));
 
-        return back()->with('message', 'Invitation has been sent.');
+        return ['message'=> ['Invitation has been emailed.']];
     }
 }

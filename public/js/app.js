@@ -2294,6 +2294,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 //
 //
 //
@@ -2328,6 +2334,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+var Notes = /*#__PURE__*/function () {
+  function Notes() {
+    _classCallCheck(this, Notes);
+
+    this.notes = {};
+  }
+
+  _createClass(Notes, [{
+    key: "get",
+    value: function get(field) {
+      if (this.notes[field]) {
+        return this.notes[field][0];
+      }
+    }
+  }, {
+    key: "record",
+    value: function record(notes) {
+      this.notes = notes;
+    }
+  }]);
+
+  return Notes;
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -2341,26 +2376,37 @@ __webpack_require__.r(__webpack_exports__);
     return {
       invitees: [],
       newEmail: '',
-      focused: false
+      focused: false,
+      notes: new Notes()
     };
   },
   methods: {
     add: function add() {
+      var _this = this;
+
+      this.errors = new Notes();
+
       if (this.newEmail.trim() === '') {
         return;
       }
 
-      this.invitees.push({
-        user: {
-          email: this.newEmail
-        }
-      });
       axios.post('/invitees/' + this.upload.uuid, {
         email: this.newEmail
-      }).then(function (response) {})["catch"](function (error) {
-        console.log(error);
+      }).then(function (response) {
+        _this.notes.record(response.data);
+
+        _this.invitees.push({
+          user: {
+            email: _this.newEmail
+          }
+        });
+
+        _this.newEmail = '';
+      })["catch"](function (error) {
+        _this.notes.record(error.response.data.errors);
+
+        _this.newEmail = '';
       });
-      this.newEmail = '';
     }
   },
   created: function created() {
@@ -39108,6 +39154,20 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _vm.notes.get("email")
+            ? _c("span", {
+                staticClass: "bg-red-200 p-2",
+                domProps: { textContent: _vm._s(_vm.notes.get("email")) }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.notes.get("message")
+            ? _c("span", {
+                staticClass: "bg-green-200 p-2",
+                domProps: { textContent: _vm._s(_vm.notes.get("message")) }
+              })
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "div",
             {
@@ -52201,8 +52261,8 @@ cash_dom__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Projects\annotation\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Projects\annotation\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Projects\annotation-image\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Projects\annotation-image\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

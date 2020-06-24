@@ -23,6 +23,11 @@
         <div class="border-t flex flex-col" :class="{'border-blue-500': focused}">
             <input type="text" class="p-4 w-full outline-none" placeholder="Enter an email..."
                    v-model="newEmail" ref="input">
+
+            <span v-if="notes.get('email')" class="bg-red-200 p-2" v-text="notes.get('email')"></span>
+
+            <span v-if="notes.get('message')" class="bg-green-200 p-2" v-text="notes.get('message')"></span>
+
             <div class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer"
                  @click="add">Add
             </div>
@@ -33,6 +38,22 @@
 </template>
 
 <script>
+    class Notes {
+        constructor () {
+            this.notes = {}
+        }
+
+        get (field) {
+            if (this.notes[field]) {
+                return this.notes[field][0]
+            }
+        }
+
+        record (notes) {
+            this.notes = notes
+        }
+    }
+
     export default {
         props: {
             data: {default: () => { return [] }},
@@ -43,25 +64,34 @@
                 invitees: [],
                 newEmail: '',
                 focused: false,
+                notes: new Notes()
             }
         },
         methods: {
             add () {
+                this.errors = new Notes()
+
                 if (this.newEmail.trim() === '') {
                     return
                 }
 
-                this.invitees.push({
-                    user:{
-                        email: this.newEmail
-                    }
-                })
-
                 axios.post('/invitees/' + this.upload.uuid, {email: this.newEmail})
-                    .then(function (response) {})
-                    .catch(function (error) {console.log(error)})
+                    .then(response => {
+                        this.notes.record(response.data)
 
-                this.newEmail = ''
+                        this.invitees.push({
+                            user: {
+                                email: this.newEmail
+                            }
+                        })
+
+                        this.newEmail = ''
+                    })
+                    .catch(error => {
+                        this.notes.record(error.response.data.errors)
+
+                        this.newEmail = ''
+                    })
             },
         },
         created () {
