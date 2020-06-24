@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->string('coordinate_y')->nullable();
             $table->unsignedBigInteger('upload_id');
             $table->unsignedBigInteger('user_id');
+            $table->boolean('active')->default(false);
             $table->timestamps();
 
             $table->foreign('upload_id')->references('id')->on('uploads')->onDelete('CASCADE');

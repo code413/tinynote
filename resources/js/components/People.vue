@@ -22,7 +22,7 @@
 
         <div class="border-t flex flex-col" :class="{'border-blue-500': focused}">
             <input type="text" class="p-4 w-full outline-none" placeholder="Enter an email..."
-                   v-model="newEmail" ref="input">
+                   v-model="newEmail" ref="input" @keyup.enter="add">
 
             <span v-if="notes.get('email')" class="bg-red-200 p-2" v-text="notes.get('email')"></span>
 
@@ -69,7 +69,7 @@
         },
         methods: {
             add () {
-                this.errors = new Notes()
+                this.notes = new Notes()
 
                 if (this.newEmail.trim() === '') {
                     return

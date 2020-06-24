@@ -16,7 +16,8 @@
 
         <div class="border-t flex flex-col" :class="{'border-blue-500': focused}">
             <input type="text" class="p-4 w-full outline-none" placeholder="Leave a comment..."
-                   v-model="newComment" ref="input" autofocus>
+                   v-model="newComment" ref="input" autofocus @keyup.enter="add">
+
             <div class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer"
                  @click="add">Send
             </div>

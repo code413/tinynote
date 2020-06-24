@@ -2008,6 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2384,7 +2385,7 @@ var Notes = /*#__PURE__*/function () {
     add: function add() {
       var _this = this;
 
-      this.errors = new Notes();
+      this.notes = new Notes();
 
       if (this.newEmail.trim() === '') {
         return;
@@ -38688,6 +38689,15 @@ var render = function() {
             },
             domProps: { value: _vm.newComment },
             on: {
+              keyup: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.add($event)
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -39145,6 +39155,15 @@ var render = function() {
             attrs: { type: "text", placeholder: "Enter an email..." },
             domProps: { value: _vm.newEmail },
             on: {
+              keyup: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.add($event)
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
