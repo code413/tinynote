@@ -6,7 +6,7 @@
     <div class="relative bg-orange-100">
         @include('partials.header')
 
-        <div class="px-8 py-4">
+        <div class="px-8 py-4" id="start">
             <div class="container items-center text-center" style="min-height:20rem;">
                 <h1 class="text-6xl font-bold max-w-2xl mx-auto pt-16" style="line-height:1">Get Instant Feedback On Your Designs.</h1>
                 <div class="mb-5">No registrations required.</div>
@@ -72,7 +72,7 @@
         <div class="container flex flex-col items-center text-center">
             <h3 class="text-3xl font-bold">Not sure yet? Try it out for free!</h3>
             <p>Tiny Note is available for free. No registrations required.</p>
-            <a href="" class="btn bg-white text-purple-900 hover:bg-purple-100">Upload Your First Visual</a>
+            <a href="#start" class="btn bg-white text-purple-900 hover:bg-purple-100">Upload Your First Visual</a>
         </div>
     </div>
 

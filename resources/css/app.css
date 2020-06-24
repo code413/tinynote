@@ -6,6 +6,10 @@
 
 @import '~sailui/components.css';
 
+html{
+  scroll-behavior: smooth;
+}
+
 html, body, main{
   height:100%;
 }

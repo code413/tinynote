@@ -81660,6 +81660,10 @@ label{
     transition-delay: 1000ms
   }
 }
+html{
+  scroll-behavior: smooth;
+}
+
 html, body, main{
   height:100%;
 }
