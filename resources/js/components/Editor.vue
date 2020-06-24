@@ -96,10 +96,10 @@
 <style>
     .slide-fade-enter-active {
         transition: all .3s ease;
+        opacity: 1;
     }
 
     .slide-fade-enter, .slide-fade-leave-active {
-        transform: translateX(10px);
         opacity: 0;
     }
 </style>

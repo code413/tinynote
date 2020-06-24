@@ -80,7 +80,7 @@ class UploadsController extends Controller
         }
 
         $this->authorize('manage', $upload);
-        
+
         $upload->load(['comments.user', 'invitees.user', 'owner']);
 
         return view('uploads.show', ['upload' => $upload]);

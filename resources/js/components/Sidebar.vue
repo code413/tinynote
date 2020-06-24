@@ -21,4 +21,16 @@
     .sidebar.open{
         margin-right:0;
     }
+
+    .sidebar{
+        width:20rem;
+        min-width:20rem
+    }
+
+    @media only screen and (max-width:767px) {
+        .sidebar{
+            width:100%;
+            min-width:100%
+        }
+    }
 </style>
