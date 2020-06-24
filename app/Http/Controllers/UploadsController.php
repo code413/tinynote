@@ -65,8 +65,6 @@ class UploadsController extends Controller
 
     public function show(Upload $upload)
     {
-        $this->authorize('manage', $upload);
-
         if (request()->has('token')) {
             $userId = Invitee::where('token', request('token'))->first()->user_id;
 
@@ -81,6 +79,8 @@ class UploadsController extends Controller
             Auth::login($user, true);
         }
 
+        $this->authorize('manage', $upload);
+        
         $upload->load(['comments.user', 'invitees.user', 'owner']);
 
         return view('uploads.show', ['upload' => $upload]);

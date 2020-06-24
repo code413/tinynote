@@ -23,7 +23,6 @@ class UploadPolicy
             {
                 return true;
             }
-
         }
 
         return false;
