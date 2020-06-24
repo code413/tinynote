@@ -21,7 +21,10 @@
             <div class="flex pt-16 items-center">
                 <div class="w-1/3">
                     <h2 class="text-4xl font-bold">Upload your visual.</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum neque nobis, nostrum officia provident rem saepe sed vero voluptas? Aspernatur dolorum ea ipsa nobis, odit omnis quod repudiandae voluptate voluptates?</p>
+                    <p>
+                        Upload your visual and enter your client's email. You can invite as many people as you want.
+                        Each email you enter will receive a secure link to access and comment on your visual.
+                    </p>
                 </div>
                 <div class="w-2/3">
                     <img src="{{ url('img/pablo-downloading.png') }}" class="max-w-2xl w-full mx-auto" alt="">
@@ -37,8 +40,13 @@
                     <img src="{{ url('img/pablo-sign-up.png') }}" class="max-w-2xl w-full mx-auto" alt="">
                 </div>
                 <div class="w-1/3">
-                    <h2 class="text-4xl font-bold">Receive comments from your client in real time.</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum neque nobis, nostrum officia provident rem saepe sed vero voluptas? Aspernatur dolorum ea ipsa nobis, odit omnis quod repudiandae voluptate voluptates?</p>
+                    <h2 class="text-4xl font-bold">
+                        Receive comments from your client in real time.
+                    </h2>
+                    <p>
+                        Your client gets to access and comment on your visual without needing to create an account.
+                        You'll receive their comments in real time without reloading the page.
+                    </p>
                 </div>
             </div>
         </div>
@@ -49,7 +57,9 @@
             <div class="flex pt-16 items-center">
                 <div class="w-1/3">
                     <h2 class="text-4xl font-bold">Get approval and move on to the next job.</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum neque nobis, nostrum officia provident rem saepe sed vero voluptas? Aspernatur dolorum ea ipsa nobis, odit omnis quod repudiandae voluptate voluptates?</p>
+                    <p>
+                        Upload as many revisions as you need until you have your client's approval.
+                    </p>
                 </div>
                 <div class="w-2/3">
                     <img src="{{ url('img/pablo-order-completed.png') }}" class="max-w-2xl w-full mx-auto" alt="">
