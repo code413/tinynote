@@ -13,7 +13,7 @@
                            v-autowidth="{maxWidth: '400px', minWidth: '10px'}" placeholder="Document Title">
                 </div>
 
-                <div class="md:ml-auto mt-4 md:mt-0 flex">
+                <div class="md:ml-auto mt-4 md:mt-0 hidden md:flex">
                     <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">
                         People
                         <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
@@ -44,6 +44,26 @@
             </div>
         </div>
 
+
+        <div class="px-8 py-4 md:ml-auto mt-4 md:mt-0 flex md:hidden">
+            <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">
+                People
+                <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
+                            <portal-target name="people-count" slim></portal-target>
+                        </span>
+            </a>
+
+            <a href="" class="mr-4" @click.prevent="toggleSidebar('comments')">
+                Comments
+                <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
+                            <portal-target name="comments-count" slim></portal-target>
+                        </span>
+            </a>
+
+            <a href="" @click.prevent="toggleSidebar('links')">
+                <i data-feather="menu"></i>
+            </a>
+        </div>
 
         <sidebar :open="sidebar">
             <transition name="slide-fade">

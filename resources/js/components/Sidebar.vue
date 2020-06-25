@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar bg-white shadow-sm flex flex-col overflow-auto" :class="{open: open}">
+    <div class="sidebar shadow-sm flex flex-col overflow-auto" :class="{'open bg-white': open }">
         <slot></slot>
     </div>
 </template>

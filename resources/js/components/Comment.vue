@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 rounded-large flex flex-col mb-2 bg-gray-200 rounded-bl-none" :class="{ 'bg-green-200 rounded-br-none rounded-bl-large' : isAuthor}">
+    <div class="comment p-4 rounded-large flex flex-col mb-2 bg-gray-200 rounded-bl-none" :class="{ 'bg-green-200 rounded-br-none rounded-bl-large' : isAuthor}">
         <div v-html="content"></div>
 
         <div class="mt-4 flex">
@@ -32,3 +32,9 @@
         },
     }
 </script>
+
+<style>
+    .comment{
+        overflow-wrap: break-word;
+    }
+</style>
