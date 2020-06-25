@@ -1,7 +1,7 @@
 <template>
     <div class="block md:flex flex-1 overflow-x-hidden editor">
         <!-- Content -->
-        <div class="px-8 py-4 flex-grow flex flex-col">
+        <div class="px-8 py-4 flex-grow flex flex-col overflow-auto">
             <!-- Header -->
             <div class="md:flex mb-10 flex-wrap">
                 <div class="text-blue-900 flex">

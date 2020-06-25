@@ -38936,123 +38936,132 @@ var render = function() {
     "div",
     { staticClass: "block md:flex flex-1 overflow-x-hidden editor" },
     [
-      _c("div", { staticClass: "px-8 py-4 flex-grow flex flex-col" }, [
-        _c("div", { staticClass: "md:flex mb-10 flex-wrap" }, [
-          _c("div", { staticClass: "text-blue-900 flex" }, [
-            _c("div", {
-              staticClass: "mr-3",
-              attrs: { "data-feather": "file" }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.title,
-                  expression: "title"
-                },
-                {
-                  name: "autowidth",
-                  rawName: "v-autowidth",
-                  value: { maxWidth: "400px", minWidth: "10px" },
-                  expression: "{maxWidth: '400px', minWidth: '10px'}"
-                }
-              ],
-              staticClass: "bg-transparent outline-none border-b border-dashed",
-              attrs: { type: "text", placeholder: "Document Title" },
-              domProps: { value: _vm.title },
-              on: {
-                blur: function($event) {
-                  return _vm.titleUpdate()
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.title = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "md:ml-auto mt-4 md:mt-0" }, [
-            _c(
-              "a",
-              {
-                staticClass: "mr-4",
-                attrs: { href: "" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.toggleSidebar("people")
-                  }
-                }
-              },
-              [
-                _vm._v("People\n                    "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full"
-                  },
-                  [
-                    _c("portal-target", {
-                      attrs: { name: "people-count", slim: "" }
-                    })
-                  ],
-                  1
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                attrs: { href: "" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.toggleSidebar("comments")
-                  }
-                }
-              },
-              [
-                _vm._v("Comments\n                    "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full"
-                  },
-                  [
-                    _c("portal-target", {
-                      attrs: { name: "comments-count", slim: "" }
-                    })
-                  ],
-                  1
-                )
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-1 items-center justify-center" }, [
-          _c(
-            "div",
-            { staticClass: "relative" },
-            [
-              _c("img", {
-                attrs: { src: _vm.upload.url, alt: _vm.upload.name }
+      _c(
+        "div",
+        { staticClass: "px-8 py-4 flex-grow flex flex-col overflow-auto" },
+        [
+          _c("div", { staticClass: "md:flex mb-10 flex-wrap" }, [
+            _c("div", { staticClass: "text-blue-900 flex" }, [
+              _c("div", {
+                staticClass: "mr-3",
+                attrs: { "data-feather": "file" }
               }),
               _vm._v(" "),
-              _c("portal-target", { attrs: { name: "dots", slim: "" } })
-            ],
-            1
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.title,
+                    expression: "title"
+                  },
+                  {
+                    name: "autowidth",
+                    rawName: "v-autowidth",
+                    value: { maxWidth: "400px", minWidth: "10px" },
+                    expression: "{maxWidth: '400px', minWidth: '10px'}"
+                  }
+                ],
+                staticClass:
+                  "bg-transparent outline-none border-b border-dashed",
+                attrs: { type: "text", placeholder: "Document Title" },
+                domProps: { value: _vm.title },
+                on: {
+                  blur: function($event) {
+                    return _vm.titleUpdate()
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.title = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "md:ml-auto mt-4 md:mt-0" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "mr-4",
+                  attrs: { href: "" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.toggleSidebar("people")
+                    }
+                  }
+                },
+                [
+                  _vm._v("People\n                    "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full"
+                    },
+                    [
+                      _c("portal-target", {
+                        attrs: { name: "people-count", slim: "" }
+                      })
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  attrs: { href: "" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.toggleSidebar("comments")
+                    }
+                  }
+                },
+                [
+                  _vm._v("Comments\n                    "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full"
+                    },
+                    [
+                      _c("portal-target", {
+                        attrs: { name: "comments-count", slim: "" }
+                      })
+                    ],
+                    1
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "flex flex-1 items-center justify-center" },
+            [
+              _c(
+                "div",
+                { staticClass: "relative" },
+                [
+                  _c("img", {
+                    attrs: { src: _vm.upload.url, alt: _vm.upload.name }
+                  }),
+                  _vm._v(" "),
+                  _c("portal-target", { attrs: { name: "dots", slim: "" } })
+                ],
+                1
+              )
+            ]
           )
-        ])
-      ]),
+        ]
+      ),
       _vm._v(" "),
       _c(
         "sidebar",
