@@ -13,17 +13,23 @@
                            v-autowidth="{maxWidth: '400px', minWidth: '10px'}" placeholder="Document Title">
                 </div>
 
-                <div class="md:ml-auto mt-4 md:mt-0">
-                    <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">People
+                <div class="md:ml-auto mt-4 md:mt-0 flex">
+                    <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">
+                        People
                         <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
                             <portal-target name="people-count" slim></portal-target>
                         </span>
                     </a>
 
-                    <a href="" class="" @click.prevent="toggleSidebar('comments')">Comments
+                    <a href="" class="mr-4" @click.prevent="toggleSidebar('comments')">
+                        Comments
                         <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
                             <portal-target name="comments-count" slim></portal-target>
                         </span>
+                    </a>
+
+                    <a href="" @click.prevent="toggleSidebar('links')">
+                        <i data-feather="menu"></i>
                     </a>
                 </div>
             </div>
@@ -41,56 +47,62 @@
 
         <sidebar :open="sidebar">
             <transition name="slide-fade">
-                <comments :data="upload.comments" :upload="upload" :authUser="authUser" v-show="sidebar === 'comments'" @show="showSidebar('comments')"></comments>
+                <comments :data="upload.comments" :upload="upload" :authUser="authUser" v-show="sidebar === 'comments'"
+                          @show="showSidebar('comments')"></comments>
             </transition>
 
             <transition name="slide-fade">
-                <people :data="upload.invitees" :upload="upload" :authUser="authUser" v-show="sidebar === 'people'"></people>
+                <people :data="upload.invitees" :upload="upload" :authUser="authUser"
+                        v-show="sidebar === 'people'"></people>
+            </transition>
+
+            <transition name="slide-fade">
+                <links v-show="sidebar === 'links'"></links>
             </transition>
         </sidebar>
     </div>
 </template>
 
 <script>
-    export default {
-        props: {
-            data: {},
-            auth_user:{},
-        },
-        data () {
-            return {
-                title: '',
-                sidebar: null,
-                upload: {},
-                show: true,
-                authUser:'',
-            }
-        },
-        methods: {
-            toggleSidebar (name) {
-                if (this.sidebar === name) {
-                    return this.sidebar = null
-                }
-
-                this.sidebar = name
-            },
-            showSidebar (name) {
-                this.sidebar = name
-            },
-            titleUpdate() {
-                axios.post('/uploads/' + this.upload.uuid, {name:this.title, _method: 'put'})
-                    .then(function (response) {})
-                    .catch(function (error) {})
-            }
-        },
-        created () {
-            this.upload = this.data
-
-            this.authUser = this.auth_user
-
-            this.title = this.upload.name
+  export default {
+    props: {
+      data: {},
+      auth_user: {},
+    },
+    data () {
+      return {
+        title: '',
+        sidebar: null,
+        upload: {},
+        show: true,
+        authUser: '',
+      }
+    },
+    methods: {
+      toggleSidebar (name) {
+        if (this.sidebar === name) {
+          return this.sidebar = null
         }
+
+        this.sidebar = name
+      },
+      showSidebar (name) {
+        this.sidebar = name
+      },
+      titleUpdate () {
+        axios.post('/uploads/' + this.upload.uuid, {name: this.title, _method: 'put'})
+          .then(function (response) {})
+          .catch(function (error) {})
+      }
+    },
+    created () {
+      this.upload = this.data
+
+      this.authUser = this.auth_user
+
+      this.title = this.upload.name
     }
+  }
 </script>
 
 <style>
