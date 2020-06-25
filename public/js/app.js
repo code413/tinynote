@@ -2105,8 +2105,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['x', 'y']
+  props: ['x', 'y'],
+  data: function data() {
+    return {
+      glow: true
+    };
+  },
+  created: function created() {
+    setInterval(function () {
+      this.glow = !this.glow;
+    }.bind(this), 2000);
+  }
 });
 
 /***/ }),
@@ -3932,7 +3944,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.dot:after {\n    content: \" \";\n    position: absolute;\n    top: -0.4rem;\n    left: -0.4rem;\n    width: calc(100% + 0.8rem);\n    height: calc(100% + 0.8rem);\n    background: rgba(250, 0, 0, 0.2);\n    border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n.dot{\n    transition: border 1s linear, box-shadow 1s linear;\n    box-shadow: none;\n}\n.dot.glow{\n    box-shadow: 0 0 10px 3px #C53030;\n    transition: border 1s linear, box-shadow 1s linear;\n}\n", ""]);
 
 // exports
 
@@ -38956,6 +38968,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {
     staticClass: "dot p-2 bg-red-700 absolute rounded-full cursor-pointer",
+    class: { glow: _vm.glow },
     staticStyle: { "margin-left": "-0.5rem", "margin-top": "-0.5rem" },
     style: { top: _vm.y + "%", left: _vm.x + "%" }
   })

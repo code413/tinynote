@@ -1,24 +1,36 @@
 <template>
-    <div class="dot p-2 bg-red-700 absolute rounded-full cursor-pointer" style="margin-left: -0.5rem; margin-top: -0.5rem"
+    <div class="dot p-2 bg-red-700 absolute rounded-full cursor-pointer"
+         :class="{'glow' : glow}"
+         style="margin-left: -0.5rem; margin-top: -0.5rem"
          :style="{top: y + '%', left: x + '%'}"
     ></div>
 </template>
 
 <script>
-  export default {
-    props: ['x', 'y']
-  }
+    export default {
+        props: ['x', 'y'],
+        data () {
+            return {
+                glow: true
+            }
+        },
+        created () {
+            setInterval(function () {
+                this.glow = !this.glow
+
+            }.bind(this), 2000)
+        }
+    }
 </script>
 
 <style>
-    .dot:after {
-        content: " ";
-        position: absolute;
-        top: -0.4rem;
-        left: -0.4rem;
-        width: calc(100% + 0.8rem);
-        height: calc(100% + 0.8rem);
-        background: rgba(250, 0, 0, 0.2);
-        border-radius: 50%;
+    .dot{
+        transition: border 1s linear, box-shadow 1s linear;
+        box-shadow: none;
+    }
+
+    .dot.glow{
+        box-shadow: 0 0 10px 3px #C53030;
+        transition: border 1s linear, box-shadow 1s linear;
     }
 </style>
