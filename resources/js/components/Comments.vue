@@ -50,6 +50,9 @@
 
 <script>
     import moment from 'moment'
+    import Echo from 'laravel-echo'
+
+    window.Pusher = require('pusher-js')
 
     export default {
         props: {
@@ -83,7 +86,11 @@
                     comment.coordinate_x = this.newDot.coordinate_x
                     comment.coordinate_y = this.newDot.coordinate_y
 
-                    requestData = {coordinateX: this.newDot.coordinate_x, coordinateY: this.newDot.coordinate_y, body: this.newComment}
+                    requestData = {
+                        coordinateX: this.newDot.coordinate_x,
+                        coordinateY: this.newDot.coordinate_y,
+                        body: this.newComment
+                    }
                 }
 
                 this.comments.push(comment)
@@ -118,11 +125,23 @@
                 this.focused = false
             },
             now () {
-                return moment().format();
+                return moment().format()
             }
         },
         created () {
             this.comments = this.data
+
+            window.Echo = new Echo({
+                broadcaster: 'pusher',
+                key: process.env.MIX_PUSHER_APP_KEY,
+                cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+                encrypted: true,
+            })
+
+            window.Echo.private('comments.' + this.$attrs.upload.id)
+                .listen('CommentCreated', e => {
+                    this.comments.push(e.comment)
+                })
         }
     }
 </script>

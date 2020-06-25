@@ -84,45 +84,45 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      data: {},
-      auth_user: {},
-    },
-    data () {
-      return {
-        title: '',
-        sidebar: null,
-        upload: {},
-        show: true,
-        authUser: '',
-      }
-    },
-    methods: {
-      toggleSidebar (name) {
-        if (this.sidebar === name) {
-          return this.sidebar = null
+    export default {
+        props: {
+            data: {},
+            auth_user: {},
+        },
+        data () {
+            return {
+                title: '',
+                sidebar: null,
+                upload: {},
+                show: true,
+                authUser: '',
+            }
+        },
+        methods: {
+            toggleSidebar (name) {
+                if (this.sidebar === name) {
+                    return this.sidebar = null
+                }
+
+                this.sidebar = name
+            },
+            showSidebar (name) {
+                this.sidebar = name
+            },
+            titleUpdate () {
+                axios.post('/uploads/' + this.upload.uuid, {name: this.title, _method: 'put'})
+                    .then(function (response) {})
+                    .catch(function (error) {})
+            }
+        },
+        created () {
+            this.upload = this.data
+
+            this.authUser = this.auth_user
+
+            this.title = this.upload.name
         }
-
-        this.sidebar = name
-      },
-      showSidebar (name) {
-        this.sidebar = name
-      },
-      titleUpdate () {
-        axios.post('/uploads/' + this.upload.uuid, {name: this.title, _method: 'put'})
-          .then(function (response) {})
-          .catch(function (error) {})
-      }
-    },
-    created () {
-      this.upload = this.data
-
-      this.authUser = this.auth_user
-
-      this.title = this.upload.name
     }
-  }
 </script>
 
 <style>

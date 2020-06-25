@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CommentCreated;
 use App\Models\Upload;
 
 class CommentsController extends Controller
@@ -15,8 +16,9 @@ class CommentsController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
+        event(new CommentCreated($comment));
+
         return response($comment->id, 200)
             ->header('Content-Type', 'text/plain');
-
     }
 }

@@ -1,7 +1,7 @@
 window.app ={
     init(){
         require('./bootstrap');
-        require('./utilities/comments')
+        // require('./utilities/comments')
         // require('./components/clipboard')
     }
 }

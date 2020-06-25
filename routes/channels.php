@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Upload;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -14,5 +15,18 @@ use Illuminate\Support\Facades\Broadcast;
 */
 
 Broadcast::channel('comments.{uploadId}', function ($user, $uploadId) {
-    return true;
+
+    $upload = Upload::findOrFail($uploadId);
+
+    if ($user->id == $upload->owner_id) {
+        return true;
+    }
+
+    foreach ($upload->invitees as $invitee) {
+        if ($user->id == $invitee->user_id) {
+            return true;
+        }
+    }
+
+    return false;
 });
