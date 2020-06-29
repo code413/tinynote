@@ -3,8 +3,8 @@
         <div v-text="email"></div>
 
         <a v-if="$attrs.authUser.email === email"
-           class="bg-gray-800 text-white rounded cursor-pointer text-sm p-1 m-2" href="/users/edit">
-            Edit Profile</a>
+           href="/users/edit" title="Edit your profile">
+            <i data-feather="edit" class="ml-3"></i></a>
     </div>
 </template>
 

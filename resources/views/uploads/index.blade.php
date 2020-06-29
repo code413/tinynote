@@ -1,5 +1,7 @@
 @extends('auth.layout')
 
+@section('title', "- Your Uploads")
+
 @section('superclass', 'bg-gray-100')
 
 @section('content')

@@ -18,6 +18,12 @@ class UsersController extends Controller
 
     public function update(User $user)
     {
+        request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
         $user->update([
             'name' => request('name'),
             'email' => request('email'),

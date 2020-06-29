@@ -2423,7 +2423,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 //
 //
 //
-//
 var Notes = /*#__PURE__*/function () {
   function Notes() {
     _classCallCheck(this, Notes);
@@ -38108,19 +38107,27 @@ var render = function() {
         [
           _vm.upload.owner.email == null
             ? _c("div", { staticClass: "p-4 border-b" }, [
-                _c("div", [
+                _c("div", { staticClass: "flex items-center" }, [
                   _vm._v("Owner "),
-                  _c("small", [_vm._v("(Not registered yet)")]),
+                  _c("small", { staticClass: "ml-1" }, [
+                    _vm._v("(Not registered yet)")
+                  ]),
                   _vm._v(" "),
                   _vm.upload.owner_id === _vm.$attrs.authUser.id
                     ? _c(
                         "a",
                         {
-                          staticClass:
-                            "bg-gray-800 text-white rounded cursor-pointer text-sm p-1 my-2",
-                          attrs: { href: "/users/edit" }
+                          attrs: {
+                            href: "/users/edit",
+                            title: "Save the visual by registration"
+                          }
                         },
-                        [_vm._v("\n                    Save")]
+                        [
+                          _c("i", {
+                            staticClass: "ml-2",
+                            attrs: { "data-feather": "save" }
+                          })
+                        ]
                       )
                     : _vm._e()
                 ])
@@ -38244,12 +38251,8 @@ var render = function() {
     _vm.$attrs.authUser.email === _vm.email
       ? _c(
           "a",
-          {
-            staticClass:
-              "bg-gray-800 text-white rounded cursor-pointer text-sm p-1 m-2",
-            attrs: { href: "/users/edit" }
-          },
-          [_vm._v("\n        Edit Profile")]
+          { attrs: { href: "/users/edit", title: "Edit your profile" } },
+          [_c("i", { staticClass: "ml-3", attrs: { "data-feather": "edit" } })]
         )
       : _vm._e()
   ])

@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', "- $upload->name")
+
 @section('superclass', 'bg-gray-100')
 
 @section('main')

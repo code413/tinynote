@@ -2,10 +2,9 @@
     <div class="flex-1 flex flex-col">
         <div class="flex-1 p-4">
             <div v-if="upload.owner.email == null" class="p-4 border-b">
-                <div>Owner <small>(Not registered yet)</small>
-                    <a v-if="upload.owner_id === $attrs.authUser.id"
-                       class="bg-gray-800 text-white rounded cursor-pointer text-sm p-1 my-2" href="/users/edit">
-                        Save</a>
+                <div class="flex items-center">Owner <small class="ml-1">(Not registered yet)</small>
+                    <a v-if="upload.owner_id === $attrs.authUser.id" href="/users/edit" title="Save the visual by registration">
+                        <i data-feather="save" class="ml-2"></i></a>
                 </div>
             </div>
 
