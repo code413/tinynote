@@ -112,4 +112,11 @@ class UploadsController extends Controller
 
         return redirect()->back();
     }
+
+    public function destroy(Upload $upload)
+    {
+        $upload->delete();
+
+        return redirect()->back()->with('message', 'The ad successfully deleted.');
+    }
 }

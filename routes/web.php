@@ -12,6 +12,8 @@ Route::get('uploads/{upload}', 'UploadsController@show')->name('uploads.show');
 
 Route::put('/uploads/{upload}', 'UploadsController@update')->name('uploads.update');
 
+Route::delete('/uploads/{upload}', 'UploadsController@destroy')->name('uploads.delete');
+
 Route::post('/uploads/{upload}/comments', 'CommentsController@store')->name('comments.store');
 
 Route::get('/uploads', 'UploadsController@index')->name('uploads.index');
