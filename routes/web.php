@@ -24,6 +24,8 @@ Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
 
 Route::put('/users/{user}', 'UsersController@update')->name('users.update');
 
+Route::view('/terms', 'terms')->name('terms');
+
 Auth::routes();
 
 /*Route::get('mailable', function () {
