@@ -6,7 +6,7 @@
         </a>
         <a class="flex items-center p-4 border-b" href="/">
             <i data-feather="plus" class="mr-3"></i>
-            Upload Another Visual
+            Upload a Visual
         </a>
     </div>
 </template>

@@ -5,7 +5,9 @@
         <div class="mt-4 flex">
             <small class="text-gray-500" v-text="moment(time)"></small>
 
-            <small class="text-blue-500 ml-auto" v-text="author"></small>
+            <small v-if="isAuthor" class="text-blue-500 ml-auto">You</small>
+
+            <small v-else class="text-blue-500 ml-auto" v-text="author"></small>
         </div>
     </div>
 </template>

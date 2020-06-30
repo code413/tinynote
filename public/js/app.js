@@ -1922,6 +1922,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2385,6 +2387,14 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37430,10 +37440,14 @@ var render = function() {
           domProps: { textContent: _vm._s(_vm.moment(_vm.time)) }
         }),
         _vm._v(" "),
-        _c("small", {
-          staticClass: "text-blue-500 ml-auto",
-          domProps: { textContent: _vm._s(_vm.author) }
-        })
+        _vm.isAuthor
+          ? _c("small", { staticClass: "text-blue-500 ml-auto" }, [
+              _vm._v("You")
+            ])
+          : _c("small", {
+              staticClass: "text-blue-500 ml-auto",
+              domProps: { textContent: _vm._s(_vm.author) }
+            })
       ])
     ]
   )
@@ -38070,7 +38084,7 @@ var staticRenderFns = [
         { staticClass: "flex items-center p-4 border-b", attrs: { href: "/" } },
         [
           _c("i", { staticClass: "mr-3", attrs: { "data-feather": "plus" } }),
-          _vm._v("\n        Upload Another Visual\n    ")
+          _vm._v("\n        Upload a Visual\n    ")
         ]
       )
     ])
@@ -38108,28 +38122,34 @@ var render = function() {
           _vm.upload.owner.email == null
             ? _c("div", { staticClass: "p-4 border-b" }, [
                 _c("div", { staticClass: "flex items-center" }, [
-                  _vm._v("Owner "),
-                  _c("small", { staticClass: "ml-1" }, [
-                    _vm._v("(Not registered yet)")
-                  ]),
-                  _vm._v(" "),
-                  _vm.upload.owner_id === _vm.$attrs.authUser.id
-                    ? _c(
-                        "a",
-                        {
-                          attrs: {
-                            href: "/users/edit",
-                            title: "Save the visual by registration"
-                          }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "ml-2",
-                            attrs: { "data-feather": "save" }
-                          })
-                        ]
-                      )
-                    : _vm._e()
+                  _vm.upload.owner.id === _vm.$attrs.authUser.id
+                    ? _c("div", { staticClass: "flex items-center" }, [
+                        _vm._v("You "),
+                        _c("small", { staticClass: "ml-1" }, [
+                          _vm._v("(Not registered\n                    yet)")
+                        ]),
+                        _vm._v(" "),
+                        _vm.upload.owner_id === _vm.$attrs.authUser.id
+                          ? _c(
+                              "a",
+                              {
+                                attrs: {
+                                  href: "/users/edit",
+                                  title: "Save the visual by registration"
+                                }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "ml-2",
+                                  attrs: { "data-feather": "save" }
+                                })
+                              ]
+                            )
+                          : _vm._e()
+                      ])
+                    : _c("div", {
+                        domProps: { textContent: _vm._s(_vm.upload.owner.name) }
+                      })
                 ])
               ])
             : _c("div", { staticClass: "p-4 border-b" }, [
@@ -51322,8 +51342,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Projects\annotation\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Projects\annotation\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Projects\annotation-image\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Projects\annotation-image\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
