@@ -2305,6 +2305,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {},
@@ -37739,37 +37742,41 @@ var render = function() {
                 attrs: { "data-feather": "file" }
               }),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.title,
-                    expression: "title"
-                  },
-                  {
-                    name: "autowidth",
-                    rawName: "v-autowidth",
-                    value: { maxWidth: "400px", minWidth: "10px" },
-                    expression: "{maxWidth: '400px', minWidth: '10px'}"
-                  }
-                ],
-                staticClass:
-                  "bg-transparent outline-none border-b border-dashed",
-                attrs: { type: "text", placeholder: "Document Title" },
-                domProps: { value: _vm.title },
-                on: {
-                  blur: function($event) {
-                    return _vm.titleUpdate()
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _vm.auth_user.id === _vm.upload.owner_id
+                ? _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.title,
+                        expression: "title"
+                      },
+                      {
+                        name: "autowidth",
+                        rawName: "v-autowidth",
+                        value: { maxWidth: "400px", minWidth: "10px" },
+                        expression: "{maxWidth: '400px', minWidth: '10px'}"
+                      }
+                    ],
+                    staticClass:
+                      "bg-transparent outline-none border-b border-dashed",
+                    attrs: { type: "text", placeholder: "Document Title" },
+                    domProps: { value: _vm.title },
+                    on: {
+                      blur: function($event) {
+                        return _vm.titleUpdate()
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.title = $event.target.value
+                      }
                     }
-                    _vm.title = $event.target.value
-                  }
-                }
-              })
+                  })
+                : _c("p", {
+                    domProps: { textContent: _vm._s(_vm.upload.name) }
+                  })
             ]),
             _vm._v(" "),
             _c(

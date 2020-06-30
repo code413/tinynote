@@ -9,8 +9,11 @@
                     <input type="text"
                            class="bg-transparent outline-none border-b border-dashed"
                            v-model="title"
+                           v-if="auth_user.id === upload.owner_id"
                            @blur="titleUpdate()"
                            v-autowidth="{maxWidth: '400px', minWidth: '10px'}" placeholder="Document Title">
+
+                    <p v-else v-text="upload.name"></p>
                 </div>
 
                 <div class="md:ml-auto mt-4 md:mt-0 hidden md:flex">

@@ -95,20 +95,13 @@ class UploadsController extends Controller
 
     public function update(Upload $upload)
     {
-        $attr = [];
-
         request()->validate([
             'name' => 'string|max:100',
         ]);
 
-        $attr['name'] = request('name') ?? $upload->name;
-
-
-        if (auth()->check()) {
-            $attr['owner_id'] = auth()->user()->id;
-        }
-
-        $upload->update($attr);
+        $upload->update([
+            'name' => request('name') ? request('name'): $upload->name
+        ]);
 
         return redirect()->back();
     }
@@ -117,6 +110,6 @@ class UploadsController extends Controller
     {
         $upload->delete();
 
-        return redirect()->back()->with('message', 'The ad successfully deleted.');
+        return redirect()->back()->with('message', 'The visual was successfully deleted.');
     }
 }
