@@ -38178,70 +38178,72 @@ var render = function() {
         2
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "border-t flex flex-col",
-          class: { "border-blue-500": _vm.focused }
-        },
-        [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.newEmail,
-                expression: "newEmail"
-              }
-            ],
-            ref: "input",
-            staticClass: "p-4 w-full outline-none",
-            attrs: { type: "text", placeholder: "Enter an email..." },
-            domProps: { value: _vm.newEmail },
-            on: {
-              keyup: function($event) {
-                if (
-                  !$event.type.indexOf("key") &&
-                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                ) {
-                  return null
-                }
-                return _vm.add($event)
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.newEmail = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _vm.notes.get("email")
-            ? _c("span", {
-                staticClass: "bg-red-200 p-2",
-                domProps: { textContent: _vm._s(_vm.notes.get("email")) }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.notes.get("message")
-            ? _c("span", {
-                staticClass: "bg-green-200 p-2",
-                domProps: { textContent: _vm._s(_vm.notes.get("message")) }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
+      _vm.$attrs.authUser.id === _vm.upload.owner.id
+        ? _c(
             "div",
             {
-              staticClass:
-                "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
-              on: { click: _vm.add }
+              staticClass: "border-t flex flex-col",
+              class: { "border-blue-500": _vm.focused }
             },
-            [_vm._v("Add\n        ")]
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newEmail,
+                    expression: "newEmail"
+                  }
+                ],
+                ref: "input",
+                staticClass: "p-4 w-full outline-none",
+                attrs: { type: "text", placeholder: "Enter an email..." },
+                domProps: { value: _vm.newEmail },
+                on: {
+                  keyup: function($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.add($event)
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.newEmail = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.notes.get("email")
+                ? _c("span", {
+                    staticClass: "bg-red-200 p-2",
+                    domProps: { textContent: _vm._s(_vm.notes.get("email")) }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.notes.get("message")
+                ? _c("span", {
+                    staticClass: "bg-green-200 p-2",
+                    domProps: { textContent: _vm._s(_vm.notes.get("message")) }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer",
+                  on: { click: _vm.add }
+                },
+                [_vm._v("Add\n        ")]
+              )
+            ]
           )
-        ]
-      ),
+        : _vm._e(),
       _vm._v(" "),
       _c("portal", { attrs: { to: "people-count" } }, [
         _vm._v(_vm._s(_vm.invitees.length + 1))

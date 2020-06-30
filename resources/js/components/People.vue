@@ -27,7 +27,7 @@
             ></person>
         </div>
 
-        <div class="border-t flex flex-col" :class="{'border-blue-500': focused}">
+        <div v-if="$attrs.authUser.id === upload.owner.id" class="border-t flex flex-col" :class="{'border-blue-500': focused}">
             <input type="text" class="p-4 w-full outline-none" placeholder="Enter an email..."
                    v-model="newEmail" ref="input" @keyup.enter="add">
 
