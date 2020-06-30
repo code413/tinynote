@@ -3,8 +3,11 @@
         <div class="flex-1 p-4">
             <div v-if="upload.owner.email == null" class="p-4 border-b">
                 <div class="flex items-center">
-                    <div class="flex items-center" v-if="upload.owner.id === $attrs.authUser.id">You <small class="ml-1">(Not registered
-                        yet)</small>
+                    <div class="flex items-center" v-if="upload.owner.id === $attrs.authUser.id">You
+                        <tooltip
+                            :title="'Not registered yet'"
+                            :content="'To make the process smooth on this application, users don\'t need to register in order to utilize all the functionality. We use cookies to make sure when you come back you have access to your uploaded visuals. Even your invitees don\'t need to register; they just login directly to your visuals to review and comment via the link that is emailed to them. However, registration is recommended for a reliable access.'"
+                        ></tooltip>
 
                         <a v-if="upload.owner_id === $attrs.authUser.id" href="/users/edit"
                            title="Save the visual by registration">
@@ -27,7 +30,8 @@
             ></person>
         </div>
 
-        <div v-if="$attrs.authUser.id === upload.owner.id" class="border-t flex flex-col" :class="{'border-blue-500': focused}">
+        <div v-if="$attrs.authUser.id === upload.owner.id" class="border-t flex flex-col"
+             :class="{'border-blue-500': focused}">
             <input type="text" class="p-4 w-full outline-none" placeholder="Enter an email..."
                    v-model="newEmail" ref="input" @keyup.enter="add">
 
@@ -45,6 +49,8 @@
 </template>
 
 <script>
+    import LeftPinkTooltip from './Tooltip'
+
     class Notes {
         constructor () {
             this.notes = {}
@@ -62,6 +68,7 @@
     }
 
     export default {
+        components: {LeftPinkTooltip},
         props: {
             data: {default: () => { return [] }},
             upload: {}
