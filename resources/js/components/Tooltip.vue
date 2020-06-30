@@ -6,7 +6,7 @@
             </div>
 
             <div ref="tooltipRef" v-bind:class="{'hidden': !tooltipShow, 'block': tooltipShow}" style="max-width: 15rem"
-                 class="bg-gray-200 border-0 m-1 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg">
+                 class="bg-gray-200 border-0 mt-16 md:mt-1 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg">
                     <div class="p-2" v-text="content"></div>
             </div>
         </div>

@@ -41067,7 +41067,7 @@ var render = function() {
         {
           ref: "tooltipRef",
           staticClass:
-            "bg-gray-200 border-0 m-1 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg",
+            "bg-gray-200 border-0 mt-16 md:mt-1 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg",
           class: { hidden: !_vm.tooltipShow, block: _vm.tooltipShow },
           staticStyle: { "max-width": "15rem" }
         },
