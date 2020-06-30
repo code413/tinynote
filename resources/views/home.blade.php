@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Tiny Note - Get Instant Feedback On Your Designs')
+
 @section('superclass', 'bg-gray-100')
 
 @section('main')

@@ -1,5 +1,7 @@
 @extends('auth.layout')
 
+@section('title', 'Login')
+
 @section('content')
     <div class="container relative z-10 mx-auto">
         <div class="flex flex-wrap justify-center">
