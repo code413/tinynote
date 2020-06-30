@@ -2,6 +2,8 @@
 
 @section('title', 'Tiny Note - Get Instant Feedback On Your Designs')
 
+@section('title.suffix', '')
+
 @section('superclass', 'bg-gray-100')
 
 @section('main')

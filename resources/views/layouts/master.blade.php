@@ -2,7 +2,12 @@
 <html lang='en'>
 <head>
     @section('head')
-        <title>@yield('title') @if(view()->hasSection('title')) - @endif Tiny Note</title>
+        <title>
+            @yield('title')
+            @if(!view()->hasSection('title.suffix'))
+                @if(view()->hasSection('title')) - @endif Tiny Note
+            @endif
+        </title>
         @include('layouts.partials.meta')
         @include('layouts.partials.favicon')
         @include('layouts.partials.styles')
