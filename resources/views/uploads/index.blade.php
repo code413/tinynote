@@ -12,9 +12,11 @@
         <div class="max-w-2xl mx-auto">
             @forelse($uploads as $upload)
                 <div class="flex items-center mb-2">
-                    <a href="{{ route('uploads.show', [$upload]) }}" class="card z-10 relative block flex">
+                    <div class="card z-10 relative block flex w-full items-center">
                         <div class="w-4/6">
-                            <h2 class="text-lg md:text-xl mb-0 truncate">{{ $upload->name }}</h2>
+                            <a href="{{ route('uploads.show', [$upload]) }}">
+                                <h2 class="text-lg md:text-xl mb-0 truncate">{{ $upload->name }}</h2>
+                            </a>
                             <div class="text-gray-500 text-sm">Last
                                 active {{ $upload->updated_at->diffForHumans() }}</div>
                         </div>
@@ -23,20 +25,20 @@
                             <i data-feather="message-square" class="mr-2"></i>
                             {{ count($upload->comments) }}
                         </div>
-                    </a>
 
-                    <form method="POST" action="{{ route('uploads.delete', [$upload]) }}"
-                          class="ml-auto">
-                        @csrf
-                        @method('DELETE')
+                        <form method="POST" action="{{ route('uploads.delete', [$upload]) }}"
+                              class="ml-5">
+                            @csrf
+                            @method('DELETE')
 
-                        <button type="submit" title="Delete" onclick="return confirm('You are removing an upload.')"
-                                class="flex items-center text-red-700 card z-10 relative block cursor-pointer
-                                 hover:bg-red-700 hover:text-white focus:outline-none">
-                            <i data-feather="trash"></i>
-                        </button>
+                            <button type="submit" title="Delete" onclick="return confirm('Are you sure about deleting {{ $upload->name }}?')"
+                                    class="flex items-center text-red-700 cursor-pointer
+                                 hover:text-red-900 focus:outline-none">
+                                <i data-feather="trash"></i>
+                            </button>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
             @empty
                 <p>You haven't uploaded any visuals. <a href="{{ route('home') }}">Do it now!</a></p>
