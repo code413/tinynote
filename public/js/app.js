@@ -40288,7 +40288,10 @@ var render = function() {
             class: { active: comment.active },
             attrs: {
               content: comment.body,
-              author: comment.user.name,
+              author:
+                comment.user.name === "Unknown"
+                  ? comment.user.email
+                  : comment.user.name,
               isAuthor: _vm.$attrs.authUser.id == comment.user.id,
               time: comment.created_at
             },

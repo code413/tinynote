@@ -4,7 +4,7 @@
             <comment
                 v-for="(comment, index) in comments"
                 :content="comment.body"
-                :author="comment.user.name"
+                :author="(comment.user.name === 'Unknown' ? comment.user.email : comment.user.name)"
                 :isAuthor="$attrs.authUser.id == comment.user.id"
                 :time="comment.created_at"
                 :key="index"

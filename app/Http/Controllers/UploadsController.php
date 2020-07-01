@@ -25,7 +25,7 @@ class UploadsController extends Controller
 
             } else {
                 $user = User::create([
-                    'name' => 'Owner',
+                    'name' => 'Unknown',
                     'login_token' => Str::random(50),
                 ]);
 
