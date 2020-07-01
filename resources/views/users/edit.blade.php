@@ -6,8 +6,12 @@
             <div class="w-full max-w-sm">
                 <div class="flex flex-col break-words bg-white border border-2 rounded shadow-xl">
 
-                    <div class="font-semibold bg-purple-900 text-white py-3 px-6 mb-0">
+                    <div class="font-semibold bg-purple-900 text-white py-3 px-4 mb-0">
                         Register
+                    </div>
+
+                    <div class="bg-purple-200 px-4 py-3 text-sm text-purple-900">
+                        With a free account you can save your uploads permanently and access them on all your devices.
                     </div>
 
                     <form class="w-full p-6" method="POST" action="{{ route('users.update', [auth()->user()]) }}">
@@ -71,13 +75,6 @@
                         </div>
                     </form>
                 </div>
-
-                <p class="w-full text-center text-gray-600 mt-3">
-                    {{ __('Already have an account?') }}
-                    <a class="text-purple-600 hover:text-purple-700 no-underline" href="{{ route('login') }}">
-                        {{ __('Login') }}
-                    </a>
-                </p>
             </div>
         </div>
     </div>

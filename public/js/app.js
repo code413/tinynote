@@ -2438,9 +2438,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 //
 //
 //
-//
-//
-//
 
 
 var Notes = /*#__PURE__*/function () {
@@ -40821,45 +40818,32 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "flex-1 p-4" },
+        { staticClass: "flex-1" },
         [
           _vm.upload.owner.email == null
             ? _c("div", { staticClass: "p-4 border-b" }, [
                 _c("div", { staticClass: "flex items-center" }, [
                   _vm.upload.owner.id === _vm.$attrs.authUser.id
-                    ? _c(
-                        "div",
-                        { staticClass: "flex items-center" },
-                        [
-                          _vm._v("You\n                    "),
-                          _c("tooltip", {
-                            attrs: {
-                              title: "Not registered yet",
-                              content:
-                                "To make the process smooth on this application, users don't need to register in order to utilize all the functionality. We use cookies to make sure when you come back you have access to your uploaded visuals. Even your invitees don't need to register; they just login directly to your visuals to review and comment via the link that is emailed to them. However, registration is recommended for a reliable access."
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.upload.owner_id === _vm.$attrs.authUser.id
-                            ? _c(
-                                "a",
-                                {
+                    ? _c("div", { staticClass: "flex items-center" }, [
+                        _vm._v("You\n                    "),
+                        _vm.upload.owner_id === _vm.$attrs.authUser.id
+                          ? _c(
+                              "a",
+                              { attrs: { href: "/users/edit" } },
+                              [
+                                _c("tooltip", {
                                   attrs: {
-                                    href: "/users/edit",
-                                    title: "Save the visual by registration"
+                                    title:
+                                      "<i data-feather='unlock' class='w-5 text-orange-500'></i>",
+                                    content:
+                                      "<strong class='mb-2 block'>You're currently not logged in.</strong> Create a FREE account so that you can save your uploads permanently and access them on all your devices."
                                   }
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass: "ml-2",
-                                    attrs: { "data-feather": "save" }
-                                  })
-                                ]
-                              )
-                            : _vm._e()
-                        ],
-                        1
-                      )
+                                })
+                              ],
+                              1
+                            )
+                          : _vm._e()
+                      ])
                     : _c("div", {
                         domProps: { textContent: _vm._s(_vm.upload.owner.name) }
                       })
@@ -41050,8 +41034,8 @@ var render = function() {
     _c("div", { staticClass: "w-full text-center" }, [
       _c("div", {
         ref: "titleRef",
-        staticClass: "bg-gray-200 text-sm p-1 rounded m-1",
-        domProps: { textContent: _vm._s(_vm.title) },
+        staticClass: "text-sm p-1 rounded m-1",
+        domProps: { innerHTML: _vm._s(_vm.title) },
         on: {
           mouseenter: function($event) {
             return _vm.toggleTooltip()
@@ -41067,14 +41051,14 @@ var render = function() {
         {
           ref: "tooltipRef",
           staticClass:
-            "bg-gray-200 border-0 mt-16 md:mt-1 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg",
+            "bg-orange-200 text-orange-900 border-0 mt-16 md:mt-1 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg",
           class: { hidden: !_vm.tooltipShow, block: _vm.tooltipShow },
-          staticStyle: { "max-width": "15rem" }
+          staticStyle: { "max-width": "16rem" }
         },
         [
           _c("div", {
-            staticClass: "p-2",
-            domProps: { textContent: _vm._s(_vm.content) }
+            staticClass: "p-4",
+            domProps: { innerHTML: _vm._s(_vm.content) }
           })
         ]
       )
@@ -54184,8 +54168,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Projects\annotation-image\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Projects\annotation-image\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! D:\Projects\annotation\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Projects\annotation\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

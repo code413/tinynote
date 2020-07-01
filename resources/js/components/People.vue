@@ -1,17 +1,14 @@
 <template xmlns="http://www.w3.org/1999/html">
     <div class="flex-1 flex flex-col">
-        <div class="flex-1 p-4">
+        <div class="flex-1">
             <div v-if="upload.owner.email == null" class="p-4 border-b">
                 <div class="flex items-center">
                     <div class="flex items-center" v-if="upload.owner.id === $attrs.authUser.id">You
-                        <tooltip
-                            :title="'Not registered yet'"
-                            :content="'To make the process smooth on this application, users don\'t need to register in order to utilize all the functionality. We use cookies to make sure when you come back you have access to your uploaded visuals. Even your invitees don\'t need to register; they just login directly to your visuals to review and comment via the link that is emailed to them. However, registration is recommended for a reliable access.'"
-                        ></tooltip>
-
-                        <a v-if="upload.owner_id === $attrs.authUser.id" href="/users/edit"
-                           title="Save the visual by registration">
-                            <i data-feather="save" class="ml-2"></i>
+                        <a v-if="upload.owner_id === $attrs.authUser.id" href="/users/edit">
+                            <tooltip
+                                    title="<i data-feather='unlock' class='w-5 text-orange-500'></i>"
+                                    content="<strong class='mb-2 block'>You're currently not logged in.</strong> Create a FREE account so that you can save your uploads permanently and access them on all your devices."
+                            ></tooltip>
                         </a>
                     </div>
 

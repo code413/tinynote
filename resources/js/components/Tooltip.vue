@@ -1,13 +1,13 @@
 <template>
     <div class="flex flex-wrap">
         <div class="w-full text-center">
-            <div ref="titleRef" v-on:mouseenter="toggleTooltip()" v-on:mouseleave="toggleTooltip()" v-text="title"
-                 class="bg-gray-200 text-sm p-1 rounded m-1">
+            <div ref="titleRef" v-on:mouseenter="toggleTooltip()" v-on:mouseleave="toggleTooltip()" v-html="title"
+                 class="text-sm p-1 rounded m-1">
             </div>
 
-            <div ref="tooltipRef" v-bind:class="{'hidden': !tooltipShow, 'block': tooltipShow}" style="max-width: 15rem"
-                 class="bg-gray-200 border-0 mt-16 md:mt-1 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg">
-                    <div class="p-2" v-text="content"></div>
+            <div ref="tooltipRef" v-bind:class="{'hidden': !tooltipShow, 'block': tooltipShow}" style="max-width: 16rem"
+                 class="bg-orange-200 text-orange-900 border-0 mt-16 md:mt-1 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg">
+                    <div class="p-4" v-html="content"></div>
             </div>
         </div>
     </div>
