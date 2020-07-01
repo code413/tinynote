@@ -1924,6 +1924,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2679,7 +2683,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.dot{\n    transition: border 1s linear, box-shadow 1s linear;\n    box-shadow: none;\n}\n.dot.glow{\n    box-shadow: 0 0 10px 3px #C53030;\n    transition: border 1s linear, box-shadow 1s linear;\n}\n", ""]);
+exports.push([module.i, "\n.dot{\n    transition: border 1s linear, box-shadow 1s linear;\n    box-shadow: none;\n}\n.dot.glow{\n    box-shadow: 0 0 10px 3px #C53030;\n    transition: border 1s linear, box-shadow 1s linear;\n}\n.dot.glow.glow-teal{\n    box-shadow: 0 0 10px 3px #4fd1c5;\n}\n.dot.glow.glow-blue{\n    box-shadow: 0 0 10px 3px #2b6cb0;\n}\n", ""]);
 
 // exports
 
@@ -2717,7 +2721,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active {\n    transition: all .3s ease;\n    opacity: 1;\n}\n.slide-fade-enter, .slide-fade-leave-active {\n    opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active {\n    transition: all .3s ease;\n    opacity: 1;\n}\n.slide-fade-enter, .slide-fade-leave-active {\n    opacity: 0.5;\n}\n", ""]);
 
 // exports
 
@@ -40125,8 +40129,11 @@ var render = function() {
     "div",
     {
       staticClass:
-        "comment p-4 rounded-large flex flex-col mb-2 bg-gray-200 rounded-bl-none",
-      class: { "bg-green-200 rounded-br-none rounded-bl-large": _vm.isAuthor }
+        "comment p-4 rounded-large flex flex-col mb-2 bg-white rounded-br-none shadow",
+      class: {
+        "bg-blue-100 rounded-bl-none rounded-br-large mr-2": _vm.isAuthor,
+        "ml-2": !_vm.isAuthor
+      }
     },
     [
       _c("div", { domProps: { innerHTML: _vm._s(_vm.content) } }),
@@ -40177,7 +40184,7 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "flex-1 p-4" },
+        { staticClass: "flex-1 p-2", staticStyle: { background: "#ece9e6" } },
         _vm._l(_vm.comments, function(comment, index) {
           return _c("comment", {
             key: comment.id,
@@ -40268,7 +40275,7 @@ var render = function() {
               return comment.coordinate_x && comment.coordinate_y
                 ? _c("dot", {
                     key: index,
-                    class: { "bg-teal-400": comment.active },
+                    class: { "bg-teal-400 glow-teal": comment.active },
                     attrs: { y: comment.coordinate_y, x: comment.coordinate_x },
                     nativeOn: {
                       click: function($event) {
@@ -40288,7 +40295,7 @@ var render = function() {
             _vm._v(" "),
             _vm.newDot
               ? _c("dot", {
-                  class: ["bg-blue-700"],
+                  class: ["bg-blue-700 glow-blue"],
                   attrs: {
                     y: _vm.newDot.coordinate_y,
                     x: _vm.newDot.coordinate_x
@@ -40423,11 +40430,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "block md:flex flex-1 overflow-x-hidden editor" },
+    {
+      staticClass: "flex flex-col md:flex-row flex-1 overflow-x-hidden editor"
+    },
     [
       _c(
         "div",
-        { staticClass: "px-8 py-4 flex-grow flex flex-col overflow-auto" },
+        { staticClass: "px-8 py-4 flex-grow flex flex-col md:overflow-auto" },
         [
           _c("div", { staticClass: "md:flex mb-10 flex-wrap" }, [
             _c("div", { staticClass: "text-blue-900 flex" }, [
@@ -40581,7 +40590,10 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "px-8 py-4 md:ml-auto mt-4 md:mt-0 flex md:hidden" },
+        {
+          staticClass:
+            "px-8 py-4 md:ml-auto mt-4 md:mt-0 flex md:hidden justify-around"
+        },
         [
           _c(
             "a",
@@ -40767,28 +40779,43 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex flex-col" }, [
-      _c(
-        "a",
-        {
-          staticClass: "flex items-center p-4 border-b",
-          attrs: { href: "/uploads" }
-        },
-        [
-          _c("i", { staticClass: "mr-3", attrs: { "data-feather": "image" } }),
-          _vm._v("\n        My Visuals\n    ")
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "flex items-center p-4 border-b", attrs: { href: "/" } },
-        [
-          _c("i", { staticClass: "mr-3", attrs: { "data-feather": "plus" } }),
-          _vm._v("\n        Upload a Visual\n    ")
-        ]
-      )
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "flex flex-col flex-1",
+        staticStyle: { background: "#ece9e6" }
+      },
+      [
+        _c(
+          "a",
+          {
+            staticClass:
+              "flex items-center bg-white p-3 rounded mt-2 mx-2 shadow",
+            attrs: { href: "/uploads" }
+          },
+          [
+            _c("i", {
+              staticClass: "mr-3",
+              attrs: { "data-feather": "image" }
+            }),
+            _vm._v("\n        My Visuals\n    ")
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass:
+              "flex items-center bg-white p-3 rounded mt-2 mx-2 shadow",
+            attrs: { href: "/" }
+          },
+          [
+            _c("i", { staticClass: "mr-3", attrs: { "data-feather": "plus" } }),
+            _vm._v("\n        Upload a Visual\n    ")
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -40818,42 +40845,54 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "flex-1" },
+        { staticClass: "flex-1", staticStyle: { background: "#ece9e6" } },
         [
           _vm.upload.owner.email == null
-            ? _c("div", { staticClass: "p-4 border-b" }, [
-                _c("div", { staticClass: "flex items-center" }, [
-                  _vm.upload.owner.id === _vm.$attrs.authUser.id
-                    ? _c("div", { staticClass: "flex items-center" }, [
-                        _vm._v("You\n                    "),
-                        _vm.upload.owner_id === _vm.$attrs.authUser.id
-                          ? _c(
-                              "a",
-                              { attrs: { href: "/users/edit" } },
-                              [
-                                _c("tooltip", {
-                                  attrs: {
-                                    title:
-                                      "<i data-feather='unlock' class='w-5 text-orange-500'></i>",
-                                    content:
-                                      "<strong class='mb-2 block'>You're currently not logged in.</strong> Create a FREE account so that you can save your uploads permanently and access them on all your devices."
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          : _vm._e()
-                      ])
-                    : _c("div", {
-                        domProps: { textContent: _vm._s(_vm.upload.owner.name) }
-                      })
-                ])
-              ])
-            : _c("div", { staticClass: "p-4 border-b" }, [
-                _c("div", {
-                  domProps: { textContent: _vm._s(_vm.upload.owner.email) }
-                })
-              ]),
+            ? _c(
+                "div",
+                {
+                  staticClass: "bg-white border-b m-2 px-4 py-3 rounded shadow"
+                },
+                [
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _vm.upload.owner.id === _vm.$attrs.authUser.id
+                      ? _c("div", { staticClass: "flex items-center flex-1" }, [
+                          _vm._v("You\n                    "),
+                          _vm.upload.owner_id === _vm.$attrs.authUser.id
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "ml-auto",
+                                  attrs: { href: "/users/edit" }
+                                },
+                                [
+                                  _c("tooltip", {
+                                    attrs: {
+                                      title:
+                                        "<i data-feather='unlock' class='w-5 text-orange-500'></i>",
+                                      content:
+                                        "<strong class='mb-2 block'>You're account has no emails.</strong> Link your account with your email so that you can save your uploads permanently and access them on all your devices."
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ])
+                      : _c("div", {
+                          domProps: {
+                            textContent: _vm._s(_vm.upload.owner.name)
+                          }
+                        })
+                  ])
+                ]
+              )
+            : _c("person", {
+                attrs: {
+                  email: _vm.upload.owner.email,
+                  authUser: _vm.$attrs.authUser
+                }
+              }),
           _vm._v(" "),
           _vm._l(_vm.invitees, function(invitee, index) {
             return _c("person", {
@@ -40964,17 +41003,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "p-4 border-b flex items-center" }, [
-    _c("div", { domProps: { textContent: _vm._s(_vm.email) } }),
-    _vm._v(" "),
-    _vm.$attrs.authUser.email === _vm.email
-      ? _c(
-          "a",
-          { attrs: { href: "/users/edit", title: "Edit your profile" } },
-          [_c("i", { staticClass: "ml-3", attrs: { "data-feather": "edit" } })]
-        )
-      : _vm._e()
-  ])
+  return _c(
+    "div",
+    {
+      staticClass:
+        "bg-white border-b m-2 px-4 py-3 rounded flex items-center shadow"
+    },
+    [
+      _c("div", { domProps: { textContent: _vm._s(_vm.email) } }),
+      _vm._v(" "),
+      _vm.$attrs.authUser.email === _vm.email
+        ? _c(
+            "a",
+            {
+              staticClass: "ml-auto text-blue-500",
+              attrs: { href: "/users/edit", title: "Edit your profile" }
+            },
+            [_c("i", { staticClass: "w-5", attrs: { "data-feather": "edit" } })]
+          )
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -41001,7 +41050,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "sidebar shadow-sm flex flex-col overflow-auto",
+      staticClass: "sidebar shadow-sm flex flex-col md:overflow-auto shadow-lg",
       class: { "open bg-white": _vm.open }
     },
     [_vm._t("default")],
@@ -41034,7 +41083,7 @@ var render = function() {
     _c("div", { staticClass: "w-full text-center" }, [
       _c("div", {
         ref: "titleRef",
-        staticClass: "text-sm p-1 rounded m-1",
+        staticClass: "text-sm",
         domProps: { innerHTML: _vm._s(_vm.title) },
         on: {
           mouseenter: function($event) {

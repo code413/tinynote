@@ -1,6 +1,6 @@
 <template>
     <div class="flex-1 flex flex-col">
-        <div class="flex-1 p-4">
+        <div class="flex-1 p-2" style="background:#ece9e6;">
             <comment
                 v-for="(comment, index) in comments"
                 :content="comment.body"
@@ -27,7 +27,7 @@
             <div @click="addDot" class="absolute w-full h-full top-0 left-0 z-10">
                 <dot @click.native.stop="$emit('show')" v-for="(comment, index) in comments"
                      v-if="comment.coordinate_x && comment.coordinate_y"
-                     :class="{'bg-teal-400': comment.active}"
+                     :class="{'bg-teal-400 glow-teal': comment.active}"
                      :y="comment.coordinate_y"
                      :x="comment.coordinate_x"
                      :key="index"
@@ -39,7 +39,7 @@
                      v-if="newDot"
                      :y="newDot.coordinate_y"
                      :x="newDot.coordinate_x"
-                     :class="['bg-blue-700']"
+                     :class="['bg-blue-700 glow-blue']"
                 ></dot>
             </div>
         </portal>

@@ -2,7 +2,7 @@
     <div class="flex flex-wrap">
         <div class="w-full text-center">
             <div ref="titleRef" v-on:mouseenter="toggleTooltip()" v-on:mouseleave="toggleTooltip()" v-html="title"
-                 class="text-sm p-1 rounded m-1">
+                 class="text-sm">
             </div>
 
             <div ref="tooltipRef" v-bind:class="{'hidden': !tooltipShow, 'block': tooltipShow}" style="max-width: 16rem"

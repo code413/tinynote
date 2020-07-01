@@ -1,5 +1,9 @@
 <template>
-    <div class="comment p-4 rounded-large flex flex-col mb-2 bg-gray-200 rounded-bl-none" :class="{ 'bg-green-200 rounded-br-none rounded-bl-large' : isAuthor}">
+    <div class="comment p-4 rounded-large flex flex-col mb-2 bg-white rounded-br-none shadow"
+         :class="{
+            'bg-blue-100 rounded-bl-none rounded-br-large mr-2': isAuthor,
+            'ml-2': !isAuthor
+         }">
         <div v-html="content"></div>
 
         <div class="mt-4 flex">

@@ -33,4 +33,12 @@
         box-shadow: 0 0 10px 3px #C53030;
         transition: border 1s linear, box-shadow 1s linear;
     }
+
+    .dot.glow.glow-teal{
+        box-shadow: 0 0 10px 3px #4fd1c5;
+    }
+
+    .dot.glow.glow-blue{
+        box-shadow: 0 0 10px 3px #2b6cb0;
+    }
 </style>

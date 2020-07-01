@@ -7,12 +7,14 @@
                 <div class="flex flex-col break-words bg-white border border-2 rounded shadow-xl">
 
                     <div class="font-semibold bg-purple-900 text-white py-3 px-4 mb-0">
-                        Register
+                        Update Your Profile
                     </div>
 
+                    @if(auth()->user()->email === null)
                     <div class="bg-purple-200 px-4 py-3 text-sm text-purple-900">
-                        With a free account you can save your uploads permanently and access them on all your devices.
+                        Update your email so that you can save your uploads permanently and access them on all your devices.
                     </div>
+                    @endif
 
                     <form class="w-full p-6" method="POST" action="{{ route('users.update', [auth()->user()]) }}">
                         @csrf

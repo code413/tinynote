@@ -1,7 +1,7 @@
 <template>
-    <div class="block md:flex flex-1 overflow-x-hidden editor">
+    <div class="flex flex-col md:flex-row flex-1 overflow-x-hidden editor">
         <!-- Content -->
-        <div class="px-8 py-4 flex-grow flex flex-col overflow-auto">
+        <div class="px-8 py-4 flex-grow flex flex-col md:overflow-auto">
             <!-- Header -->
             <div class="md:flex mb-10 flex-wrap">
                 <div class="text-blue-900 flex">
@@ -48,7 +48,7 @@
         </div>
 
 
-        <div class="px-8 py-4 md:ml-auto mt-4 md:mt-0 flex md:hidden">
+        <div class="px-8 py-4 md:ml-auto mt-4 md:mt-0 flex md:hidden justify-around">
             <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">
                 People
                 <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
@@ -135,6 +135,6 @@
     }
 
     .slide-fade-enter, .slide-fade-leave-active {
-        opacity: 0;
+        opacity: 0.5;
     }
 </style>

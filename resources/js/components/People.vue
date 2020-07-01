@@ -1,13 +1,13 @@
 <template xmlns="http://www.w3.org/1999/html">
     <div class="flex-1 flex flex-col">
-        <div class="flex-1">
-            <div v-if="upload.owner.email == null" class="p-4 border-b">
+        <div class="flex-1" style="background:#ece9e6;">
+            <div v-if="upload.owner.email == null" class="bg-white border-b m-2 px-4 py-3 rounded shadow">
                 <div class="flex items-center">
-                    <div class="flex items-center" v-if="upload.owner.id === $attrs.authUser.id">You
-                        <a v-if="upload.owner_id === $attrs.authUser.id" href="/users/edit">
+                    <div class="flex items-center flex-1" v-if="upload.owner.id === $attrs.authUser.id">You
+                        <a v-if="upload.owner_id === $attrs.authUser.id" href="/users/edit" class="ml-auto">
                             <tooltip
                                     title="<i data-feather='unlock' class='w-5 text-orange-500'></i>"
-                                    content="<strong class='mb-2 block'>You're currently not logged in.</strong> Create a FREE account so that you can save your uploads permanently and access them on all your devices."
+                                    content="<strong class='mb-2 block'>You're account has no emails.</strong> Link your account with your email so that you can save your uploads permanently and access them on all your devices."
                             ></tooltip>
                         </a>
                     </div>
@@ -16,9 +16,9 @@
                 </div>
             </div>
 
-            <div v-else class="p-4 border-b">
-                <div v-text="upload.owner.email"></div>
-            </div>
+            <person v-else :email="upload.owner.email"
+                    :authUser="$attrs.authUser"
+            ></person>
 
             <person v-for="(invitee, index) in invitees"
                     :email="invitee.user.email"
