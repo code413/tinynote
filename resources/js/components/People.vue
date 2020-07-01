@@ -27,8 +27,8 @@
             ></person>
         </div>
 
-        <div v-if="$attrs.authUser.id === upload.owner.id" class="border-t flex flex-col"
-             :class="{'border-blue-500': focused}">
+        <div v-if="$attrs.authUser.id === upload.owner.id" class="border-t flex flex-col add-section"
+             :class="{'border-blue-500': focused, loading: loading }">
             <input type="text" class="p-4 w-full outline-none" placeholder="Enter an email..."
                    v-model="newEmail" ref="input" @keyup.enter="add">
 
@@ -46,8 +46,6 @@
 </template>
 
 <script>
-    import LeftPinkTooltip from './Tooltip'
-
     class Notes {
         constructor () {
             this.notes = {}
@@ -65,7 +63,6 @@
     }
 
     export default {
-        components: {LeftPinkTooltip},
         props: {
             data: {default: () => { return [] }},
             upload: {}
@@ -75,7 +72,8 @@
                 invitees: [],
                 newEmail: '',
                 focused: false,
-                notes: new Notes()
+                notes: new Notes(),
+                loading: false
             }
         },
         methods: {
@@ -85,6 +83,8 @@
                 if (this.newEmail.trim() === '') {
                     return
                 }
+
+                this.loading = true;
 
                 axios.post('/invitees/' + this.upload.uuid, {email: this.newEmail})
                     .then(response => {
@@ -97,11 +97,15 @@
                         })
 
                         this.newEmail = ''
+
+                        this.loading = false;
                     })
                     .catch(error => {
                         this.notes.record(error.response.data.errors)
 
                         this.newEmail = ''
+
+                        this.loading = false;
                     })
             },
         },
@@ -110,3 +114,19 @@
         }
     }
 </script>
+
+<style>
+    .add-section.loading:before {
+        width: 20rem;
+        content: "";
+        background-image: url(/img/loading.gif);
+        height: 7.5rem;
+        z-index: 999999;
+        display: block;
+        background-color: #f7fafc;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        background-size: contain;
+    }
+</style>
