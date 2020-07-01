@@ -56,4 +56,9 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function invitedUploads()
+    {
+        return $this->hasMany(Invitee::class);
+    }
 }

@@ -90,7 +90,9 @@ class UploadsController extends Controller
     {
         $uploads = auth()->user()->uploads;
 
-        return view('uploads.index', ['uploads' => $uploads]);
+        $invitedUploads = auth()->user()->invitedUploads->load('upload');
+
+        return view('uploads.index', ['uploads' => $uploads, 'invitedUploads' => $invitedUploads]);
     }
 
     public function update(Upload $upload)
