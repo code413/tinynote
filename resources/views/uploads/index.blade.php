@@ -8,7 +8,7 @@
     <div>
         <div class="container mx-auto py-10 px-5">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold max-w-2xl mx-auto text-center mb-10"
-                style="line-height:1">Your Uploads</h1>
+                style="line-height:1">Your Uploaded Visuals</h1>
 
             <div class="max-w-2xl mx-auto">
                 @forelse($uploads as $upload)
@@ -56,7 +56,7 @@
 
         <div class="container mx-auto py-10 px-5">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold max-w-2xl mx-auto text-center mb-10"
-                style="line-height:1">Uploads you are invited</h1>
+                style="line-height:1">Visuals You Are Invited</h1>
 
             <div class="max-w-2xl mx-auto">
                 @forelse($invitedUploads as $invitedUpload)

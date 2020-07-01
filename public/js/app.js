@@ -40289,7 +40289,7 @@ var render = function() {
             attrs: {
               content: comment.body,
               author:
-                comment.user.name === "Unknown"
+                comment.user.email && comment.user.name === "Unknown"
                   ? comment.user.email
                   : comment.user.name,
               isAuthor: _vm.$attrs.authUser.id == comment.user.id,

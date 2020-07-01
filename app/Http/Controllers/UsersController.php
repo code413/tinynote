@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
@@ -18,15 +20,19 @@ class UsersController extends Controller
 
     public function update(User $user)
     {
+        Validator::make(request()->all(), [
+            'email' => Rule::requiredIf($user->email === null),
+        ]);
+
         request()->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
         $user->update([
             'name' => request('name'),
-            'email' => request('email'),
+            'email' => !$user->email ? request('email') : $user->email,
             'password' => Hash::make(request('password')),
             'login_token' => null,
         ]);
