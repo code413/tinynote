@@ -7,8 +7,8 @@
                 :author="comment.user.name"
                 :isAuthor="$attrs.authUser.id == comment.user.id"
                 :time="comment.created_at"
-                :key="comment.id"
-                :class="{'bg-teal-100': comment.active}"
+                :key="index"
+                :class="{active: comment.active}"
                 @mouseenter.native="comment.active = true"
                 @mouseleave.native="comment.active = false"
             ></comment>
@@ -102,7 +102,6 @@
                 axios.post('/uploads/' + this.$attrs.upload.uuid + '/comments', requestData)
                     .then(function (response) {})
                     .catch(function (error) {})
-
             },
 
             addDot (event) {
@@ -145,3 +144,9 @@
         }
     }
 </script>
+
+<style>
+    .comment.active{
+        background-color: #e6fffa !important;
+    }
+</style>

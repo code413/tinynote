@@ -20,14 +20,14 @@
                     <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">
                         People
                         <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
-                            <portal-target name="people-count" slim></portal-target>
+                            <portal-target name="people-count"></portal-target>
                         </span>
                     </a>
 
                     <a href="" class="mr-4" @click.prevent="toggleSidebar('comments')">
                         Comments
                         <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
-                            <portal-target name="comments-count" slim></portal-target>
+                            <portal-target name="comments-count"></portal-target>
                         </span>
                     </a>
 
@@ -52,14 +52,14 @@
             <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">
                 People
                 <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
-                            <portal-target name="people-count" slim></portal-target>
+                            <portal-target name="people-count"></portal-target>
                         </span>
             </a>
 
             <a href="" class="mr-4" @click.prevent="toggleSidebar('comments')">
                 Comments
                 <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
-                            <portal-target name="comments-count" slim></portal-target>
+                            <portal-target name="comments-count" ></portal-target>
                         </span>
             </a>
 
