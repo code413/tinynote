@@ -13,8 +13,6 @@ class UsersController extends Controller
 {
     public function edit()
     {
-        session(['link' => url()->previous()]);
-
         return view('users.edit');
     }
 
@@ -26,7 +24,7 @@ class UsersController extends Controller
 
         request()->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['string', 'email', 'max:255', 'unique:users'],
+            'email' => ['email', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
@@ -37,10 +35,11 @@ class UsersController extends Controller
             'login_token' => null,
         ]);
 
-        if(Cookie::has('login_token')){
+        if (Cookie::has('login_token')) {
             Cookie::queue(Cookie::forget('login_token'));
         }
 
-        return redirect()->intended(session('link'));
+        return redirect()->route('uploads.index')->with('message', 'your profile was successfully updated.');
+
     }
 }

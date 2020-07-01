@@ -6,6 +6,8 @@
 
 @section('content')
     <div>
+        @include('partials.messages')
+
         <div class="container mx-auto py-10 px-5">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold max-w-2xl mx-auto text-center mb-10"
                 style="line-height:1">Your Uploaded Visuals</h1>
