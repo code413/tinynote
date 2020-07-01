@@ -11,6 +11,9 @@
         @include('layouts.partials.meta')
         @include('layouts.partials.favicon')
         @include('layouts.partials.styles')
+        @if(config('app.env') == 'production')
+            @include('layouts.partials.trackers')
+        @endif
     @show
 </head>
 <body class="@yield('superclass')">
