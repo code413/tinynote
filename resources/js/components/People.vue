@@ -6,8 +6,8 @@
                     <div class="flex items-center flex-1" v-if="upload.owner.id === $attrs.authUser.id">You
                         <a v-if="upload.owner_id === $attrs.authUser.id" href="/users/edit" class="ml-auto">
                             <tooltip
-                                    title="<i data-feather='unlock' class='w-5 text-orange-500'></i>"
-                                    content="<strong class='mb-2 block'>You're account has no emails.</strong> Link your account with your email so that you can save your uploads permanently and access them on all your devices."
+                                title="<i data-feather='unlock' class='w-5 text-orange-500'></i>"
+                                content="<strong class='mb-2 block'>You're account has no emails.</strong> Link your account with your email so that you can save your uploads permanently and access them on all your devices."
                             ></tooltip>
                         </a>
                     </div>
@@ -33,6 +33,8 @@
                    v-model="newEmail" ref="input" @keyup.enter="add">
 
             <span v-if="notes.get('email')" class="bg-red-200 p-2" v-text="notes.get('email')"></span>
+
+            <span v-if="notes.get('duplication')" class="bg-red-200 p-2" v-text="notes.get('duplication')"></span>
 
             <span v-if="notes.get('message')" class="bg-green-200 p-2" v-text="notes.get('message')"></span>
 
@@ -84,7 +86,7 @@
                     return
                 }
 
-                this.loading = true;
+                this.loading = true
 
                 axios.post('/invitees/' + this.upload.uuid, {email: this.newEmail})
                     .then(response => {
@@ -98,14 +100,14 @@
 
                         this.newEmail = ''
 
-                        this.loading = false;
+                        this.loading = false
                     })
                     .catch(error => {
                         this.notes.record(error.response.data.errors)
 
                         this.newEmail = ''
 
-                        this.loading = false;
+                        this.loading = false
                     })
             },
         },

@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class InviteesController extends Controller
 {
@@ -32,7 +33,12 @@ class InviteesController extends Controller
             ['token' => Str::random(50),]
         );
 
-        Mail::to($email)->send(new InvitationSent($upload, $invitee));
+        if($invitee->wasRecentlyCreated){
+            Mail::to($email)->send(new InvitationSent($upload, $invitee));
+        }else{
+            throw ValidationException::withMessages(['duplication'=>'This email address was invited before.']);
+        }
+
 
         return ['message'=> ['Invitation has been emailed.']];
     }
