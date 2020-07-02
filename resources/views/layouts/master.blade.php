@@ -34,5 +34,6 @@
     @show
 </footer>
 @include('layouts.partials.scripts')
+@yield('body.append')
 </body>
 </html>

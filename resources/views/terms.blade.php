@@ -1,9 +1,11 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title', 'Terms of Use')
 
-@section('main')
-    <div class="container py-8">
+@section('main.class', 'flex flex-col  bg-gray-100 h-auto min-h-full relative ')
+
+@section('content')
+    <div class="container pt-8 pb-32 px-8">
         <h1>Terms of Use</h1>
 
         <p>Last updated June, 2020</p>
@@ -287,7 +289,7 @@
             execute these Terms of Use.
         </p>
 
-        <h1 class="mt-5">Privacy Policy</h1>
+        <h1 class="mt-10">Privacy Policy</h1>
 
         <p>Last updated January 2020</p>
 
@@ -317,9 +319,9 @@
 
         <h2>WHAT INFORMATION DO WE COLLECT?</h2>
 
-        <p>
-            <strong>Personal information you disclose to us</strong>
-        </p>
+        <h3>
+            Personal information you disclose to us
+        </h3>
 
         <p>
             In Short: We collect personal information that you provide to us such as name, email address, passwords and
@@ -347,9 +349,7 @@
             of any changes to such personal information.
         </p>
 
-        <p>
-            <strong>Information automatically collected</strong>
-        </p>
+        <h3>Information automatically collected</h3>
 
         <p>
             In Short: Some information – such as IP address and/or browser and device characteristics – is collected
@@ -504,9 +504,9 @@
                     target="_blank">here</a>.
         </p>
 
-        <p>
-            <strong>Account Information</strong>
-        </p>
+        <h3>
+            Account Information
+        </h3>
 
         <p>
             If you would at any time like to review or change the information in your account or terminate your account,
@@ -562,19 +562,28 @@
 
 @section('body.append')
     <style>
-        body
-        {
-            background:white;
+        body {
+            background: white;
         }
 
-        h2
-        {
-            font-size:1.4rem;
-            font-weight: bold;
-            margin-top:3rem;
+        h1 {
+
         }
-        h1
-        {
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            color: #3343C3;
+        }
+
+        h1 {
+            font-weight: bold;
+        }
+
+        h3{
+            font-size:1.2rem;
+            margin-top:1.5rem;
             font-weight:bold;
         }
     </style>
