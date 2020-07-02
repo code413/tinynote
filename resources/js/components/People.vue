@@ -27,7 +27,7 @@
             ></person>
         </div>
 
-        <div v-if="$attrs.authUser.id === upload.owner.id" class="border-t flex flex-col add-section"
+        <div v-if="$attrs.authUser.id === upload.owner.id" class="border-t flex flex-col add-section relative"
              :class="{'border-blue-500': focused, loading: loading }">
             <input type="text" class="p-4 w-full outline-none" placeholder="Enter an email..."
                    v-model="newEmail" ref="input" @keyup.enter="add">
@@ -119,10 +119,10 @@
 
 <style>
     .add-section.loading:before {
-        width: 20rem;
+        width: 100%;
         content: "";
         background-image: url(/img/loading.gif);
-        height: 7.5rem;
+        height: 100%;
         z-index: 999999;
         display: block;
         background-color: #f7fafc;
