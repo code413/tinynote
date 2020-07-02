@@ -121,11 +121,11 @@
     .add-section.loading:before {
         width: 100%;
         content: "";
-        background-image: url(/img/loading.gif);
+        background-image: url(/img/curve-loading.gif);
         height: 100%;
         z-index: 999999;
         display: block;
-        background-color: #f7fafc;
+        background-color: white;
         background-repeat: no-repeat;
         background-position: center;
         position: absolute;
