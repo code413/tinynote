@@ -5,7 +5,7 @@
 @section('superclass', 'bg-gray-100')
 
 @section('content')
-    <div>
+    <div class="container">
         @include('partials.messages')
 
         <div class="container mx-auto py-10 px-5">
