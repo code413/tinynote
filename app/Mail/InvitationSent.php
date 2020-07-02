@@ -35,6 +35,7 @@ class InvitationSent extends Mailable
      */
     public function build()
     {
-        return $this->from('no_reply@example.com')->markdown('emails.invitation')->with(['upload' => $this->upload, 'invitee' => $this->invitee]);
+        return $this->markdown('emails.invitation')
+            ->with(['upload' => $this->upload, 'invitee' => $this->invitee]);
     }
 }
