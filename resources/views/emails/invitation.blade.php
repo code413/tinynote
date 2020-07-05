@@ -11,8 +11,8 @@
         <br>Please click the link below to contribute.
     </p>
     @component('mail::panel')
-        <a href="{{ route('uploads.show', [$upload, 'token'=>$invitee->token]) }}" target="_blank">
-            {{ route('uploads.show', [$upload, 'token'=>$invitee->token]) }}
+        <a href="{{ route('uploads.show', [$upload, 'token'=>$invitee->token]) . '&with=comments' }}" target="_blank">
+            https://TinyNote.io
         </a>
     @endcomponent
 

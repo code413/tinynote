@@ -87,7 +87,15 @@
 </template>
 
 <script>
+    import VueRouter from 'vue-router'
+
+    let router = new VueRouter({
+        mode: 'history',
+        routes: []
+    });
+
     export default {
+        router,
         props: {
             data: {},
             auth_user: {},
@@ -99,6 +107,7 @@
                 upload: {},
                 show: true,
                 authUser: '',
+                initialSidebar: null
             }
         },
         methods: {
@@ -124,6 +133,10 @@
             this.authUser = this.auth_user
 
             this.title = this.upload.name
+
+            if(this.$route.query.with) {
+                this.sidebar = this.$route.query.with;
+            }
         }
     }
 </script>
