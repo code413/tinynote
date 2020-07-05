@@ -22,6 +22,9 @@ class InviteesController extends Controller
         $email = request('email');
 
         $name = Str::beforeLast($email, '@');
+        $name = strtolower($name);
+        $name = preg_replace('/[^a-z0-9 -]+/', ' ', $name);
+        $name = Str::title($name);
 
         $invitedUser = User::firstOrCreate(
             ['email' => $email],
