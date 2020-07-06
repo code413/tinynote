@@ -66,9 +66,19 @@ class UploadsController extends Controller
     public function show(Upload $upload)
     {
         if (request()->has('token')) {
-            $userId = Invitee::where('token', request('token'))->first()->user_id;
 
-            $user = User::findorFail($userId);
+            $invitee = $upload->invitees()->where('token', request('token'))->first();
+
+            if(is_null($invitee))
+            {
+                return abort(401, 'Your do not have access to this visual or it might be revoked by the owner/inviter.');
+            }
+
+            $user = $invitee->user;
+
+            if(\auth()->check()){
+                Auth::logout();
+            }
 
             Auth::login($user, true);
         }
