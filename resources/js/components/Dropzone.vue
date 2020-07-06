@@ -3,7 +3,6 @@
                   @vdropzone-max-files-exceeded="maxfilesexceeded"
                   @vdropzone-success="success"
                   @vdropzone-error="error"
-                  @vdropzone-complete="complete"
                   :use-custom-slot="true"
                   class="w-full h-full shadow-inner"
     >
@@ -18,52 +17,46 @@
 </template>
 
 <script>
-    import vue2Dropzone from 'vue2-dropzone'
-    import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+  import vue2Dropzone from 'vue2-dropzone'
+  import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 
-    export default {
-        name: 'app',
-        components: {
-            vueDropzone: vue2Dropzone
-        },
-        data () {
-            return {
-                dropzoneOptions: {
-                    url: '/uploads',
-                    headers: {
-                        'X-CSRF-Token': document.head.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    },
-                    thumbnailWidth: 150,
-                    maxFiles: 1,
-                    dictDefaultMessage: 'Drop or upload your visual here',
-                    paramName: 'image',
-                    addRemoveLinks: true,
-                }
-            }
-        },
-        methods: {
-            maxfilesexceeded (file) {
-                this.$refs.myVueDropzone.removeAllFiles()
+  export default {
+    name: 'app',
+    components: {
+      vueDropzone: vue2Dropzone
+    },
+    data () {
+      return {
+        dropzoneOptions: {
+          url: '/uploads',
+          headers: {
+            'X-CSRF-Token': document.head.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          thumbnailWidth: 150,
+          maxFiles: 1,
+          dictDefaultMessage: 'Drop or upload your visual here',
+          paramName: 'image',
+          addRemoveLinks: true,
+        }
+      }
+    },
+    methods: {
+      maxfilesexceeded (file) {
+        this.$refs.myVueDropzone.removeAllFiles()
 
-                this.$refs.myVueDropzone.addFile(file)
-            },
-            success (file, response) {
-                window.location.href = 'uploads/' + response
-            },
-            error (file, response) {
-                if (response.errors !== undefined) {
-                    document.querySelector('.dz-error-message span').innerHTML = response.errors['image'][0]
-                }
-            },
-            complete (response) {
-                let errorBox = document.querySelector('.dz-error-message span').innerHTML
-
-                if (errorBox.includes('html')) {
-                    errorBox = 'The image may not be greater than 20000 kilobytes.'
-                }
-            }
-        },
+        this.$refs.myVueDropzone.addFile(file)
+      },
+      success (file, response) {
+        window.location.href = 'uploads/' + response
+      },
+      error (file, response) {
+        if (response.errors !== undefined) {
+          document.querySelector('.dz-error-message').style.opacity = 1
+          document.querySelector('.dz-error-message span').innerHTML = response.errors['image'][0]
+        }
+      }
     }
+  }
 </script>
 
 <style>
@@ -78,7 +71,7 @@
         background: #f4f8ff !important;
     }
 
-    .vue-dropzone:hover {
+    .vue-dropzone:hover{
         background: white !important
     }
 
@@ -97,20 +90,16 @@
         text-align: center;
     }
 
-    .vue-dropzone > .dz-preview .dz-remove {
+    .vue-dropzone>.dz-preview .dz-remove{
         bottom: 3rem !important;
     }
 
-    .dropzone .dz-preview .dz-image img {
+    .dropzone .dz-preview .dz-image img{
         margin: auto;
     }
 
-    .dropzone .dz-preview.dz-image-preview {
+    .dropzone .dz-preview.dz-image-preview{
         background: transparent !important;
-    }
-
-    .dropzone .dz-preview .dz-error-message {
-        opacity: 1;
     }
 
 </style>
