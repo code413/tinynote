@@ -52,7 +52,13 @@
       error (file, response) {
         if (response.errors !== undefined) {
           document.querySelector('.dz-error-message').style.opacity = 1
-          document.querySelector('.dz-error-message span').innerHTML = response.errors['image'][0]
+
+            let errorBox = document.querySelector('.dz-error-message span').innerHTML;
+            if(errorBox.includes('html')){
+                errorBox = "The image may not be greater than 20000 kilobytes.";
+            }else{
+                errorBox = response.errors['image'][0]
+            }
         }
       }
     }
