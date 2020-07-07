@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col md:flex-row flex-1 overflow-x-hidden editor">
         <!-- Content -->
-        <div class="px-8 py-4 flex-grow flex flex-col md:overflow-auto">
+        <div class="px-8 py-4 flex-grow block flex-col md:overflow-auto">
             <!-- Header -->
             <div class="md:flex mb-10 flex-wrap">
                 <div class="text-blue-900 flex">
@@ -40,7 +40,7 @@
             <!-- Image -->
             <div class="flex flex-1 items-center justify-center">
                 <div class="relative">
-                    <img :src="upload.url" :alt="upload.name">
+                    <img :src="upload.url" :alt="upload.name" style="width: 100%; height: 100%; display: block">
 
                     <portal-target name="dots" slim></portal-target>
                 </div>
@@ -48,7 +48,7 @@
         </div>
 
 
-        <div class="px-8 py-4 md:ml-auto mt-4 md:mt-0 flex md:hidden justify-around">
+        <div class="px-8 pt-4 pb-12 mt-4 flex md:hidden justify-around items-center">
             <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">
                 People
                 <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
