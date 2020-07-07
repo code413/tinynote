@@ -64,14 +64,6 @@
                             @enderror
                         </div>
 
-                        <div class="flex flex-wrap mb-6">
-                            <label for="password-confirm" class="block text-gray-700 text-sm font-bold mb-2">
-                                {{ __('Confirm Password') }}:
-                            </label>
-
-                            <input id="password-confirm" type="password" class="form-input w-full" name="password_confirmation" required autocomplete="new-password">
-                        </div>
-
                         <div class="flex flex-wrap">
                             <button type="submit" class="inline-block align-middle text-center select-none border font-bold whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-gray-100 bg-purple-600 hover:bg-purple-700">
                                 Submit
