@@ -6,13 +6,12 @@
 
 @section('content')
     <div class="container">
-        @include('partials.messages')
-
         <div class="container mx-auto py-10 px-5">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold max-w-2xl mx-auto text-center mb-10"
-                style="line-height:1">Your Uploads</h1>
-
             <div class="max-w-2xl mx-auto">
+                @include('partials.messages')
+
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold max-w-2xl mx-auto text-center mb-10"
+                    style="line-height:1">Your Uploads</h1>
                 @forelse($uploads as $upload)
                     <div class="flex items-center mb-2">
                         <div class="card z-10 relative block flex w-full items-center">
