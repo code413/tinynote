@@ -16,25 +16,7 @@
                     <p v-else v-text="upload.name"></p>
                 </div>
 
-                <div class="md:ml-auto mt-4 md:mt-0 hidden md:flex">
-                    <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">
-                        People
-                        <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
-                            <portal-target name="people-count"></portal-target>
-                        </span>
-                    </a>
-
-                    <a href="" class="mr-4" @click.prevent="toggleSidebar('comments')">
-                        Comments
-                        <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
-                            <portal-target name="comments-count"></portal-target>
-                        </span>
-                    </a>
-
-                    <a href="" @click.prevent="toggleSidebar('links')">
-                        <i data-feather="menu"></i>
-                    </a>
-                </div>
+                <topbar :data="upload" class="md:ml-auto mt-4 md:mt-0 hidden md:flex"></topbar>
             </div>
 
             <!-- Image -->
@@ -48,25 +30,7 @@
         </div>
 
 
-        <div class="px-8 pt-4 pb-12 mt-4 flex md:hidden justify-around items-center">
-            <a href="" class="mr-4" @click.prevent="toggleSidebar('people')">
-                People
-                <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
-                            <portal-target name="people-count"></portal-target>
-                        </span>
-            </a>
-
-            <a href="" class="mr-4" @click.prevent="toggleSidebar('comments')">
-                Comments
-                <span class="inline-block bg-gray-300 text-gray-600 text-sm px-2 rounded-full">
-                            <portal-target name="comments-count" ></portal-target>
-                        </span>
-            </a>
-
-            <a href="" @click.prevent="toggleSidebar('links')">
-                <i data-feather="menu"></i>
-            </a>
-        </div>
+        <topbar :data="upload" class="px-8 pt-4 pb-12 mt-4 flex md:hidden justify-around items-center"></topbar>
 
         <sidebar :open="sidebar">
             <transition name="slide-fade">
@@ -88,6 +52,7 @@
 
 <script>
     import VueRouter from 'vue-router'
+    import Topbar from './Topbar'
 
     let router = new VueRouter({
         mode: 'history',
@@ -95,6 +60,7 @@
     });
 
     export default {
+        components: {Topbar},
         router,
         props: {
             data: {},
@@ -107,7 +73,6 @@
                 upload: {},
                 show: true,
                 authUser: '',
-                initialSidebar: null
             }
         },
         methods: {
