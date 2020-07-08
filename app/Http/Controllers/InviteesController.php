@@ -43,6 +43,11 @@ class InviteesController extends Controller
         }
 
 
-        return ['message'=> ['Invitation has been emailed.']];
+        return ['inviteeId'=>$invitee->id ,'message'=> ['Invitation has been emailed.']];
+    }
+
+    public function destroy($inviteeId)
+    {
+        Invitee::findOrFail($inviteeId)->delete();
     }
 }

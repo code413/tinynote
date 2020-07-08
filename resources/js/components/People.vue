@@ -21,9 +21,11 @@
             ></person>
 
             <person v-for="(invitee, index) in invitees"
+                    :inviteeId="invitee.id"
                     :email="invitee.user.email"
                     :key="index"
                     :authUser="$attrs.authUser"
+                    :data="upload"
             ></person>
         </div>
 
@@ -94,8 +96,9 @@
 
                         this.invitees.push({
                             user: {
-                                email: this.newEmail
-                            }
+                                email: this.newEmail,
+                            },
+                            id: response.data.inviteeId,
                         })
 
                         this.newEmail = ''
