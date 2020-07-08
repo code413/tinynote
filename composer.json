@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "pusher/pusher-php-server": "~4.0",
+        "spatie/laravel-sitemap": "^5.7",
         "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {
