@@ -12,9 +12,11 @@
 
         <div class="px-8 py-4" id="start">
             <div class="container items-center text-center" style="min-height:20rem;">
-                <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold max-w-2xl mx-auto pt-16" style="line-height:1">Get Instant Feedback On Your Designs.</h1>
+                <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold max-w-2xl mx-auto pt-16" style="line-height:1">Get
+                    Instant Feedback On Your Designs.</h1>
                 <div class="mb-5">No registrations required.</div>
-                <dropzone style="min-height:20rem; top:3rem; margin-top:-2rem" class="max-w-2xl mx-auto items-stretch relative z-10"></dropzone>
+                <dropzone style="min-height:20rem; top:3rem; margin-top:-2rem"
+                          class="max-w-2xl mx-auto items-stretch relative z-10"></dropzone>
             </div>
         </div>
         <div class="w-full absolute bottom-0" style="height:12rem; background: url(/img/wave.png) no-repeat"></div>
@@ -91,6 +93,8 @@
             <a href="#start" class="btn bg-white text-purple-900 hover:bg-purple-100">Upload Your First Visual</a>
         </div>
     </div>
+
+    <x-faq></x-faq>
 
     <footer class="py-8 bg-white">
         <div class="container px-10 text-sm text-gray-500 flex justify-between">
