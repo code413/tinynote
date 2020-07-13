@@ -36,5 +36,3 @@ Auth::routes();
 
     return new App\Mail\InvitationSent($upload, $invitee);
 });*/
-
-Route::view('ui', 'ui.index');

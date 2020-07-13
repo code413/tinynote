@@ -1,5 +1,6 @@
 <template>
     <div class="comment p-4 rounded-large flex flex-col mb-2 bg-white rounded-br-none shadow"
+         :id="id"
          :class="{
             'bg-blue-100 rounded-bl-none rounded-br-large mr-2': isAuthor,
             'ml-2': !isAuthor
@@ -24,7 +25,8 @@
             content: {default: ''},
             author: {default: ''},
             time: {default: ''},
-            isAuthor: ''
+            isAuthor: '',
+            id: '',
         },
         data() {
           return{

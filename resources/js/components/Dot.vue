@@ -1,14 +1,16 @@
 <template>
-    <div class="dot p-2 bg-red-700 absolute rounded-full cursor-pointer"
+    <div class="dot bg-red-700 absolute rounded-full cursor-pointer"
          :class="{'glow' : glow}"
          style="margin-left: -0.5rem; margin-top: -0.5rem"
          :style="{top: y + '%', left: x + '%'}"
-    ></div>
+    >
+        <a :href="'#' + id" class="p-2 block"></a>
+    </div>
 </template>
 
 <script>
     export default {
-        props: ['x', 'y'],
+        props: ['x', 'y', 'id'],
         data () {
             return {
                 glow: true
