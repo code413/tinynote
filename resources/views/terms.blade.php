@@ -136,14 +136,8 @@
         <h2>SUBMISSIONS</h2>
 
         <p>
-            You acknowledge and agree that any questions, comments, suggestions, ideas, feedback, or other information
-            regarding the Site ("Submissions") provided by you to us are non-confidential and shall become our sole
-            property. We shall own exclusive rights, including all intellectual property rights, and shall be entitled
-            to the unrestricted use and dissemination of these Submissions for any lawful purpose, commercial or
-            otherwise, without acknowledgment or compensation to you. You hereby waive all moral rights to any such
-            Submissions, and you hereby warrant that any such Submissions are original with you or that you have the
-            right to submit such Submissions. You agree there shall be no recourse against us for any alleged or actual
-            infringement or misappropriation of any proprietary right in your Submissions.
+            We keep all the questions, comments, suggestions, ideas, feedback, or other information regarding the Site
+            ("Submissions") provided by you to us as confidential and secure.
         </p>
 
         <h2>SITE MANAGEMENT</h2>
@@ -500,8 +494,8 @@
             If you are resident in the European Economic Area and you believe we are unlawfully processing your personal
             information, you also have the right to complain to your local data protection supervisory authority. You
             can find their contact details <a
-                    href="http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm"
-                    target="_blank">here</a>.
+                href="http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm"
+                target="_blank">here</a>.
         </p>
 
         <h3>
@@ -581,10 +575,10 @@
             font-weight: bold;
         }
 
-        h3{
-            font-size:1.2rem;
-            margin-top:1.5rem;
-            font-weight:bold;
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            font-weight: bold;
         }
     </style>
 @stop
