@@ -28,3 +28,7 @@ body{
 
 
 @import "~tailwindcss/utilities.css";
+
+@import "~noty/lib/noty.css";
+@import "~noty/lib/themes/bootstrap-v4.css";
+

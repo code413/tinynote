@@ -3,6 +3,8 @@ window.axios = require('axios');
 window.feather = require('feather-icons')
 import PortalVue from 'portal-vue'
 import VueInputAutowidth from 'vue-input-autowidth'
+window.Noty = require('noty');
+
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 

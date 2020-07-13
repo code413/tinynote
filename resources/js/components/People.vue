@@ -34,12 +34,6 @@
             <input type="text" class="p-4 w-full outline-none" placeholder="Enter an email..."
                    v-model="newEmail" ref="input" @keyup.enter="add">
 
-            <span v-if="notes.get('email')" class="bg-red-200 p-2" v-text="notes.get('email')"></span>
-
-            <span v-if="notes.get('duplication')" class="bg-red-200 p-2" v-text="notes.get('duplication')"></span>
-
-            <span v-if="notes.get('message')" class="bg-green-200 p-2" v-text="notes.get('message')"></span>
-
             <div class="px-3 py-1 bg-gray-800 text-white rounded ml-auto text-center m-4 cursor-pointer"
                  @click="add">Add
             </div>
@@ -101,22 +95,44 @@
                             id: response.data.inviteeId,
                         })
 
+                        if(this.notes.get('message')){
+                            this.notification(this.notes.get('message') ,'success')
+                        }
+
                         this.newEmail = ''
 
                         this.loading = false
                     })
                     .catch(error => {
                         this.notes.record(error.response.data.errors)
+                        
+                        if(this.notes.get('email')){
+                            this.notification(this.notes.get('email') ,'error')
+                        }
+
+                        if(this.notes.get('duplication')){
+                            this.notification(this.notes.get('duplication') ,'error')
+                        }
 
                         this.newEmail = ''
 
                         this.loading = false
                     })
             },
+            notification (text, type) {
+                new Noty({
+                    text: text,
+                    type: type,
+                    timeout: 3000,
+                    progressBar: true,
+                    theme : 'bootstrap-v4',
+                    layout: 'bottomRight',
+                }).show()
+            }
         },
         created () {
             this.invitees = this.data
-        }
+        },
     }
 </script>
 
