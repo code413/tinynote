@@ -34,6 +34,7 @@
           },
           thumbnailWidth: 150,
           maxFiles: 1,
+          maxFilesize:20,
           dictDefaultMessage: 'Drop or upload your visual here',
           paramName: 'image',
           addRemoveLinks: true,
