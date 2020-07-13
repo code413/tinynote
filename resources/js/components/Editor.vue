@@ -13,7 +13,7 @@
                            @blur="titleUpdate()"
                            v-autowidth="{maxWidth: '400px', minWidth: '10px'}" placeholder="Document Title">
 
-                    <p v-else v-text="upload.name"></p>
+                    <div v-else v-text="upload.name"></div>
                 </div>
 
                 <topbar :data="upload" class="md:ml-auto mt-4 md:mt-0 hidden md:flex"></topbar>
