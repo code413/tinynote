@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <div v-show="open" class="p-5 border-t">
+        <div v-show="open" class="p-5 border-t text-xl leading-loose">
             <slot name="body"></slot>
         </div>
     </div>
