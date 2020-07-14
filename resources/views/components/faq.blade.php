@@ -10,7 +10,7 @@
                 <p>
                     Getting client approval on creative visuals has always involved lots of back and forth - for
                     both designers and project managers.<br>
-                    TinyNote is a web application that lets you upload visuals, invite as many people as you want,
+                    TinyNote is a Free Design Feedback Tool that lets you upload visuals, invite as many people as you want,
                     have all the notes on the visuals in one place, track your uploads, get the client approval, and
                     move on to the next job.
                 </p>

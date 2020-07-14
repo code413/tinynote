@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
-@section('title', 'Tiny Note - Get Instant Feedback On Your Designs')
+@section('title', 'Tiny Note - A Free Design Feedback Tool')
+
+@section('description', 'TinyNote is a Free Design Feedback Tool that lets you upload visuals, invite as many people as you want, have all the notes on the visuals in one place, track your uploads, get the client approval, and move on to the next job.')
 
 @section('title.suffix', '')
 
@@ -12,9 +14,17 @@
 
         <div class="px-8 py-4" id="start">
             <div class="container items-center text-center" style="min-height:20rem;">
-                <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold max-w-2xl mx-auto pt-16" style="line-height:1">Get
-                    Instant Feedback On Your Designs.</h1>
-                <div class="mb-5">No registrations required.</div>
+                <h1 class="text-2xl md:text-3xl lg:text-5xl font-bold max-w-2xl mx-auto pt-16 pb-4"
+                    style="line-height:1">
+                    Free Design Feedback Tool
+                </h1>
+
+                <h2 class="text-xl md:text-2xl lg:text-3xl font-bold max-w-2xl mx-auto" style="line-height:1">
+                    Get Instant Feedback On Your Designs
+                </h2>
+
+                <div class="mt-4">No registration is required.</div>
+
                 <dropzone style="min-height:20rem; top:3rem; margin-top:-2rem"
                           class="max-w-2xl mx-auto items-stretch relative z-10"></dropzone>
             </div>
