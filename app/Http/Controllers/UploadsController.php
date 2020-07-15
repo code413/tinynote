@@ -98,6 +98,11 @@ class UploadsController extends Controller
 
     public function index()
     {
+        if(!auth()->check())
+        {
+            return redirect()->route('login');
+        }
+
         $uploads = auth()->user()->uploads;
 
         $invitedUploads = auth()->user()->invitedUploads->load('upload');

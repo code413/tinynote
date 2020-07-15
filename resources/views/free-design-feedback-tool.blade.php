@@ -1,0 +1,86 @@
+@extends('layouts.master')
+
+@section('title', 'Tiny Note - Get Instant Feedback On Your Designs')
+
+@section('description', 'Tiny Note is a free design feedback tool that lets you upload visuals, invite your clients, and get feedback instantly. No registrations required.')
+
+@section('main')
+    <div class="relative bg-purple-100">
+        @include('partials.header')
+
+        <div class="px-8 py-4" id="start">
+            <div class="container items-center text-center" style="min-height:25rem;">
+                <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold max-w-2xl mx-auto pt-16" style="line-height:1">
+                    A Free Design Feedback Tool!
+                </h1>
+            </div>
+        </div>
+        <div class="w-full absolute bottom-0" style="height:12rem; background: url(/img/wave.png) no-repeat"></div>
+    </div>
+
+    <div class="bg-white py-4">
+        <div class="container px-10">
+            <h2 class="text-center">Tiny Note is an instant design feedback tool.<br>
+                You'll get your feedback in only <strong>three steps</strong>.
+            </h2>
+        </div>
+    </div>
+
+    <div class="bg-white py-4">
+        <div class="container px-10">
+            <div class="flex flex-col md:flex-row pt-16 items-center">
+                <div class="md:w-1/2 lg:w-3/5 max-w-2xl order-2 md:order-1">
+                    <img src="{{ url('img/step-1.png') }}" class="w-full mx-auto rounded-lg" alt="">
+                </div>
+
+                <div class="text-center md:text-left md:w-1/2 lg:w-2/5 md:pl-10 order-1 md:order-2">
+                    <h2 class="text-2xl lg:text-4xl font-bold">
+                        Step 1
+                    </h2>
+
+                    <p>
+                        Upload by just dropping in the box.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white py-4">
+        <div class="container px-10">
+            <div class="flex flex-col md:flex-row pt-16 items-center">
+                <div class="text-center md:text-left md:w-1/2 lg:w-2/5 md:pr-10">
+                    <h2 class="text-2xl lg:text-4xl font-bold">Step 2</h2>
+                    <p>
+                        Invite people as easy as just typing an email. We do the rest!
+                    </p>
+                </div>
+                <div class="md:w-1/2 lg:w-3/5 max-w-2xl">
+                    <img src="{{ url('img/step-2.png') }}" class="w-full mx-auto rounded-lg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white py-4">
+        <div class="container px-10">
+            <div class="flex flex-col md:flex-row pt-16 items-center">
+                <div class="md:w-1/2 lg:w-3/5 max-w-2xl order-2 md:order-1">
+                    <img src="{{ url('img/step-3.png') }}" class="w-full mx-auto rounded-lg" alt="">
+                </div>
+
+                <div class="text-center md:text-left md:w-1/2 lg:w-2/5 md:pl-10 order-1 md:order-2">
+                    <h2 class="text-2xl lg:text-4xl font-bold">
+                        Step 3
+                    </h2>
+
+                    <p>
+                        Get feedback next to your visual.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @include('partials.footer')
+@stop
