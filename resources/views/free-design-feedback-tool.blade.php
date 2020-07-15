@@ -8,8 +8,8 @@
     <div class="relative bg-purple-100">
         @include('partials.header')
 
-        <div class="px-8 py-4" id="start">
-            <div class="container items-center text-center" style="min-height:25rem;">
+        <div class="px-8 py-4">
+            <div class="title container items-center text-center">
                 <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold max-w-2xl mx-auto pt-16" style="line-height:1">
                     A Free Design Feedback Tool!
                 </h1>
@@ -20,7 +20,7 @@
 
     <div class="bg-white py-4">
         <div class="container px-10">
-            <h2 class="text-center">Tiny Note is an instant design feedback tool.<br>
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold max-w-3xl mx-auto md:pt-8 text-center">Tiny Note is an instant design feedback tool.<br>
                 You'll get your feedback in only <strong>three steps</strong>.
             </h2>
         </div>
@@ -34,12 +34,12 @@
                 </div>
 
                 <div class="text-center md:text-left md:w-1/2 lg:w-2/5 md:pl-10 order-1 md:order-2">
-                    <h2 class="text-2xl lg:text-4xl font-bold">
+                    <h3 class="text-2xl lg:text-4xl font-bold">
                         Step 1
-                    </h2>
+                    </h3>
 
                     <p>
-                        Upload by just dropping in the box.
+                        <a class="text-purple-600 border-b" href="{{ route('home') }}">Upload</a> by just dropping in the box.
                     </p>
                 </div>
             </div>
@@ -50,7 +50,8 @@
         <div class="container px-10">
             <div class="flex flex-col md:flex-row pt-16 items-center">
                 <div class="text-center md:text-left md:w-1/2 lg:w-2/5 md:pr-10">
-                    <h2 class="text-2xl lg:text-4xl font-bold">Step 2</h2>
+                    <h3 class="text-2xl lg:text-4xl font-bold">Step 2</h3>
+
                     <p>
                         Invite people as easy as just typing an email. We do the rest!
                     </p>
@@ -62,7 +63,7 @@
         </div>
     </div>
 
-    <div class="bg-white py-4">
+    <div class="bg-white py-4 mb-12">
         <div class="container px-10">
             <div class="flex flex-col md:flex-row pt-16 items-center">
                 <div class="md:w-1/2 lg:w-3/5 max-w-2xl order-2 md:order-1">
@@ -70,9 +71,9 @@
                 </div>
 
                 <div class="text-center md:text-left md:w-1/2 lg:w-2/5 md:pl-10 order-1 md:order-2">
-                    <h2 class="text-2xl lg:text-4xl font-bold">
+                    <h3 class="text-2xl lg:text-4xl font-bold">
                         Step 3
-                    </h2>
+                    </h3>
 
                     <p>
                         Get feedback next to your visual.
@@ -82,5 +83,21 @@
         </div>
     </div>
 
+    <x-faq></x-faq>
+
+    <x-cta></x-cta>
+
     @include('partials.footer')
 @stop
+
+<style>
+    .title{
+        min-height: 25rem;
+    }
+
+    @media screen and (max-width: 768px){
+        .title{
+            min-height: 18rem;
+        }
+    }
+</style>
