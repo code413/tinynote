@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title', 'Tiny Note - A Free Design Feedback Tool')
+@section('title', 'Tiny Note - Get Instant Feedback On Your Designs')
 
-@section('description', 'TinyNote is a Free Design Feedback Tool that lets you upload visuals, invite as many people as you want, have all the notes on the visuals in one place, track your uploads, get the client approval, and move on to the next job.')
+@section('description', 'Tiny Note is a free design feedback tool that lets you upload visuals, invite your clients, and get feedback instantly. No registrations required.')
 
 @section('title.suffix', '')
 
