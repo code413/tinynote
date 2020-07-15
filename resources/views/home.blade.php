@@ -14,17 +14,9 @@
 
         <div class="px-8 py-4" id="start">
             <div class="container items-center text-center" style="min-height:20rem;">
-                <h1 class="text-2xl md:text-3xl lg:text-5xl font-bold max-w-2xl mx-auto pt-16 pb-4"
-                    style="line-height:1">
-                    Free Design Feedback Tool
-                </h1>
-
-                <h2 class="text-xl md:text-2xl lg:text-3xl font-bold max-w-2xl mx-auto" style="line-height:1">
-                    Get Instant Feedback On Your Designs
-                </h2>
-
-                <div class="mt-4">No registration is required.</div>
-
+                <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold max-w-2xl mx-auto pt-16" style="line-height:1">Get
+                    Instant Feedback On Your Designs.</h1>
+                <div class="mb-5">No registrations required.</div>
                 <dropzone style="min-height:20rem; top:3rem; margin-top:-2rem"
                           class="max-w-2xl mx-auto items-stretch relative z-10"></dropzone>
             </div>
@@ -96,6 +88,8 @@
         </div>
     </div>
 
+    <x-faq></x-faq>
+
     <div class="py-16 px-10 text-white" style="background: #3040c4;">
         <div class="container flex flex-col items-center text-center">
             <h3 class="text-xl md:text-3xl font-bold">Not sure yet? Try it out for free!</h3>
@@ -103,8 +97,6 @@
             <a href="#start" class="btn bg-white text-purple-900 hover:bg-purple-100">Upload Your First Visual</a>
         </div>
     </div>
-
-    <x-faq></x-faq>
 
     <footer class="py-8 bg-white">
         <div class="container px-10 text-sm text-gray-500 flex justify-between">
