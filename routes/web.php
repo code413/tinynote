@@ -28,7 +28,7 @@ Route::put('/users/{user}', 'UsersController@update')->name('users.update');
 
 Route::view('/terms', 'terms')->name('terms');
 
-Route::view('/free-design-feedback-tool', 'free-design-feedback-tool');
+Route::view('/free-design-feedback-tool', 'free-design-feedback-tool')->name('free-design-feedback-tool');
 
 Auth::routes();
 
