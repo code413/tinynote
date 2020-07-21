@@ -8,17 +8,20 @@
     <div class="relative bg-purple-100">
         @include('partials.header')
 
-        <div class="px-8 py-4">
+        <div class="px-8 py-4" id="start-2">
             <div class="title container items-center text-center">
                 <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold max-w-2xl mx-auto pt-16" style="line-height:1">
                     A Free Design Feedback Tool!
                 </h1>
+
+                <dropzone style="min-height:20rem; top:3rem; margin-top:-2rem"
+                          class="max-w-2xl mx-auto items-stretch relative z-10 w-full shadow-inner"></dropzone>
             </div>
         </div>
         <div class="w-full absolute bottom-0" style="height:12rem; background: url(/img/wave.png) no-repeat"></div>
     </div>
 
-    <div class="bg-white py-4">
+    <div class="bg-white py-4 mt-16">
         <div class="container px-10">
             <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold max-w-3xl mx-auto md:pt-8 text-center">Tiny Note is an instant design feedback tool.<br>
                 You'll get your feedback in only <strong>three steps</strong>.
@@ -63,7 +66,7 @@
         </div>
     </div>
 
-    <div class="bg-white py-4 mb-12">
+    <div class="bg-white py-4 mb-5">
         <div class="container px-10">
             <div class="flex flex-col md:flex-row pt-16 items-center">
                 <div class="md:w-1/2 lg:w-3/5 max-w-2xl order-2 md:order-1">
@@ -80,12 +83,14 @@
                     </p>
                 </div>
             </div>
+
+            <x-acknowledgement></x-acknowledgement>
         </div>
     </div>
 
     <x-faq></x-faq>
 
-    <x-cta></x-cta>
+    <x-cta link="#start-2"></x-cta>
 
     @include('partials.footer')
 @stop

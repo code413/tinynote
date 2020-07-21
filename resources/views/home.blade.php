@@ -18,7 +18,7 @@
                     Instant Feedback On Your Designs.</h1>
                 <div class="mb-5 mt-4">No ads. No registrations. Completely free.</div>
                 <dropzone style="min-height:20rem; top:3rem; margin-top:-2rem"
-                          class="max-w-2xl mx-auto items-stretch relative z-10"></dropzone>
+                          class="max-w-2xl mx-auto items-stretch relative z-10 w-full h-full shadow-inner"></dropzone>
             </div>
         </div>
         <div class="w-full absolute bottom-0" style="height:12rem; background: url(/img/wave.png) no-repeat"></div>
@@ -76,21 +76,13 @@
                 </div>
             </div>
 
-            <div class="mt-10 mb-4 text-center text-sm flex items-center justify-center text-gray-600">
-                <div data-feather="heart" class="hidden md:block mr-3 text-red-600" style="width:1.2rem"></div>
-                <div>
-                    Icons are designed by
-                    <a target="_blank" href="https://feathericons.com/" class="text-purple-600 border-b">Feather</a>
-                    and illustrations are by
-                    <a target="_blank" href="https://icons8.com/" class="text-purple-600 border-b">Icons8</a>.
-                </div>
-            </div>
+            <x-acknowledgement></x-acknowledgement>
         </div>
     </div>
 
     <x-faq></x-faq>
 
-    <x-cta></x-cta>
+    <x-cta link="#start"></x-cta>
 
     @include('partials.footer')
 @stop

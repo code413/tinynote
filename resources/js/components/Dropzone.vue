@@ -4,7 +4,6 @@
                   @vdropzone-success="success"
                   @vdropzone-error="error"
                   :use-custom-slot="true"
-                  class="w-full h-full shadow-inner"
     >
         <div class="text-center">
             <i data-feather="image" class="text-indigo-600 mx-auto" style="width:48px; height:48px;"
