@@ -2,7 +2,7 @@
 
 @section('title', 'Tiny Note - Get Instant Feedback On Your Designs')
 
-@section('description', 'Tiny Note is a free design feedback tool that lets you upload visuals, invite your clients, and get feedback instantly. No registrations required.')
+@section('description', 'Tiny Note is a free design feedback tool that lets you upload visuals, invite your clients, and get feedback instantly.')
 
 @section('main')
     <div class="relative bg-purple-100">
