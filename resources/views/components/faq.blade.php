@@ -14,7 +14,8 @@
                 <p>
                     Tiny Note is a Free Design Feedback Tool that lets you upload visuals, invite as many people as you want,
                     have all the notes on the visuals in one place, track your uploads, get the client approval, and
-                    move on to the next job.
+                    move on to the next job. This online Design Collaboration Tool helps designers manage creative visuals, share them
+                    with their design team or their clients, and get design annotated feedback instantly.
                 </p>
             </template>
         </collapse>

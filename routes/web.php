@@ -30,6 +30,8 @@ Route::view('/terms', 'terms')->name('terms');
 
 Route::view('/free-design-feedback-tool', 'free-design-feedback-tool')->name('free-design-feedback-tool');
 
+Route::view('/online-design-collaboration-tool', 'online-design-collaboration-tool')->name('online-design-collaboration-tool');
+
 Auth::routes();
 
 /*Route::get('mailable', function () {
