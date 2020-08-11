@@ -32,6 +32,8 @@ Route::view('/free-design-feedback-tool', 'free-design-feedback-tool')->name('fr
 
 Route::view('/online-design-collaboration-tool', 'online-design-collaboration-tool')->name('online-design-collaboration-tool');
 
+Route::view('/5-best-design-feedback-and-annotation-tools-for-designers', '5-best-design-feedback-and-annotation-tools-for-designers')->name('5-best-design-feedback-and-annotation-tools-for-designers');
+
 Auth::routes();
 
 /*Route::get('mailable', function () {
