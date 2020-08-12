@@ -7,6 +7,9 @@
 
             <a class="mb-3" href="{{ route('online-design-collaboration-tool') }}">Online Design Collaboration Tool</a>
 
+            <a class="mb-3" href="{{ route('5-best-design-feedback-and-annotation-tools-for-designers') }}">5 Best
+                Design Feedback and Annotation Tools for Designers</a>
+
             <a href="{{ route('terms') }}">Terms of Use</a>
         </div>
 
