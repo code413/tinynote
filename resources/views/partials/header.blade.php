@@ -1,6 +1,6 @@
 <header class="flex items-center px-8 py-4 mb-4">
-    <a href="{{ urL('/') }}" class="font-bold flex items-center">
-        <img src="{{ url('img/logo.png') }}" alt="Tiny Note" class="mr-3" style="width:1.5rem; height: 1.5rem;">
+    <a href="{{ urL('/') }}" class="font-bold flex items-center lowercase" style="color: #131f7e;">
+        <img src="{{ url('img/logo.png') }}" alt="Tiny Note" class="mr-3" style="width:1.8rem;">
         Tiny Note
     </a>
 
